@@ -14,6 +14,7 @@ import {
 } from './dialog'
 import { Input } from './input'
 import { Label } from './label'
+import { ScrollArea } from './scroll-area'
 
 const meta = {
   title: 'Components/Dialog',
@@ -184,11 +185,13 @@ export const ScrollableContent: Story = {
               Transmissions from the outer rim relay.
             </DialogDescription>
           </DialogHeader>
-          <div className="max-h-64 space-y-4 overflow-y-auto pr-2 text-sm text-muted-foreground">
-            {paragraphs.map(text => (
-              <p key={text}>{text}</p>
-            ))}
-          </div>
+          <ScrollArea className="max-h-64 pr-2 text-sm text-muted-foreground">
+            <div className="space-y-4">
+              {paragraphs.map(text => (
+                <p key={text}>{text}</p>
+              ))}
+            </div>
+          </ScrollArea>
           <DialogFooter showCloseButton />
         </DialogContent>
       </Dialog>
@@ -198,9 +201,9 @@ export const ScrollableContent: Story = {
     docs: {
       description: {
         story:
-          'Edge case: `DialogContent` is a grid — a `max-h-* '
-          + 'overflow-y-auto` region inside it scrolls long content '
-          + 'while header and footer stay pinned.',
+          'Edge case: `DialogContent` is a grid — a `max-h-*` '
+          + '`ScrollArea` inside it scrolls long content while '
+          + 'header and footer stay pinned.',
       },
     },
   },

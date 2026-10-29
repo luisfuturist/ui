@@ -10,7 +10,7 @@ declare function ContextMenuSubTrigger({ className, inset, children, ...props }:
     inset?: boolean;
 }): React.JSX.Element;
 declare function ContextMenuSubContent({ className, ...props }: React.ComponentProps<typeof ContextMenuPrimitive.SubContent>): React.JSX.Element;
-declare function ContextMenuContent({ className, ...props }: React.ComponentProps<typeof ContextMenuPrimitive.Content>): React.JSX.Element;
+declare function ContextMenuContent({ className, children, ...props }: React.ComponentProps<typeof ContextMenuPrimitive.Content>): React.JSX.Element;
 declare function ContextMenuItem({ className, inset, variant, ...props }: React.ComponentProps<typeof ContextMenuPrimitive.Item> & {
     inset?: boolean;
     variant?: "default" | "destructive";

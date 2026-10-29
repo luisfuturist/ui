@@ -31,7 +31,7 @@ declare function SidebarInput({ className, ...props }: React.ComponentProps<type
 declare function SidebarHeader({ className, ...props }: React.ComponentProps<"div">): React.JSX.Element;
 declare function SidebarFooter({ className, ...props }: React.ComponentProps<"div">): React.JSX.Element;
 declare function SidebarSeparator({ className, ...props }: React.ComponentProps<typeof Separator>): React.JSX.Element;
-declare function SidebarContent({ className, ...props }: React.ComponentProps<"div">): React.JSX.Element;
+declare function SidebarContent({ className, children, ...props }: Omit<React.ComponentProps<"div">, "dir">): React.JSX.Element;
 declare function SidebarGroup({ className, ...props }: React.ComponentProps<"div">): React.JSX.Element;
 declare function SidebarGroupLabel({ className, asChild, ...props }: React.ComponentProps<"div"> & {
     asChild?: boolean;

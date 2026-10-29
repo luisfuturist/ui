@@ -13,6 +13,7 @@ import {
 } from './drawer'
 import { Input } from './input'
 import { Label } from './label'
+import { ScrollArea } from './scroll-area'
 
 const meta = {
   title: 'Components/Drawer',
@@ -148,7 +149,7 @@ export const WithScrollableForm: Story = {
           <Button className="border px-3 py-2">New waypoint</Button>
         </DrawerTrigger>
         <DrawerContent>
-          <div className="mx-auto w-full max-w-sm overflow-y-auto">
+          <ScrollArea className="mx-auto w-full max-w-sm">
             <DrawerHeader>
               <DrawerTitle>New waypoint</DrawerTitle>
               <DrawerDescription>
@@ -182,7 +183,7 @@ export const WithScrollableForm: Story = {
                 <Button className="border px-3 py-2">Cancel</Button>
               </DrawerClose>
             </DrawerFooter>
-          </div>
+          </ScrollArea>
         </DrawerContent>
       </Drawer>
     </div>
@@ -191,8 +192,8 @@ export const WithScrollableForm: Story = {
     docs: {
       description: {
         story:
-          'Center the content column with `mx-auto max-w-sm` and let '
-          + 'it scroll — `DrawerContent` caps height at `80vh` on '
+          'Center the content column with `mx-auto max-w-sm` on a '
+          + '`ScrollArea` — `DrawerContent` caps height at `80vh` on '
           + 'vertical directions.',
       },
     },

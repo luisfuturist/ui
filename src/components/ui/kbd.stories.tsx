@@ -9,8 +9,9 @@ const meta = {
     docs: {
       description: {
         component:
-          'An inline `<kbd>` element for keyboard hints — muted '
-          + 'background, `min-w-5`, sized for single glyphs. '
+          'An inline `<kbd>` element for keyboard hints — inverted '
+          + 'high-contrast chip (`bg-foreground text-background`), '
+          + '`min-w-5`, sized for single glyphs. '
           + '`KbdGroup` clusters several `Kbd`s into a combo. It also '
           + 're-styles itself inside `data-slot=tooltip-content`.',
       },

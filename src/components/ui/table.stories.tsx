@@ -21,7 +21,8 @@ const meta = {
       description: {
         component:
           'Semantic table primitives. `Table` wraps the `<table>` in '
-          + 'an `overflow-x-auto` container. `TableRow` ships '
+          + 'a `ScrollArea` container for horizontal scrolling. '
+          + '`TableRow` ships '
           + '`hover:bg-muted/50` and `data-[state=selected]` styling; '
           + 'stripes and alignment come from utility classes.',
       },

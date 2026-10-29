@@ -11,12 +11,11 @@ const meta = {
       description: {
         component:
           'Renders a `<button>` element (or any element via `asChild`). '
-          + 'The `variant` and `size` props are scaffolded through '
-          + '`class-variance-authority`, but all variant and size maps are '
-          + 'currently commented out — both props are accepted but do not '
-          + 'apply any styles yet. Styling today comes entirely from '
-          + '`className` and `data-augmented-ui` (see the **AugmentedUI** '
-          + 'story).',
+          + 'The `variant` and `size` props are implemented through '
+          + '`class-variance-authority` and mapped to LFDS tokens — '
+          + 'see the **Variants** and **Sizes** matrices. Augmented-ui '
+          + 'styling via `className` + `data-augmented-ui` still works '
+          + 'on top (see the **AugmentedUI** story).',
       },
     },
   },
@@ -36,16 +35,36 @@ const meta = {
         + 'rendering a `<button>` (Radix `Slot`).',
     },
     variant: {
-      control: false,
+      control: 'select',
+      options: [
+        'default',
+        'destructive',
+        'outline',
+        'secondary',
+        'ghost',
+        'link',
+      ],
       description:
-        'Scaffolded via cva — all variants are currently commented out '
-        + 'and apply no styles.',
+        'Visual style — `default` is the solid LFDS primary fill; '
+        + '`outline` uses a translucent foreground border (LFDS '
+        + '`--border` matches the background, so a bare `border` '
+        + 'would be invisible).',
     },
     size: {
-      control: false,
+      control: 'select',
+      options: [
+        'default',
+        'xs',
+        'sm',
+        'lg',
+        'icon',
+        'icon-xs',
+        'icon-sm',
+        'icon-lg',
+      ],
       description:
-        'Scaffolded via cva — all sizes are currently commented out '
-        + 'and apply no styles.',
+        'Preset height/padding — `icon*` sizes render a square '
+        + 'icon-only button.',
     },
     'data-augmented-ui': {
       control: 'text',
@@ -81,6 +100,70 @@ export const Disabled: Story = {
   args: {
     children: 'Disabled',
     disabled: true,
+  },
+}
+
+const variants = [
+  'default',
+  'destructive',
+  'outline',
+  'secondary',
+  'ghost',
+  'link',
+] as const
+
+export const Variants: Story = {
+  render: () => (
+    <div className="flex flex-wrap items-center justify-center gap-4 p-8">
+      {variants.map(variant => (
+        <Button key={variant} variant={variant}>
+          {variant}
+        </Button>
+      ))}
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'All six `variant` styles — `default` is the solid LFDS '
+          + 'primary fill; `outline` borders with '
+          + '`border-foreground/30` because LFDS `--border` matches '
+          + 'the background.',
+      },
+    },
+  },
+}
+
+export const Sizes: Story = {
+  render: () => (
+    <div className="flex flex-wrap items-center justify-center gap-4 p-8">
+      <Button size="xs">xs</Button>
+      <Button size="sm">sm</Button>
+      <Button size="default">default</Button>
+      <Button size="lg">lg</Button>
+      <Button size="icon-xs" aria-label="icon-xs">
+        <MaterialAdd />
+      </Button>
+      <Button size="icon-sm" aria-label="icon-sm">
+        <MaterialAdd />
+      </Button>
+      <Button size="icon" aria-label="icon">
+        <MaterialAdd />
+      </Button>
+      <Button size="icon-lg" aria-label="icon-lg">
+        <MaterialAdd />
+      </Button>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Text sizes `xs`–`lg` plus the square `icon-*` sizes — '
+          + 'icon buttons take a single icon child.',
+      },
+    },
   },
 }
 
