@@ -20,7 +20,7 @@ function Progress({
     >
       <ProgressPrimitive.Indicator
         data-slot="progress-indicator"
-        className="h-full w-full flex-1 bg-primary transition-all data-[state=indeterminate]:animate-progress"
+        className="h-full w-full flex-1 bg-primary transition-transform data-[state=indeterminate]:origin-left data-[state=indeterminate]:animate-progress data-[state=indeterminate]:transition-none"
         style={
           value == null
             ? undefined

@@ -52,7 +52,7 @@ type Story = StoryObj<typeof meta>
 
 function Slide({ index }: { index: number }) {
   return (
-    <div className="flex aspect-square items-center justify-center rounded-md border bg-muted/50">
+    <div className="flex aspect-square items-center justify-center rounded-md border bg-card">
       <span className="text-2xl font-semibold text-muted-foreground">
         {index + 1}
       </span>

@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { cn } from "cn"
+import { Kbd } from "./kbd"
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react"
 import { ContextMenu as ContextMenuPrimitive } from "radix-ui"
 
@@ -228,12 +229,9 @@ function ContextMenuShortcut({
   ...props
 }: React.ComponentProps<"span">) {
   return (
-    <span
+    <Kbd
       data-slot="context-menu-shortcut"
-      className={cn(
-        "ml-auto text-xs tracking-widest text-muted-foreground",
-        className
-      )}
+      className={cn("ml-auto", className)}
       {...props}
     />
   )

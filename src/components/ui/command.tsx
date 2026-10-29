@@ -3,6 +3,7 @@
 import * as React from "react"
 import { Command as CommandPrimitive } from "cmdk"
 import { cn } from "cn"
+import { Kbd } from "./kbd"
 import { SearchIcon } from "lucide-react"
 
 import {
@@ -163,12 +164,9 @@ function CommandShortcut({
   ...props
 }: React.ComponentProps<"span">) {
   return (
-    <span
+    <Kbd
       data-slot="command-shortcut"
-      className={cn(
-        "ml-auto text-xs tracking-widest text-muted-foreground",
-        className
-      )}
+      className={cn("ml-auto", className)}
       {...props}
     />
   )

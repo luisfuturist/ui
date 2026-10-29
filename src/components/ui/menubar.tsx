@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { cn } from "cn"
+import { Kbd } from "./kbd"
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react"
 import { Menubar as MenubarPrimitive } from "radix-ui"
 
@@ -198,12 +199,9 @@ function MenubarShortcut({
   ...props
 }: React.ComponentProps<"span">) {
   return (
-    <span
+    <Kbd
       data-slot="menubar-shortcut"
-      className={cn(
-        "ml-auto text-xs tracking-widest text-muted-foreground",
-        className
-      )}
+      className={cn("ml-auto", className)}
       {...props}
     />
   )
