@@ -5,6 +5,14 @@ body {
   @apply bg-background text-foreground;
 }
 
+/* Canvas surfaces (where components render) follow the LFDS theme */
+.sb-show-main,
+.sb-main-padded,
+.docs-story > div,
+.innerZoomElementWrapper {
+  background-color: var(--background) !important;
+}
+
 #storybook-root,
 #root--inner {
   padding: 1rem;

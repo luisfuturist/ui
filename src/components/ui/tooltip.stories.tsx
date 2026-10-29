@@ -24,6 +24,13 @@ const meta = {
       },
     },
   },
+  decorators: [
+    Story => (
+      <TooltipProvider>
+        <Story />
+      </TooltipProvider>
+    ),
+  ],
 } satisfies Meta<typeof Tooltip>
 
 export default meta
