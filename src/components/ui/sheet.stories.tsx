@@ -40,7 +40,7 @@ export const Default: Story = {
     <div className="flex items-center justify-center p-8">
       <Sheet>
         <SheetTrigger asChild>
-          <Button className="border px-3 py-2">Open sheet</Button>
+          <Button variant="outline">Open sheet</Button>
         </SheetTrigger>
         <SheetContent>
           <SheetHeader>
@@ -62,7 +62,7 @@ export const Default: Story = {
           </div>
           <SheetFooter>
             <SheetClose asChild>
-              <Button className="border px-3 py-2">Save changes</Button>
+              <Button variant="outline">Save changes</Button>
             </SheetClose>
           </SheetFooter>
         </SheetContent>
@@ -77,7 +77,7 @@ export const Sides: Story = {
       {(['top', 'right', 'bottom', 'left'] as const).map(side => (
         <Sheet key={side}>
           <SheetTrigger asChild>
-            <Button className="border px-3 py-2 capitalize">{side}</Button>
+            <Button variant="outline" className="capitalize">{side}</Button>
           </SheetTrigger>
           <SheetContent side={side}>
             <SheetHeader>
@@ -94,7 +94,7 @@ export const Sides: Story = {
             </SheetHeader>
             <SheetFooter>
               <SheetClose asChild>
-                <Button className="border px-3 py-2">Close</Button>
+                <Button variant="outline">Close</Button>
               </SheetClose>
             </SheetFooter>
           </SheetContent>
@@ -119,7 +119,7 @@ export const WithForm: Story = {
     <div className="flex items-center justify-center p-8">
       <Sheet>
         <SheetTrigger asChild>
-          <Button className="border px-3 py-2">Account settings</Button>
+          <Button variant="outline">Account settings</Button>
         </SheetTrigger>
         <SheetContent>
           <SheetHeader>
@@ -146,9 +146,9 @@ export const WithForm: Story = {
             </div>
           </form>
           <SheetFooter>
-            <Button className="border px-3 py-2">Save changes</Button>
+            <Button variant="outline">Save changes</Button>
             <SheetClose asChild>
-              <Button className="border px-3 py-2">Cancel</Button>
+              <Button variant="outline">Cancel</Button>
             </SheetClose>
           </SheetFooter>
         </SheetContent>

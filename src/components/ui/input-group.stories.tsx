@@ -145,7 +145,7 @@ export const BlockAddons: Story = {
         <InputGroupTextarea placeholder="Write your expedition notes…" />
         <InputGroupAddon align="block-end" className="border-t">
           <InputGroupText>Markdown supported</InputGroupText>
-          <InputGroupButton className="ml-auto border" size="sm">
+          <InputGroupButton variant="outline" size="sm" className="ml-auto">
             Save
           </InputGroupButton>
         </InputGroupAddon>

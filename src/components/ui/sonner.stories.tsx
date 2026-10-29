@@ -61,13 +61,13 @@ export const Default: Story = {
       />
       <div className="flex max-w-md flex-wrap gap-2">
         <Button
-          className="border px-3 py-2"
+          variant="outline"
           onClick={() => toast('Event has been created')}
         >
           Default
         </Button>
         <Button
-          className="border px-3 py-2"
+          variant="outline"
           onClick={() =>
             toast.success('Expedition log saved', {
               description: 'Synced to the archive.',
@@ -76,7 +76,7 @@ export const Default: Story = {
           Success
         </Button>
         <Button
-          className="border px-3 py-2"
+          variant="outline"
           onClick={() =>
             toast.error('Transmission failed', {
               description: 'The relay did not respond in time.',
@@ -85,13 +85,13 @@ export const Default: Story = {
           Error
         </Button>
         <Button
-          className="border px-3 py-2"
+          variant="outline"
           onClick={() => toast.info('New signal detected')}
         >
           Info
         </Button>
         <Button
-          className="border px-3 py-2"
+          variant="outline"
           onClick={() =>
             toast.warning('Low power', {
               description: 'Switch to auxiliary systems soon.',
@@ -100,7 +100,7 @@ export const Default: Story = {
           Warning
         </Button>
         <Button
-          className="border px-3 py-2"
+          variant="outline"
           onClick={() =>
             toast.promise(
               new Promise(resolve => setTimeout(resolve, 2000)),
@@ -114,7 +114,7 @@ export const Default: Story = {
           Promise
         </Button>
         <Button
-          className="border px-3 py-2"
+          variant="outline"
           onClick={() =>
             toast('Scheduled maintenance tonight', {
               description: 'Systems will be unavailable 02:00–03:00.',
@@ -150,7 +150,7 @@ export const Positions: Story = {
           control to move the toast stack, then fire a toast:
         </p>
         <Button
-          className="border px-3 py-2"
+          variant="outline"
           onClick={() => toast(`Toast at ${args.position}`)}
         >
           Show toast
@@ -179,7 +179,7 @@ export const EdgeCases: Story = {
       />
       <div className="flex max-w-md flex-wrap gap-2">
         <Button
-          className="border px-3 py-2"
+          variant="outline"
           onClick={() =>
             toast(
               'A very long toast message that stretches across the viewport to verify how the toaster wraps or truncates lengthy notification copy without a description attached',
@@ -188,7 +188,7 @@ export const EdgeCases: Story = {
           Long message
         </Button>
         <Button
-          className="border px-3 py-2"
+          variant="outline"
           onClick={() =>
             toast('Stays until dismissed', {
               duration: Number.POSITIVE_INFINITY,
@@ -197,7 +197,7 @@ export const EdgeCases: Story = {
           Infinite duration
         </Button>
         <Button
-          className="border px-3 py-2"
+          variant="outline"
           onClick={() =>
             toast('Heads up', {
               description:

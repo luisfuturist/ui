@@ -59,8 +59,8 @@ export const Playground: Story = {
           </p>
         </CardContent>
         <CardFooter className="justify-end gap-2">
-          <Button className="border px-3 py-1.5 text-sm">Dismiss</Button>
-          <Button className="border bg-primary px-3 py-1.5 text-sm text-primary-foreground">
+          <Button variant="outline" size="sm">Dismiss</Button>
+          <Button size="sm">
             Archive
           </Button>
         </CardFooter>
@@ -79,7 +79,7 @@ export const WithAction: Story = {
             Choose what the carrier pigeons bring you.
           </CardDescription>
           <CardAction>
-            <Button className="border px-3 py-1.5 text-sm">
+            <Button variant="outline" size="sm">
               <Bell />
               Subscribe
             </Button>
@@ -151,8 +151,8 @@ export const WithForm: Story = {
           </form>
         </CardContent>
         <CardFooter className="justify-end gap-2 border-t pt-6">
-          <Button className="border px-3 py-1.5 text-sm">Cancel</Button>
-          <Button className="border bg-primary px-3 py-1.5 text-sm text-primary-foreground">
+          <Button variant="outline" size="sm">Cancel</Button>
+          <Button size="sm">
             Create
           </Button>
         </CardFooter>

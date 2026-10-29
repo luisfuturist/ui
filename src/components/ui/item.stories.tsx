@@ -75,7 +75,7 @@ export const Playground: Story = {
           </ItemDescription>
         </ItemContent>
         <ItemActions>
-          <Button className="border px-3 py-1.5 text-sm">Open</Button>
+          <Button variant="outline" size="sm">Open</Button>
         </ItemActions>
       </Item>
     </div>

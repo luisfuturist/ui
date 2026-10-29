@@ -109,9 +109,10 @@ export const Indeterminate: Story = {
     docs: {
       description: {
         story:
-          'Edge case: `value={null}` produces an empty track and '
-          + '`data-state="indeterminate"` — hook a CSS animation onto '
-          + 'that attribute for a true indeterminate shimmer.',
+          'Edge case: `value={null}` renders `data-state="indeterminate"` '
+          + '— the indicator runs the `animate-progress` keyframes '
+          + '(`--animate-progress` in `styles/lfds.css`) for a sliding '
+          + 'indeterminate bar.',
       },
     },
   },

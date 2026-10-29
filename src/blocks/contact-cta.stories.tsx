@@ -41,12 +41,12 @@ export const Default: Story = {
       'You\'ll find me on Discord or any social network mentioned '
       + 'here; I\'ll welcome your message with open code.',
     primaryAction: (
-      <Button className="border bg-primary px-4 py-2 text-sm text-primary-foreground">
+      <Button>
         Contact me
       </Button>
     ),
     secondaryAction: (
-      <Button className="border px-4 py-2 text-sm">
+      <Button variant="outline">
         See projects
       </Button>
     ),
@@ -63,7 +63,7 @@ export const SingleAction: Story = {
     title: 'Ready when you are.',
     description: 'One button, one destination.',
     primaryAction: (
-      <Button className="border bg-primary px-4 py-2 text-sm text-primary-foreground">
+      <Button>
         Get in touch
       </Button>
     ),

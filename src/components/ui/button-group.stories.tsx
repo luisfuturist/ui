@@ -22,8 +22,8 @@ const meta = {
           + 'direction; `ButtonGroupText` renders a muted label segment '
           + '(or any element via `asChild`) and `ButtonGroupSeparator` '
           + 'draws a divider between items. Buttons inside a group '
-          + 'typically use an outline-style `className` since this '
-          + 'library\'s `variant`s are unstyled.',
+          + 'typically use `variant="outline"` so adjacent borders '
+          + 'collapse cleanly.',
       },
     },
   },
@@ -48,15 +48,14 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const borderedButton = 'border bg-background px-4 h-9 text-sm'
 
 export const Playground: Story = {
   render: args => (
     <div className="flex items-center justify-center p-8">
       <ButtonGroup {...args}>
-        <Button className={borderedButton}>Day</Button>
-        <Button className={borderedButton}>Week</Button>
-        <Button className={borderedButton}>Month</Button>
+        <Button variant="outline">Day</Button>
+        <Button variant="outline">Week</Button>
+        <Button variant="outline">Month</Button>
       </ButtonGroup>
     </div>
   ),
@@ -69,14 +68,14 @@ export const WithText: Story = {
         <ButtonGroup>
           <ButtonGroupText>https://</ButtonGroupText>
           <Input placeholder="example.com" className="h-9 w-48" />
-          <Button className={borderedButton}>Visit</Button>
+          <Button variant="outline">Visit</Button>
         </ButtonGroup>
         <ButtonGroup>
-          <Button className={borderedButton} aria-label="Decrease">
+          <Button variant="outline" aria-label="Decrease">
             <Minus />
           </Button>
           <ButtonGroupText>3</ButtonGroupText>
-          <Button className={borderedButton} aria-label="Increase">
+          <Button variant="outline" aria-label="Increase">
             <Plus />
           </Button>
         </ButtonGroup>
@@ -99,9 +98,9 @@ export const WithSeparator: Story = {
   render: () => (
     <div className="flex items-center justify-center p-8">
       <ButtonGroup>
-        <Button className={borderedButton}>Save</Button>
+        <Button variant="outline">Save</Button>
         <ButtonGroupSeparator />
-        <Button className={borderedButton} aria-label="Copy">
+        <Button variant="outline" aria-label="Copy">
           <Copy />
         </Button>
       </ButtonGroup>
@@ -125,9 +124,9 @@ export const Vertical: Story = {
   render: args => (
     <div className="flex items-center justify-center p-8">
       <ButtonGroup {...args}>
-        <Button className={`${borderedButton} w-28`}>Profile</Button>
-        <Button className={`${borderedButton} w-28`}>Account</Button>
-        <Button className={`${borderedButton} w-28`}>Security</Button>
+        <Button variant="outline" className="w-28">Profile</Button>
+        <Button variant="outline" className="w-28">Account</Button>
+        <Button variant="outline" className="w-28">Security</Button>
       </ButtonGroup>
     </div>
   ),
@@ -147,7 +146,7 @@ export const WithInput: Story = {
     <div className="flex items-center justify-center p-8">
       <ButtonGroup className="w-80">
         <Input placeholder="Search signals…" className="h-9" />
-        <Button className={borderedButton}>Search</Button>
+        <Button variant="outline">Search</Button>
       </ButtonGroup>
     </div>
   ),

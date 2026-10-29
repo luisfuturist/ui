@@ -19,11 +19,19 @@ function Button({
   }) {
   const Comp = asChild ? Slot : 'button'
 
+  // The `augmented*` variants ship the website's aug-button looks, which
+  // only render once `data-augmented-ui` declares the clip pattern —
+  // default it here (explicit prop still wins) so the variants work
+  // without consumer markup.
+  const resolvedAugmentedUi =
+    dataAugmentedUi
+    ?? (variant?.startsWith('augmented') ? 'tr-clip bl-clip both' : undefined)
+
   return (
     <Comp
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
-      data-augmented-ui={dataAugmentedUi}
+      data-augmented-ui={resolvedAugmentedUi}
       {...props}
     />
   )

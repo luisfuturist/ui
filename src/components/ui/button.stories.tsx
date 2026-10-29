@@ -13,9 +13,11 @@ const meta = {
           'Renders a `<button>` element (or any element via `asChild`). '
           + 'The `variant` and `size` props are implemented through '
           + '`class-variance-authority` and mapped to LFDS tokens — '
-          + 'see the **Variants** and **Sizes** matrices. Augmented-ui '
-          + 'styling via `className` + `data-augmented-ui` still works '
-          + 'on top (see the **AugmentedUI** story).',
+          + 'see the **Variants** and **Sizes** matrices. The '
+          + '`augmented*` variants cover the clipped-corner '
+          + 'augmented-ui looks; custom clip patterns still work via '
+          + '`className` + `data-augmented-ui` (see the **AugmentedUI** '
+          + 'story).',
       },
     },
   },
@@ -43,12 +45,17 @@ const meta = {
         'secondary',
         'ghost',
         'link',
+        'augmented',
+        'augmented-outline',
+        'augmented-inverted',
       ],
       description:
         'Visual style — `default` is the solid LFDS primary fill; '
-        + '`outline` uses a translucent foreground border (LFDS '
+        + '`outline` uses a solid foreground border (LFDS '
         + '`--border` matches the background, so a bare `border` '
-        + 'would be invisible).',
+        + 'would be invisible); `augmented`, `augmented-outline` and '
+        + '`augmented-inverted` are the clipped-corner aug-button '
+        + 'looks used across the website.',
     },
     size: {
       control: 'select',
@@ -71,7 +78,9 @@ const meta = {
       description:
         'Declares [augmented-ui](https://augmented-ui.com/) deformations, '
         + 'e.g. `tr-clip bl-clip both`. Requires an `.aug-*` class to '
-        + 'provide the `--aug-*` custom properties.',
+        + 'provide the `--aug-*` custom properties — the `augmented*` '
+        + 'variants supply their `.aug-button*` class and default this '
+        + 'attribute to `tr-clip bl-clip both` when unset.',
     },
     onClick: {
       control: false,
@@ -110,15 +119,22 @@ const variants = [
   'secondary',
   'ghost',
   'link',
+  'augmented',
+  'augmented-outline',
+  'augmented-inverted',
 ] as const
 
 export const Variants: Story = {
   render: () => (
-    <div className="flex flex-wrap items-center justify-center gap-4 p-8">
+    <div className="grid grid-cols-2 gap-6 p-8 sm:grid-cols-3 md:grid-cols-4">
       {variants.map(variant => (
-        <Button key={variant} variant={variant}>
-          {variant}
-        </Button>
+        <div
+          key={variant}
+          className="flex flex-col items-center justify-center gap-2"
+        >
+          <Button variant={variant}>{variant}</Button>
+          <span className="text-xs text-muted-foreground">{variant}</span>
+        </div>
       ))}
     </div>
   ),
@@ -126,10 +142,13 @@ export const Variants: Story = {
     docs: {
       description: {
         story:
-          'All six `variant` styles — `default` is the solid LFDS '
-          + 'primary fill; `outline` borders with '
-          + '`border-foreground/30` because LFDS `--border` matches '
-          + 'the background.',
+          'All nine `variant` styles — `default` is the solid LFDS '
+          + 'primary fill; `outline` borders with solid '
+          + '`border-foreground` because LFDS `--border` matches '
+          + 'the background; the `augmented*` row renders the '
+          + 'website\'s clipped-corner `aug-button` looks '
+          + '(`.aug-button*` classes plus an auto-applied '
+          + '`data-augmented-ui="tr-clip bl-clip both"`).',
       },
     },
   },
@@ -200,19 +219,30 @@ export const WithIcon: Story = {
 }
 
 export const AugmentedUI: Story = {
-  args: {
-    children: 'Augmented button',
-    'data-augmented-ui': 'tr-clip bl-clip both',
-    className: 'aug-button p-4 text-foreground bg-background-secondary',
-  },
+  render: () => (
+    <div className="flex flex-wrap items-center justify-center gap-6 p-8">
+      <Button variant="augmented">augmented</Button>
+      <Button variant="augmented-outline">augmented-outline</Button>
+      <Button variant="augmented-inverted">augmented-inverted</Button>
+    </div>
+  ),
   parameters: {
     docs: {
       description: {
         story:
-          'The same `data-augmented-ui="tr-clip bl-clip both"` + '
-          + '`aug-button` combination used by the website\'s navbar and '
-          + 'settings menus. The `--aug-*` properties and `.aug-button` '
-          + 'class are defined in `styles/lfds.css`.',
+          'The `augmented*` variants reproduce the website\'s '
+          + 'aug-button set — `augmented` is the `.aug-button` solid '
+          + '`background-secondary` inlay used by the navbar and '
+          + 'settings menus, `augmented-outline` (`.aug-button-outline`) '
+          + 'keeps the clipped solid-foreground border on a transparent '
+          + 'inlay, and `augmented-inverted` (`.aug-button-inverted`) '
+          + 'fills the clip with `--foreground` like the site\'s '
+          + '`.aug-button-div`/`.aug-logo` chips. `Button` defaults '
+          + '`data-augmented-ui="tr-clip bl-clip both"` for every '
+          + '`augmented*` variant when no prop is given; the `--aug-*` '
+          + 'properties are defined in `styles/lfds.css` and only render '
+          + 'once the consumer loads `import \'augmented-ui\'` — the '
+          + 'Tailwind bg/border utilities are the square fallback.',
       },
     },
   },

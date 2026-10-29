@@ -38,10 +38,10 @@ export const Default: Story = {
       + 'blocks like this one straight from `src/blocks/`.',
     actions: (
       <>
-        <Button className="border bg-primary px-4 py-2 text-sm text-primary-foreground">
+        <Button>
           Get started
         </Button>
-        <Button className="border px-4 py-2 text-sm">
+        <Button variant="outline">
           Browse components
         </Button>
       </>
@@ -58,13 +58,10 @@ export const WithAugmentedButton: Story = {
       + '`aug-button` class for clipped-corner chrome.',
     actions: (
       <>
-        <Button
-          data-augmented-ui="tr-clip bl-clip both"
-          className="aug-button bg-background-secondary px-4 py-2 text-sm text-foreground"
-        >
+        <Button variant="augmented">
           Initialize
         </Button>
-        <Button className="border px-4 py-2 text-sm">
+        <Button variant="outline">
           Read the docs
         </Button>
       </>
@@ -74,9 +71,9 @@ export const WithAugmentedButton: Story = {
     docs: {
       description: {
         story:
-          'The primary action uses `data-augmented-ui="tr-clip bl-clip '
-          + 'both"` + `aug-button` — the retro clipped-corner look from '
-          + 'the LFDS site — alongside a plain bordered secondary.',
+          'The primary action uses `variant="augmented"` — the retro '
+          + 'clipped-corner `aug-button` look from the LFDS site — '
+          + 'alongside a plain bordered secondary.',
       },
     },
   },

@@ -38,8 +38,8 @@ const links = [
 
 const actions = (
   <>
-    <Button className="border px-3 py-1.5 text-sm">Log in</Button>
-    <Button className="border bg-primary px-3 py-1.5 text-sm text-primary-foreground">
+    <Button variant="outline" size="sm">Log in</Button>
+    <Button size="sm">
       Sign up
     </Button>
   </>

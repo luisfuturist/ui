@@ -51,7 +51,7 @@ export const Playground: Story = {
     <div className="flex items-center justify-center p-8">
       <Drawer direction={args.direction}>
         <DrawerTrigger asChild>
-          <Button className="border px-3 py-2">Open drawer</Button>
+          <Button variant="outline">Open drawer</Button>
         </DrawerTrigger>
         <DrawerContent>
           <DrawerHeader>
@@ -60,18 +60,18 @@ export const Playground: Story = {
           </DrawerHeader>
           <div className="p-4 pb-0">
             <div className="flex items-center justify-center gap-2">
-              <Button className="size-8 border">−</Button>
+              <Button variant="outline" size="icon-sm">−</Button>
               <div className="text-4xl font-bold tabular-nums">350</div>
-              <Button className="size-8 border">+</Button>
+              <Button variant="outline" size="icon-sm">+</Button>
             </div>
             <p className="mt-2 text-center text-sm text-muted-foreground">
               calories/day
             </p>
           </div>
           <DrawerFooter>
-            <Button className="border px-3 py-2">Submit</Button>
+            <Button variant="outline">Submit</Button>
             <DrawerClose asChild>
-              <Button className="border px-3 py-2">Cancel</Button>
+              <Button variant="outline">Cancel</Button>
             </DrawerClose>
           </DrawerFooter>
         </DrawerContent>
@@ -95,7 +95,7 @@ export const Directions: Story = {
       {(['left', 'right', 'top'] as const).map(direction => (
         <Drawer key={direction} direction={direction}>
           <DrawerTrigger asChild>
-            <Button className="border px-3 py-2 capitalize">
+            <Button variant="outline" className="capitalize">
               {direction}
             </Button>
           </DrawerTrigger>
@@ -121,7 +121,7 @@ export const Directions: Story = {
             </div>
             <DrawerFooter>
               <DrawerClose asChild>
-                <Button className="border px-3 py-2">Close</Button>
+                <Button variant="outline">Close</Button>
               </DrawerClose>
             </DrawerFooter>
           </DrawerContent>
@@ -146,7 +146,7 @@ export const WithScrollableForm: Story = {
     <div className="flex items-center justify-center p-8">
       <Drawer>
         <DrawerTrigger asChild>
-          <Button className="border px-3 py-2">New waypoint</Button>
+          <Button variant="outline">New waypoint</Button>
         </DrawerTrigger>
         <DrawerContent>
           <ScrollArea className="mx-auto w-full max-w-sm">
@@ -178,9 +178,9 @@ export const WithScrollableForm: Story = {
               </div>
             </form>
             <DrawerFooter>
-              <Button className="border px-3 py-2">Save waypoint</Button>
+              <Button variant="outline">Save waypoint</Button>
               <DrawerClose asChild>
-                <Button className="border px-3 py-2">Cancel</Button>
+                <Button variant="outline">Cancel</Button>
               </DrawerClose>
             </DrawerFooter>
           </ScrollArea>

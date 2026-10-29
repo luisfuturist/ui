@@ -43,7 +43,7 @@ export const Default: Story = {
     <div className="flex items-center justify-center p-8">
       <Dialog>
         <DialogTrigger asChild>
-          <Button className="border px-3 py-2">Edit profile</Button>
+          <Button variant="outline">Edit profile</Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
@@ -65,7 +65,7 @@ export const Default: Story = {
           </div>
           <DialogFooter>
             <DialogClose asChild>
-              <Button className="border px-3 py-2">Save changes</Button>
+              <Button variant="outline">Save changes</Button>
             </DialogClose>
           </DialogFooter>
         </DialogContent>
@@ -80,7 +80,7 @@ export const Controlled: Story = {
 
     return (
       <div className="flex items-center justify-center gap-2 p-8">
-        <Button className="border px-3 py-2" onClick={() => setOpen(true)}>
+        <Button variant="outline" onClick={() => setOpen(true)}>
           Open dialog
         </Button>
         <Dialog open={open} onOpenChange={setOpen}>
@@ -94,7 +94,7 @@ export const Controlled: Story = {
             </DialogHeader>
             <DialogFooter>
               <DialogClose asChild>
-                <Button className="border px-3 py-2">Done</Button>
+                <Button variant="outline">Done</Button>
               </DialogClose>
             </DialogFooter>
           </DialogContent>
@@ -118,7 +118,7 @@ export const WithForm: Story = {
     <div className="flex items-center justify-center p-8">
       <Dialog>
         <DialogTrigger asChild>
-          <Button className="border px-3 py-2">New expedition</Button>
+          <Button variant="outline">New expedition</Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
@@ -140,7 +140,7 @@ export const WithForm: Story = {
               <Input id="exp-parsecs" type="number" placeholder="12" />
             </div>
             <DialogFooter showCloseButton>
-              <Button className="border px-3 py-2" type="submit">
+              <Button variant="outline" type="submit">
                 Save expedition
               </Button>
             </DialogFooter>
@@ -176,7 +176,7 @@ export const ScrollableContent: Story = {
     <div className="flex items-center justify-center p-8">
       <Dialog>
         <DialogTrigger asChild>
-          <Button className="border px-3 py-2">Expedition log</Button>
+          <Button variant="outline">Expedition log</Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>

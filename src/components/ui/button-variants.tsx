@@ -10,13 +10,25 @@ export const buttonVariants = cva(
       variant: {
         default: 'bg-primary text-primary-foreground hover:bg-primary/90',
         destructive: 'bg-destructive text-white hover:bg-destructive/90',
-        // LFDS --border matches the background; use a translucent
-        // foreground border so the outline reads in both themes.
+        // LFDS --border matches the background; use a solid foreground
+        // border so the outline reads in both themes.
         outline:
-          'border border-foreground/30 bg-transparent hover:bg-accent hover:text-accent-foreground',
+          'border border-foreground bg-transparent hover:bg-accent hover:text-accent-foreground',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
+        // The website's clipped-corner buttons (`NavbarMenu`,
+        // `SettingsMenu`, `ContactCTA`, `DiscordUsernameButton`, logo):
+        // the `.aug-button*` classes (styles/lfds.css) provide the
+        // `--aug-*` custom properties; `Button` auto-applies
+        // `data-augmented-ui="tr-clip bl-clip both"` for every
+        // `augmented*` variant — pass the prop explicitly to override
+        // the clip pattern. The bg/border/text utilities are the plain
+        // square fallbacks shown when `augmented-ui`'s CSS isn't loaded.
+        augmented: 'aug-button bg-background-secondary text-foreground',
+        'augmented-outline':
+          'aug-button-outline border border-foreground bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground',
+        'augmented-inverted': 'aug-button-inverted bg-foreground text-background',
       },
       size: {
         default: 'h-9 px-4 py-2',

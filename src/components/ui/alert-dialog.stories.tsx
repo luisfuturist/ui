@@ -43,7 +43,7 @@ export const Default: Story = {
     <div className="flex items-center justify-center p-8">
       <AlertDialog defaultOpen>
         <AlertDialogTrigger asChild>
-          <Button className="border px-3 py-2">Delete expedition</Button>
+          <Button variant="outline">Delete expedition</Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
@@ -54,7 +54,7 @@ export const Default: Story = {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel className="border px-3 py-2">
+            <AlertDialogCancel variant="outline">
               Cancel
             </AlertDialogCancel>
             <AlertDialogAction className="bg-destructive px-3 py-2 text-background">
@@ -72,7 +72,7 @@ export const WithMedia: Story = {
     <div className="flex items-center justify-center p-8">
       <AlertDialog>
         <AlertDialogTrigger asChild>
-          <Button className="border px-3 py-2">Empty archive</Button>
+          <Button variant="outline">Empty archive</Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
@@ -85,7 +85,7 @@ export const WithMedia: Story = {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel className="border px-3 py-2">
+            <AlertDialogCancel variant="outline">
               Cancel
             </AlertDialogCancel>
             <AlertDialogAction className="bg-destructive px-3 py-2 text-background">
@@ -113,7 +113,7 @@ export const SmallSize: Story = {
     <div className="flex items-center justify-center p-8">
       <AlertDialog>
         <AlertDialogTrigger asChild>
-          <Button className="border px-3 py-2">Sign out</Button>
+          <Button variant="outline">Sign out</Button>
         </AlertDialogTrigger>
         <AlertDialogContent size="sm">
           <AlertDialogHeader>
@@ -123,10 +123,10 @@ export const SmallSize: Story = {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel className="border px-3 py-2">
+            <AlertDialogCancel variant="outline">
               Cancel
             </AlertDialogCancel>
-            <AlertDialogAction className="border px-3 py-2">
+            <AlertDialogAction variant="outline">
               Sign out
             </AlertDialogAction>
           </AlertDialogFooter>
@@ -154,7 +154,7 @@ export const Controlled: Story = {
       <div className="flex flex-col items-center justify-center gap-4 p-8">
         <AlertDialog open={open} onOpenChange={setOpen}>
           <AlertDialogTrigger asChild>
-            <Button className="border px-3 py-2">Purge record</Button>
+            <Button variant="outline">Purge record</Button>
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
@@ -164,7 +164,7 @@ export const Controlled: Story = {
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel className="border px-3 py-2">
+              <AlertDialogCancel variant="outline">
                 Cancel
               </AlertDialogCancel>
               <AlertDialogAction

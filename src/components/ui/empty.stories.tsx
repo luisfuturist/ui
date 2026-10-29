@@ -78,7 +78,7 @@ export const SearchResults: Story = {
         <EmptyContent>
           <div className="flex w-full max-w-xs gap-2">
             <Input placeholder="Search expeditions…" />
-            <Button className="border bg-primary px-3 py-1.5 text-sm text-primary-foreground">
+            <Button size="sm">
               Search
             </Button>
           </div>
@@ -112,10 +112,10 @@ export const NoNotifications: Story = {
         </EmptyHeader>
         <EmptyContent>
           <div className="flex gap-2">
-            <Button className="border px-3 py-1.5 text-sm">
+            <Button variant="outline" size="sm">
               View archive
             </Button>
-            <Button className="border bg-primary px-3 py-1.5 text-sm text-primary-foreground">
+            <Button size="sm">
               Notification settings
             </Button>
           </div>

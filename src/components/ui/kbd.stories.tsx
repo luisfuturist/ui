@@ -9,11 +9,14 @@ const meta = {
     docs: {
       description: {
         component:
-          'An inline `<kbd>` element for keyboard hints — inverted '
-          + 'high-contrast chip (`bg-foreground text-background`), '
-          + '`min-w-5`, sized for single glyphs. '
-          + '`KbdGroup` clusters several `Kbd`s into a combo. It also '
-          + 're-styles itself inside `data-slot=tooltip-content`.',
+          'An inline `<kbd>` element for keyboard hints — a formal '
+          + 'keycap: `--background-secondary` surface, solid '
+          + '`--foreground` border with a thicker bottom edge, mono '
+          + 'font, `min-w-5`, sized for single glyphs. '
+          + '`KbdGroup` clusters several `Kbd`s into a combo. The '
+          + 'keycap inverts inside `data-slot=tooltip-content` and '
+          + 'follows the accent highlight of selected command/menu '
+          + 'items.',
       },
     },
   },

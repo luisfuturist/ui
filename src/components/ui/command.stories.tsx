@@ -119,7 +119,7 @@ export const InDialog: Story = {
           {' '}
           or
         </p>
-        <Button className="border px-3 py-2" onClick={() => setOpen(true)}>
+        <Button variant="outline" onClick={() => setOpen(true)}>
           Open command palette
         </Button>
         <CommandDialog open={open} onOpenChange={setOpen}>

@@ -41,7 +41,7 @@ export const Default: Story = {
     <div className="flex items-center justify-center p-8 pt-24">
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button className="border px-3 py-2">Hover me</Button>
+          <Button variant="outline">Hover me</Button>
         </TooltipTrigger>
         <TooltipContent>
           <p>Add to library</p>
@@ -57,7 +57,7 @@ export const Sides: Story = {
       {(['top', 'right', 'bottom', 'left'] as const).map(side => (
         <Tooltip key={side}>
           <TooltipTrigger asChild>
-            <Button className="border px-3 py-2 capitalize">{side}</Button>
+            <Button variant="outline" className="capitalize">{side}</Button>
           </TooltipTrigger>
           <TooltipContent side={side}>
             <p>
@@ -87,7 +87,7 @@ export const WithDelay: Story = {
       <TooltipProvider delayDuration={700}>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button className="border px-3 py-2">Hover patiently</Button>
+            <Button variant="outline">Hover patiently</Button>
           </TooltipTrigger>
           <TooltipContent>
             <p>Delayed by 700ms</p>
@@ -113,7 +113,7 @@ export const IconTrigger: Story = {
     <div className="flex items-center justify-center p-8 pt-24">
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button className="border p-2">
+          <Button variant="outline" className="p-2">
             <InfoIcon />
             <span className="sr-only">Info</span>
           </Button>
@@ -134,7 +134,7 @@ export const DisabledButton: Story = {
           <span className="inline-block cursor-not-allowed" tabIndex={0}>
             <Button
               disabled
-              className="pointer-events-none border px-3 py-2"
+              variant="outline" className="pointer-events-none"
             >
               Delete relay
             </Button>

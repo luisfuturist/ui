@@ -104,10 +104,7 @@ export const LoginForm: Story = {
                 </FormItem>
               )}
             />
-            <Button
-              type="submit"
-              className="border bg-primary px-4 py-2 text-primary-foreground"
-            >
+            <Button type="submit">
               Sign in
             </Button>
             {submitted && (

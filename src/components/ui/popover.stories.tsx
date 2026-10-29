@@ -38,7 +38,7 @@ export const Default: Story = {
     <div className="flex items-center justify-center p-8 pb-48">
       <Popover>
         <PopoverTrigger asChild>
-          <Button className="border px-3 py-2">Open popover</Button>
+          <Button variant="outline">Open popover</Button>
         </PopoverTrigger>
         <PopoverContent>
           <PopoverHeader>
@@ -69,7 +69,7 @@ export const Alignments: Story = {
       {(['start', 'center', 'end'] as const).map(align => (
         <Popover key={align}>
           <PopoverTrigger asChild>
-            <Button className="border px-3 py-2 capitalize">{align}</Button>
+            <Button variant="outline" className="capitalize">{align}</Button>
           </PopoverTrigger>
           <PopoverContent align={align}>
             <p className="text-sm">
@@ -104,7 +104,7 @@ export const Controlled: Story = {
       <div className="flex flex-col items-center justify-center gap-4 p-8 pb-48">
         <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>
-            <Button className="border px-3 py-2">Controlled popover</Button>
+            <Button variant="outline">Controlled popover</Button>
           </PopoverTrigger>
           <PopoverContent>
             <PopoverHeader>
@@ -114,7 +114,7 @@ export const Controlled: Story = {
               </PopoverDescription>
             </PopoverHeader>
             <Button
-              className="mt-4 border px-3 py-2"
+              variant="outline" className="mt-4"
               onClick={() => setOpen(false)}
             >
               Dismiss

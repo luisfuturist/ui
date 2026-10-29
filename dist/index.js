@@ -9,7 +9,7 @@ import { useTheme as Fe } from "next-themes";
 import { Toaster as Be } from "sonner";
 import { cn as r } from "cn";
 import { ChevronDownIcon as L, MoreHorizontal as Oe, ChevronRight as Ve, ChevronLeftIcon as we, ChevronRightIcon as X, ArrowRight as He, ArrowLeft as Ke, CheckIcon as H, XIcon as Y, SearchIcon as qe, CircleIcon as ie, MinusIcon as We, MoreHorizontalIcon as Ue, GripVerticalIcon as Xe, ChevronUpIcon as Ye, PanelLeftIcon as Je, Loader2Icon as Qe } from "lucide-react";
-import { Accordion as O, AlertDialog as P, AspectRatio as Ze, Avatar as se, Slot as D, Separator as et, Checkbox as me, Collapsible as de, ScrollArea as B, Dialog as x, ContextMenu as w, Label as tt, HoverCard as q, Menubar as N, NavigationMenu as j, Popover as V, Progress as fe, RadioGroup as oe, Select as k, Tooltip as E, Slider as K, Switch as pe, Tabs as J, Toggle as at, ToggleGroup as Ne } from "radix-ui";
+import { Accordion as O, AlertDialog as P, AspectRatio as Ze, Avatar as se, Slot as D, Separator as et, Checkbox as me, Collapsible as de, ScrollArea as B, Dialog as x, ContextMenu as w, Label as tt, HoverCard as q, Menubar as N, NavigationMenu as j, Popover as V, Progress as ge, RadioGroup as oe, Select as k, Tooltip as E, Slider as K, Switch as fe, Tabs as J, Toggle as at, ToggleGroup as Ne } from "radix-ui";
 import { getDefaultClassNames as ye, DayPicker as rt } from "react-day-picker";
 import ot from "embla-carousel-react";
 import * as le from "recharts";
@@ -21,7 +21,7 @@ import nt from "~icons/material-symbols/check";
 import it from "~icons/material-symbols/chevron-right";
 import st from "~icons/material-symbols/circle";
 import { FormProvider as dt, Controller as lt, useFormContext as ct, useFormState as ut } from "react-hook-form";
-import { OTPInput as mt, OTPInputContext as ft } from "input-otp";
+import { OTPInput as mt, OTPInputContext as gt } from "input-otp";
 import * as ce from "react-resizable-panels";
 function C(...e) {
   return Ee($e(e));
@@ -36,12 +36,23 @@ const W = _(
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
         destructive: "bg-destructive text-white hover:bg-destructive/90",
-        // LFDS --border matches the background; use a translucent
-        // foreground border so the outline reads in both themes.
-        outline: "border border-foreground/30 bg-transparent hover:bg-accent hover:text-accent-foreground",
+        // LFDS --border matches the background; use a solid foreground
+        // border so the outline reads in both themes.
+        outline: "border border-foreground bg-transparent hover:bg-accent hover:text-accent-foreground",
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline"
+        link: "text-primary underline-offset-4 hover:underline",
+        // The website's clipped-corner buttons (`NavbarMenu`,
+        // `SettingsMenu`, `ContactCTA`, `DiscordUsernameButton`, logo):
+        // the `.aug-button*` classes (styles/lfds.css) provide the
+        // `--aug-*` custom properties; `Button` auto-applies
+        // `data-augmented-ui="tr-clip bl-clip both"` for every
+        // `augmented*` variant — pass the prop explicitly to override
+        // the clip pattern. The bg/border/text utilities are the plain
+        // square fallbacks shown when `augmented-ui`'s CSS isn't loaded.
+        augmented: "aug-button bg-background-secondary text-foreground",
+        "augmented-outline": "aug-button-outline border border-foreground bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground",
+        "augmented-inverted": "aug-button-inverted bg-foreground text-background"
       },
       size: {
         default: "h-9 px-4 py-2",
@@ -68,12 +79,13 @@ function R({
   asChild: i = !1,
   ...s
 }) {
+  const c = i ? Ge : "button", m = n ?? (t?.startsWith("augmented") ? "tr-clip bl-clip both" : void 0);
   return /* @__PURE__ */ a(
-    i ? Ge : "button",
+    c,
     {
       "data-slot": "button",
       className: C(W({ variant: t, size: o, className: e })),
-      "data-augmented-ui": n,
+      "data-augmented-ui": m,
       ...s
     }
   );
@@ -149,7 +161,7 @@ function Za({
     }
   );
 }
-const pt = _(
+const ft = _(
   "aug-surface aug-surface-card relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 rounded-lg px-4 py-3 text-sm has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
   {
     variants: {
@@ -174,7 +186,7 @@ function er({
       "data-slot": "alert",
       "data-augmented-ui": "tr-clip bl-clip both",
       role: "alert",
-      className: r(pt({ variant: t }), e),
+      className: r(ft({ variant: t }), e),
       ...o
     }
   );
@@ -218,7 +230,7 @@ function or({
 }) {
   return /* @__PURE__ */ a(P.Trigger, { "data-slot": "alert-dialog-trigger", ...e });
 }
-function gt({
+function pt({
   ...e
 }) {
   return /* @__PURE__ */ a(P.Portal, { "data-slot": "alert-dialog-portal", ...e });
@@ -244,7 +256,7 @@ function nr({
   size: t = "default",
   ...o
 }) {
-  return /* @__PURE__ */ d(gt, { children: [
+  return /* @__PURE__ */ d(pt, { children: [
     /* @__PURE__ */ a(bt, {}),
     /* @__PURE__ */ a(
       P.Content,
@@ -368,12 +380,12 @@ function mr({
     }
   ) });
 }
-function fr({
+function gr({
   ...e
 }) {
   return /* @__PURE__ */ a(Ze.Root, { "data-slot": "aspect-ratio", ...e });
 }
-function pr({
+function fr({
   className: e,
   size: t = "default",
   ...o
@@ -391,7 +403,7 @@ function pr({
     }
   );
 }
-function gr({
+function pr({
   className: e,
   ...t
 }) {
@@ -426,7 +438,7 @@ function hr({ className: e, ...t }) {
     {
       "data-slot": "avatar-badge",
       className: r(
-        "absolute right-0 bottom-0 z-10 inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground ring-2 ring-background select-none",
+        "absolute right-0 bottom-0 z-10 inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground ring-2 ring-background select-none",
         "group-data-[size=sm]/avatar:size-2 group-data-[size=sm]/avatar:[&>svg]:hidden",
         "group-data-[size=default]/avatar:size-2.5 group-data-[size=default]/avatar:[&>svg]:size-2",
         "group-data-[size=lg]/avatar:size-3 group-data-[size=lg]/avatar:[&>svg]:size-2",
@@ -472,8 +484,8 @@ const ht = _(
       variant: {
         default: "bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
         secondary: "bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
-        destructive: "bg-destructive text-white focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40 [a&]:hover:bg-destructive/90",
-        outline: "border-border text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+        destructive: "bg-destructive text-white focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 [a&]:hover:bg-destructive/90",
+        outline: "border-foreground text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
         ghost: "[a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
         link: "text-primary underline-offset-4 [a&]:hover:underline"
       }
@@ -603,7 +615,7 @@ function Q({
       decorative: o,
       orientation: t,
       className: r(
-        "shrink-0 bg-border data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px",
+        "shrink-0 bg-foreground data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px",
         e
       ),
       ...n
@@ -650,7 +662,7 @@ function Tr({
     n,
     {
       className: r(
-        "flex items-center gap-2 rounded-md border bg-muted px-4 text-sm font-medium shadow-xs [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
+        "flex items-center gap-2 rounded-md border border-foreground bg-muted px-4 text-sm font-medium shadow-xs [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
         e
       ),
       ...o
@@ -668,7 +680,7 @@ function Mr({
       "data-slot": "button-group-separator",
       orientation: t,
       className: r(
-        "relative m-0! self-stretch bg-input data-[orientation=vertical]:h-auto",
+        "relative m-0! self-stretch bg-foreground data-[orientation=vertical]:h-auto",
         e
       ),
       ...o
@@ -698,7 +710,7 @@ function Dr({
       ),
       captionLayout: n,
       formatters: {
-        formatMonthDropdown: (f) => f.toLocaleString("default", { month: "short" }),
+        formatMonthDropdown: (g) => g.toLocaleString("default", { month: "short" }),
         ...s
       },
       classNames: {
@@ -785,24 +797,24 @@ function Dr({
         ...t
       },
       components: {
-        Root: ({ className: f, rootRef: b, ...h }) => /* @__PURE__ */ a(
+        Root: ({ className: g, rootRef: b, ...h }) => /* @__PURE__ */ a(
           "div",
           {
             "data-slot": "calendar",
             ref: b,
-            className: r(f),
+            className: r(g),
             ...h
           }
         ),
-        Chevron: ({ className: f, orientation: b, ...h }) => b === "left" ? /* @__PURE__ */ a(we, { className: r("size-4", f), ...h }) : b === "right" ? /* @__PURE__ */ a(
+        Chevron: ({ className: g, orientation: b, ...h }) => b === "left" ? /* @__PURE__ */ a(we, { className: r("size-4", g), ...h }) : b === "right" ? /* @__PURE__ */ a(
           X,
           {
-            className: r("size-4", f),
+            className: r("size-4", g),
             ...h
           }
-        ) : /* @__PURE__ */ a(L, { className: r("size-4", f), ...h }),
+        ) : /* @__PURE__ */ a(L, { className: r("size-4", g), ...h }),
         DayButton: xt,
-        WeekNumber: ({ children: f, ...b }) => /* @__PURE__ */ a("td", { ...b, children: /* @__PURE__ */ a("div", { className: "flex size-(--cell-size) items-center justify-center text-center", children: f }) }),
+        WeekNumber: ({ children: g, ...b }) => /* @__PURE__ */ a("td", { ...b, children: /* @__PURE__ */ a("div", { className: "flex size-(--cell-size) items-center justify-center text-center", children: g }) }),
         ...c
       },
       ...m
@@ -940,15 +952,15 @@ function Pr({
       axis: e === "horizontal" ? "x" : "y"
     },
     n
-  ), [f, b] = u.useState(!1), [h, I] = u.useState(!1), z = u.useCallback((g) => {
-    g && (b(g.canScrollPrev()), I(g.canScrollNext()));
+  ), [g, b] = u.useState(!1), [h, I] = u.useState(!1), z = u.useCallback((p) => {
+    p && (b(p.canScrollPrev()), I(p.canScrollNext()));
   }, []), T = u.useCallback(() => {
     l?.scrollPrev();
   }, [l]), M = u.useCallback(() => {
     l?.scrollNext();
-  }, [l]), p = u.useCallback(
-    (g) => {
-      g.key === "ArrowLeft" ? (g.preventDefault(), T()) : g.key === "ArrowRight" && (g.preventDefault(), M());
+  }, [l]), f = u.useCallback(
+    (p) => {
+      p.key === "ArrowLeft" ? (p.preventDefault(), T()) : p.key === "ArrowRight" && (p.preventDefault(), M());
     },
     [T, M]
   );
@@ -969,13 +981,13 @@ function Pr({
         orientation: e || (t?.axis === "y" ? "vertical" : "horizontal"),
         scrollPrev: T,
         scrollNext: M,
-        canScrollPrev: f,
+        canScrollPrev: g,
         canScrollNext: h
       },
       children: /* @__PURE__ */ a(
         "div",
         {
-          onKeyDownCapture: p,
+          onKeyDownCapture: f,
           className: r("relative", i),
           role: "region",
           "aria-roledescription": "carousel",
@@ -1155,7 +1167,7 @@ function Fr({
   label: c,
   labelFormatter: m,
   labelClassName: l,
-  formatter: f,
+  formatter: g,
   color: b,
   nameKey: h,
   labelKey: I
@@ -1163,7 +1175,7 @@ function Fr({
   const { config: z } = Ce(), T = u.useMemo(() => {
     if (i || !t?.length)
       return null;
-    const [p] = t, g = `${I ?? p?.dataKey ?? p?.name ?? "value"}`, S = ne(z, p, g), G = !I && typeof c == "string" ? z[c]?.label ?? c : S?.label;
+    const [f] = t, p = `${I ?? f?.dataKey ?? f?.name ?? "value"}`, S = ne(z, f, p), G = !I && typeof c == "string" ? z[c]?.label ?? c : S?.label;
     return m ? /* @__PURE__ */ a("div", { className: r("font-medium", l), children: m(G, t) }) : G ? /* @__PURE__ */ a("div", { className: r("font-medium", l), children: G }) : null;
   }, [
     c,
@@ -1186,8 +1198,8 @@ function Fr({
       ),
       children: [
         M ? null : T,
-        /* @__PURE__ */ a("div", { className: "grid gap-1.5", children: t.filter((p) => p.type !== "none").map((p, g) => {
-          const S = `${h ?? p.name ?? p.dataKey ?? "value"}`, G = ne(z, p, S), ue = b ?? p.payload?.fill ?? p.color;
+        /* @__PURE__ */ a("div", { className: "grid gap-1.5", children: t.filter((f) => f.type !== "none").map((f, p) => {
+          const S = `${h ?? f.name ?? f.dataKey ?? "value"}`, G = ne(z, f, S), ue = b ?? f.payload?.fill ?? f.color;
           return /* @__PURE__ */ a(
             "div",
             {
@@ -1195,7 +1207,7 @@ function Fr({
                 "flex w-full flex-wrap items-stretch gap-2 [&>svg]:h-2.5 [&>svg]:w-2.5 [&>svg]:text-muted-foreground",
                 n === "dot" && "items-center"
               ),
-              children: f && p?.value !== void 0 && p.name ? f(p.value, p.name, p, g, p.payload) : /* @__PURE__ */ d(xe, { children: [
+              children: g && f?.value !== void 0 && f.name ? g(f.value, f.name, f, p, f.payload) : /* @__PURE__ */ d(xe, { children: [
                 G?.icon ? /* @__PURE__ */ a(G.icon, {}) : !s && /* @__PURE__ */ a(
                   "div",
                   {
@@ -1224,15 +1236,15 @@ function Fr({
                     children: [
                       /* @__PURE__ */ d("div", { className: "grid gap-1.5", children: [
                         M ? T : null,
-                        /* @__PURE__ */ a("span", { className: "text-muted-foreground", children: G?.label ?? p.name })
+                        /* @__PURE__ */ a("span", { className: "text-muted-foreground", children: G?.label ?? f.name })
                       ] }),
-                      p.value != null && /* @__PURE__ */ a("span", { className: "font-mono font-medium text-foreground tabular-nums", children: typeof p.value == "number" ? p.value.toLocaleString() : String(p.value) })
+                      f.value != null && /* @__PURE__ */ a("span", { className: "font-mono font-medium text-foreground tabular-nums", children: typeof f.value == "number" ? f.value.toLocaleString() : String(f.value) })
                     ]
                   }
                 )
               ] })
             },
-            g
+            p
           );
         }) })
       ]
@@ -1257,7 +1269,7 @@ function Or({
         e
       ),
       children: o.filter((c) => c.type !== "none").map((c, m) => {
-        const l = `${i ?? c.dataKey ?? "value"}`, f = ne(s, c, l);
+        const l = `${i ?? c.dataKey ?? "value"}`, g = ne(s, c, l);
         return /* @__PURE__ */ d(
           "div",
           {
@@ -1265,7 +1277,7 @@ function Or({
               "flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-foreground"
             ),
             children: [
-              f?.icon && !t ? /* @__PURE__ */ a(f.icon, {}) : /* @__PURE__ */ a(
+              g?.icon && !t ? /* @__PURE__ */ a(g.icon, {}) : /* @__PURE__ */ a(
                 "div",
                 {
                   className: "h-2 w-2 shrink-0",
@@ -1274,7 +1286,7 @@ function Or({
                   }
                 }
               ),
-              f?.label
+              g?.label
             ]
           },
           m
@@ -1554,7 +1566,7 @@ function Se({
         B.ScrollAreaThumb,
         {
           "data-slot": "scroll-area-thumb",
-          className: "relative flex-1 bg-border"
+          className: "relative flex-1 bg-primary"
         }
       )
     }
@@ -1758,7 +1770,7 @@ function no({
     v.Separator,
     {
       "data-slot": "combobox-separator",
-      className: r("-mx-1 my-1 h-px bg-border", e),
+      className: r("-mx-1 my-1 h-px bg-foreground", e),
       ...t
     }
   );
@@ -1790,7 +1802,7 @@ function so({
     {
       "data-slot": "combobox-chip",
       className: r(
-        "flex h-[calc(--spacing(5.5))] w-fit items-center justify-center gap-1 rounded-sm bg-muted px-1.5 text-xs font-medium whitespace-nowrap text-foreground has-disabled:pointer-events-none has-disabled:cursor-not-allowed has-disabled:opacity-50 has-data-[slot=combobox-chip-remove]:pr-0",
+        "flex h-[calc(--spacing(5.5))] w-fit items-center justify-center gap-1 rounded-sm bg-foreground px-1.5 text-xs font-medium whitespace-nowrap text-background has-disabled:pointer-events-none has-disabled:cursor-not-allowed has-disabled:opacity-50 has-data-[slot=combobox-chip-remove]:pr-0",
         e
       ),
       ...n,
@@ -1800,7 +1812,7 @@ function so({
           v.ChipRemove,
           {
             render: /* @__PURE__ */ a(R, { variant: "ghost", size: "icon-xs" }),
-            className: "-ml-1 opacity-50 hover:opacity-100",
+            className: "-ml-1 text-background/70 hover:bg-background/20 hover:text-background focus-visible:ring-background/60",
             "data-slot": "combobox-chip-remove",
             children: /* @__PURE__ */ a(Y, { className: "pointer-events-none" })
           }
@@ -1866,7 +1878,8 @@ function Ft({
   className: e,
   children: t,
   showCloseButton: o = !0,
-  ...n
+  augmented: n = !0,
+  ...i
 }) {
   return /* @__PURE__ */ d($t, { "data-slot": "dialog-portal", children: [
     /* @__PURE__ */ a(Et, {}),
@@ -1874,12 +1887,13 @@ function Ft({
       x.Content,
       {
         "data-slot": "dialog-content",
-        "data-augmented-ui": "tr-clip bl-clip both",
+        "data-augmented-ui": n ? "tr-clip bl-clip both" : void 0,
         className: r(
-          "aug-surface aug-surface-bg aug-pos-fixed fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg bg-background p-6 duration-200 outline-none data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg",
+          "fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg bg-background p-6 duration-200 outline-none data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg",
+          n && "aug-surface aug-surface-bg aug-pos-fixed",
           e
         ),
-        ...n,
+        ...i,
         children: [
           t,
           o && /* @__PURE__ */ d(
@@ -1908,7 +1922,7 @@ function Bt({ className: e, ...t }) {
     }
   );
 }
-function fo({
+function go({
   className: e,
   showCloseButton: t = !1,
   children: o,
@@ -1972,7 +1986,7 @@ function Ht({
     }
   );
 }
-function po({
+function fo({
   title: e = "Command Palette",
   description: t = "Search for a command to run...",
   children: o,
@@ -1990,6 +2004,7 @@ function po({
       {
         className: r("overflow-hidden p-0", n),
         showCloseButton: i,
+        augmented: !1,
         children: /* @__PURE__ */ a(
           Ht,
           {
@@ -2001,7 +2016,7 @@ function po({
     )
   ] });
 }
-function go({
+function po({
   className: e,
   ...t
 }) {
@@ -2076,7 +2091,7 @@ function xo({
     $.Separator,
     {
       "data-slot": "command-separator",
-      className: r("-mx-1 h-px bg-border", e),
+      className: r("-mx-1 h-px bg-foreground", e),
       ...t
     }
   );
@@ -2090,7 +2105,7 @@ function wo({
     {
       "data-slot": "command-item",
       className: r(
-        "relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground",
+        "relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-current",
         e
       ),
       ...t
@@ -2161,7 +2176,7 @@ function Io({
       "data-slot": "context-menu-sub-trigger",
       "data-inset": t,
       className: r(
-        "flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground data-[inset]:pl-8 data-[state=open]:bg-accent data-[state=open]:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground",
+        "flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground data-[inset]:pl-8 data-[state=open]:bg-accent data-[state=open]:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-current",
         e
       ),
       ...n,
@@ -2219,7 +2234,7 @@ function Do({
       "data-inset": t,
       "data-variant": o,
       className: r(
-        "relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 data-[variant=destructive]:focus:text-destructive dark:data-[variant=destructive]:focus:bg-destructive/20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground data-[variant=destructive]:*:[svg]:text-destructive!",
+        "relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 data-[variant=destructive]:focus:text-destructive dark:data-[variant=destructive]:focus:bg-destructive/20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-current data-[variant=destructive]:*:[svg]:text-destructive!",
         e
       ),
       ...n
@@ -2296,7 +2311,7 @@ function Ao({
     w.Separator,
     {
       "data-slot": "context-menu-separator",
-      className: r("-mx-1 my-1 h-px bg-border", e),
+      className: r("-mx-1 my-1 h-px bg-foreground", e),
       ...t
     }
   );
@@ -2490,7 +2505,7 @@ function Yo({
       "data-inset": t,
       "data-variant": o,
       className: C(
-        "focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive [&_svg:not([class*='text-'])]:text-current relative flex cursor-default items-center gap-2 px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         e
       ),
       ...n
@@ -2578,7 +2593,7 @@ function tn({
     y.Separator,
     {
       "data-slot": "dropdown-menu-separator",
-      className: C("bg-border -mx-1 my-1 h-px", e),
+      className: C("bg-foreground -mx-1 my-1 h-px", e),
       ...t
     }
   );
@@ -2750,7 +2765,7 @@ function Ie({
     }
   );
 }
-function fn({ className: e, ...t }) {
+function gn({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "fieldset",
     {
@@ -2764,7 +2779,7 @@ function fn({ className: e, ...t }) {
     }
   );
 }
-function pn({
+function fn({
   className: e,
   variant: t = "legend",
   ...o
@@ -2836,7 +2851,7 @@ function ae({
     }
   );
 }
-function gn({ className: e, ...t }) {
+function pn({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -2849,7 +2864,7 @@ function gn({ className: e, ...t }) {
     }
   );
 }
-function ge({
+function pe({
   className: e,
   ...t
 }) {
@@ -3102,7 +3117,7 @@ function Dn({
   className: t,
   ...o
 }) {
-  const n = u.useContext(ft), { char: i, hasFakeCaret: s, isActive: c } = n?.slots[e] ?? {};
+  const n = u.useContext(gt), { char: i, hasFakeCaret: s, isActive: c } = n?.slots[e] ?? {};
   return /* @__PURE__ */ d(
     "div",
     {
@@ -3299,9 +3314,14 @@ function Vn({ className: e, ...t }) {
     {
       "data-slot": "kbd",
       className: r(
-        "pointer-events-none inline-flex h-5 w-fit min-w-5 items-center justify-center gap-1 rounded-sm bg-foreground px-1 font-sans text-xs font-medium text-background select-none",
+        "pointer-events-none inline-flex h-5 w-fit min-w-5 items-center justify-center gap-1 rounded-sm border border-foreground border-b-2 bg-background-secondary px-1 font-mono text-xs font-medium text-foreground select-none",
         "[&_svg:not([class*='size-'])]:size-3",
-        "[[data-slot=tooltip-content]_&]:bg-background/20 [[data-slot=tooltip-content]_&]:text-background dark:[[data-slot=tooltip-content]_&]:bg-background/10",
+        // Highlighted items paint the accent surface — the keycap inverts
+        // to match (cmdk `data-selected`, Radix/Base UI `data-highlighted`).
+        "[[data-selected=true]_&]:border-accent [[data-selected=true]_&]:bg-accent-foreground [[data-selected=true]_&]:text-accent",
+        "[[data-highlighted]_&]:border-accent [[data-highlighted]_&]:bg-accent-foreground [[data-highlighted]_&]:text-accent",
+        // Inverted keycap on the inverted tooltip surface.
+        "[[data-slot=tooltip-content]_&]:border-foreground [[data-slot=tooltip-content]_&]:bg-background [[data-slot=tooltip-content]_&]:text-foreground",
         e
       ),
       ...t
@@ -3405,7 +3425,7 @@ function Jn({
       "data-inset": t,
       "data-variant": o,
       className: r(
-        "relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 data-[variant=destructive]:focus:text-destructive dark:data-[variant=destructive]:focus:bg-destructive/20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground data-[variant=destructive]:*:[svg]:text-destructive!",
+        "relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 data-[variant=destructive]:focus:text-destructive dark:data-[variant=destructive]:focus:bg-destructive/20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-current data-[variant=destructive]:*:[svg]:text-destructive!",
         e
       ),
       ...n
@@ -3482,7 +3502,7 @@ function ti({
     N.Separator,
     {
       "data-slot": "menubar-separator",
-      className: r("-mx-1 my-1 h-px bg-border", e),
+      className: r("-mx-1 my-1 h-px bg-foreground", e),
       ...t
     }
   );
@@ -3742,7 +3762,7 @@ function he({
     {
       "data-slot": "navigation-menu-link",
       className: r(
-        "flex flex-col gap-1 rounded-sm p-2 text-sm transition-all outline-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground data-[active=true]:hover:bg-accent data-[active=true]:focus:bg-accent [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground",
+        "flex flex-col gap-1 rounded-sm p-2 text-sm transition-all outline-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground data-[active=true]:hover:bg-accent data-[active=true]:focus:bg-accent [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-current",
         e
       ),
       ...t
@@ -3817,7 +3837,7 @@ function Re({
     }
   );
 }
-function fi({
+function gi({
   className: e,
   ...t
 }) {
@@ -3835,7 +3855,7 @@ function fi({
     }
   );
 }
-function pi({
+function fi({
   className: e,
   ...t
 }) {
@@ -3853,7 +3873,7 @@ function pi({
     }
   );
 }
-function gi({
+function pi({
   className: e,
   ...t
 }) {
@@ -3946,7 +3966,7 @@ function zi({
   ...o
 }) {
   return /* @__PURE__ */ a(
-    fe.Root,
+    ge.Root,
     {
       "data-slot": "progress",
       className: r(
@@ -3955,11 +3975,11 @@ function zi({
       ),
       ...o,
       children: /* @__PURE__ */ a(
-        fe.Indicator,
+        ge.Indicator,
         {
           "data-slot": "progress-indicator",
-          className: "h-full w-full flex-1 bg-primary transition-all",
-          style: { transform: `translateX(-${100 - (t || 0)}%)` }
+          className: "h-full w-full flex-1 bg-primary transition-all data-[state=indeterminate]:animate-progress",
+          style: t == null ? void 0 : { transform: `translateX(-${100 - (t || 0)}%)` }
         }
       )
     }
@@ -4031,11 +4051,11 @@ function Ii({
     {
       "data-slot": "resizable-handle",
       className: r(
-        "relative flex w-px items-center justify-center bg-border after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:outline-hidden aria-[orientation=horizontal]:h-px aria-[orientation=horizontal]:w-full aria-[orientation=horizontal]:after:left-0 aria-[orientation=horizontal]:after:h-1 aria-[orientation=horizontal]:after:w-full aria-[orientation=horizontal]:after:translate-x-0 aria-[orientation=horizontal]:after:-translate-y-1/2 [&[aria-orientation=horizontal]>div]:rotate-90",
+        "relative flex w-px items-center justify-center bg-foreground after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:outline-hidden aria-[orientation=horizontal]:h-px aria-[orientation=horizontal]:w-full aria-[orientation=horizontal]:after:left-0 aria-[orientation=horizontal]:after:h-1 aria-[orientation=horizontal]:after:w-full aria-[orientation=horizontal]:after:translate-x-0 aria-[orientation=horizontal]:after:-translate-y-1/2 [&[aria-orientation=horizontal]>div]:rotate-90",
         t
       ),
       ...o,
-      children: e && /* @__PURE__ */ a("div", { className: "z-10 flex h-4 w-3 items-center justify-center rounded-xs border bg-border", children: /* @__PURE__ */ a(Xe, { className: "size-2.5" }) })
+      children: e && /* @__PURE__ */ a("div", { className: "z-10 flex h-4 w-3 items-center justify-center rounded-xs border border-foreground bg-foreground text-background", children: /* @__PURE__ */ a(Xe, { className: "size-2.5" }) })
     }
   );
 }
@@ -4088,9 +4108,8 @@ function Pi({
     k.Content,
     {
       "data-slot": "select-content",
-      "data-augmented-ui": "tr-clip bl-clip both",
       className: r(
-        "aug-surface aug-surface-sm relative z-50 max-h-(--radix-select-content-available-height) min-w-[8rem] origin-(--radix-select-content-transform-origin) overflow-hidden rounded-md bg-popover text-popover-foreground data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+        "relative z-50 max-h-(--radix-select-content-available-height) min-w-[8rem] origin-(--radix-select-content-transform-origin) overflow-hidden rounded-md bg-popover text-popover-foreground data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
         o === "popper" && "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
         e
       ),
@@ -4137,7 +4156,7 @@ function Ai({
     {
       "data-slot": "select-item",
       className: r(
-        "relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+        "relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-current *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
         e
       ),
       ...o,
@@ -4163,7 +4182,7 @@ function Gi({
     k.Separator,
     {
       "data-slot": "select-separator",
-      className: r("pointer-events-none -mx-1 my-1 h-px bg-border", e),
+      className: r("pointer-events-none -mx-1 my-1 h-px bg-foreground", e),
       ...t
     }
   );
@@ -4296,7 +4315,7 @@ function Ei({ className: e, ...t }) {
     }
   );
 }
-function fa({
+function ga({
   className: e,
   ...t
 }) {
@@ -4309,7 +4328,7 @@ function fa({
     }
   );
 }
-function pa({
+function fa({
   className: e,
   ...t
 }) {
@@ -4323,7 +4342,7 @@ function pa({
   );
 }
 const re = 768;
-function ga() {
+function pa() {
   const [e, t] = u.useState(void 0);
   return u.useEffect(() => {
     const o = window.matchMedia(`(max-width: ${re - 1}px)`), n = () => {
@@ -4405,32 +4424,32 @@ function Fi({
   children: s,
   ...c
 }) {
-  const m = ga(), [l, f] = u.useState(!1), [b, h] = u.useState(e), I = t ?? b, z = u.useCallback(
-    (g) => {
-      const S = typeof g == "function" ? g(I) : g;
+  const m = pa(), [l, g] = u.useState(!1), [b, h] = u.useState(e), I = t ?? b, z = u.useCallback(
+    (p) => {
+      const S = typeof p == "function" ? p(I) : p;
       o ? o(S) : h(S), document.cookie = `${wa}=${S}; path=/; max-age=${Na}`;
     },
     [o, I]
-  ), T = u.useCallback(() => m ? f((g) => !g) : z((g) => !g), [m, z, f]);
+  ), T = u.useCallback(() => m ? g((p) => !p) : z((p) => !p), [m, z, g]);
   u.useEffect(() => {
-    const g = (S) => {
+    const p = (S) => {
       S.key === Ca && (S.metaKey || S.ctrlKey) && (S.preventDefault(), T());
     };
-    return window.addEventListener("keydown", g), () => window.removeEventListener("keydown", g);
+    return window.addEventListener("keydown", p), () => window.removeEventListener("keydown", p);
   }, [T]);
-  const M = I ? "expanded" : "collapsed", p = u.useMemo(
+  const M = I ? "expanded" : "collapsed", f = u.useMemo(
     () => ({
       state: M,
       open: I,
       setOpen: z,
       isMobile: m,
       openMobile: l,
-      setOpenMobile: f,
+      setOpenMobile: g,
       toggleSidebar: T
     }),
-    [M, I, z, m, l, f, T]
+    [M, I, z, m, l, g, T]
   );
-  return /* @__PURE__ */ a(Pe.Provider, { value: p, children: /* @__PURE__ */ a(ba, { delayDuration: 0, children: /* @__PURE__ */ a(
+  return /* @__PURE__ */ a(Pe.Provider, { value: f, children: /* @__PURE__ */ a(ba, { delayDuration: 0, children: /* @__PURE__ */ a(
     "div",
     {
       "data-slot": "sidebar-wrapper",
@@ -4456,7 +4475,7 @@ function Bi({
   children: i,
   ...s
 }) {
-  const { isMobile: c, state: m, openMobile: l, setOpenMobile: f } = te();
+  const { isMobile: c, state: m, openMobile: l, setOpenMobile: g } = te();
   return o === "none" ? /* @__PURE__ */ a(
     "div",
     {
@@ -4468,7 +4487,7 @@ function Bi({
       ...s,
       children: i
     }
-  ) : c ? /* @__PURE__ */ a(sa, { open: l, onOpenChange: f, ...s, children: /* @__PURE__ */ d(
+  ) : c ? /* @__PURE__ */ a(sa, { open: l, onOpenChange: g, ...s, children: /* @__PURE__ */ d(
     ua,
     {
       "data-sidebar": "sidebar",
@@ -4481,8 +4500,8 @@ function Bi({
       side: e,
       children: [
         /* @__PURE__ */ d(ma, { className: "sr-only", children: [
-          /* @__PURE__ */ a(fa, { children: "Sidebar" }),
-          /* @__PURE__ */ a(pa, { children: "Displays the mobile sidebar." })
+          /* @__PURE__ */ a(ga, { children: "Sidebar" }),
+          /* @__PURE__ */ a(fa, { children: "Displays the mobile sidebar." })
         ] }),
         /* @__PURE__ */ a("div", { className: "flex h-full w-full flex-col", children: i })
       ]
@@ -4786,7 +4805,7 @@ function as({
   className: s,
   ...c
 }) {
-  const m = e ? D.Root : "button", { isMobile: l, state: f } = te(), b = /* @__PURE__ */ a(
+  const m = e ? D.Root : "button", { isMobile: l, state: g } = te(), b = /* @__PURE__ */ a(
     m,
     {
       "data-slot": "sidebar-menu-button",
@@ -4806,7 +4825,7 @@ function as({
       {
         side: "right",
         align: "center",
-        hidden: f !== "collapsed" || l,
+        hidden: g !== "collapsed" || l,
         ...i
       }
     )
@@ -5025,7 +5044,7 @@ function us({
   ...o
 }) {
   return /* @__PURE__ */ a(
-    pe.Root,
+    fe.Root,
     {
       "data-slot": "switch",
       "data-size": t,
@@ -5035,7 +5054,7 @@ function us({
       ),
       ...o,
       children: /* @__PURE__ */ a(
-        pe.Thumb,
+        fe.Thumb,
         {
           "data-slot": "switch-thumb",
           className: r(
@@ -5066,7 +5085,7 @@ function ms({ className: e, ...t }) {
     }
   );
 }
-function fs({ className: e, ...t }) {
+function gs({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "thead",
     {
@@ -5076,7 +5095,7 @@ function fs({ className: e, ...t }) {
     }
   );
 }
-function ps({ className: e, ...t }) {
+function fs({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "tbody",
     {
@@ -5086,13 +5105,13 @@ function ps({ className: e, ...t }) {
     }
   );
 }
-function gs({ className: e, ...t }) {
+function ps({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "tfoot",
     {
       "data-slot": "table-footer",
       className: r(
-        "border-t bg-muted/50 font-medium [&>tr]:last:border-b-0",
+        "border-t bg-card font-medium [&>tr]:last:border-b-0",
         e
       ),
       ...t
@@ -5105,7 +5124,7 @@ function bs({ className: e, ...t }) {
     {
       "data-slot": "table-row",
       className: r(
-        "border-b transition-colors hover:bg-muted/50 has-aria-expanded:bg-muted/50 data-[state=selected]:bg-muted",
+        "border-b transition-colors hover:bg-card has-aria-expanded:bg-card data-[state=selected]:bg-card",
         e
       ),
       ...t
@@ -5391,7 +5410,7 @@ function Ts({
     email: "",
     password: ""
   }), [m, l] = u.useState({});
-  function f(b) {
+  function g(b) {
     b.preventDefault();
     const h = {};
     s.email || (h.email = "Email is required."), s.password || (h.password = "Password is required."), l(h), Object.keys(h).length === 0 && t?.(s);
@@ -5401,9 +5420,9 @@ function Ts({
       /* @__PURE__ */ a(yt, { children: "Log in to your account" }),
       /* @__PURE__ */ a(zt, { children: "Enter your credentials to continue." })
     ] }),
-    /* @__PURE__ */ a(kt, { children: /* @__PURE__ */ a("form", { onSubmit: f, noValidate: !0, children: /* @__PURE__ */ d(Ut, { children: [
+    /* @__PURE__ */ a(kt, { children: /* @__PURE__ */ a("form", { onSubmit: g, noValidate: !0, children: /* @__PURE__ */ d(Ut, { children: [
       /* @__PURE__ */ d(ae, { "data-invalid": !!m.email, children: [
-        /* @__PURE__ */ a(ge, { htmlFor: "login-email", children: "Email" }),
+        /* @__PURE__ */ a(pe, { htmlFor: "login-email", children: "Email" }),
         /* @__PURE__ */ a(
           U,
           {
@@ -5423,7 +5442,7 @@ function Ts({
       ] }),
       /* @__PURE__ */ d(ae, { "data-invalid": !!m.password, children: [
         /* @__PURE__ */ d("div", { className: "flex items-center justify-between gap-2", children: [
-          /* @__PURE__ */ a(ge, { htmlFor: "login-password", children: "Password" }),
+          /* @__PURE__ */ a(pe, { htmlFor: "login-password", children: "Password" }),
           /* @__PURE__ */ a(
             "a",
             {
@@ -5573,17 +5592,17 @@ export {
   ir as AlertDialogHeader,
   cr as AlertDialogMedia,
   bt as AlertDialogOverlay,
-  gt as AlertDialogPortal,
+  pt as AlertDialogPortal,
   dr as AlertDialogTitle,
   or as AlertDialogTrigger,
   tr as AlertTitle,
-  fr as AspectRatio,
-  pr as Avatar,
+  gr as AspectRatio,
+  fr as Avatar,
   hr as AvatarBadge,
   br as AvatarFallback,
   vr as AvatarGroup,
   xr as AvatarGroupCount,
-  gr as AvatarImage,
+  pr as AvatarImage,
   wr as Badge,
   Nr as Breadcrumb,
   Sr as BreadcrumbEllipsis,
@@ -5636,10 +5655,10 @@ export {
   At as ComboboxTrigger,
   Yr as ComboboxValue,
   Ht as Command,
-  po as CommandDialog,
+  fo as CommandDialog,
   ho as CommandEmpty,
   vo as CommandGroup,
-  go as CommandInput,
+  po as CommandInput,
   wo as CommandItem,
   bo as CommandList,
   xo as CommandSeparator,
@@ -5664,7 +5683,7 @@ export {
   mo as DialogClose,
   Ft as DialogContent,
   Vt as DialogDescription,
-  fo as DialogFooter,
+  go as DialogFooter,
   Bt as DialogHeader,
   Et as DialogOverlay,
   $t as DialogPortal,
@@ -5702,14 +5721,14 @@ export {
   ln as EmptyMedia,
   cn as EmptyTitle,
   ae as Field,
-  gn as FieldContent,
+  pn as FieldContent,
   hn as FieldDescription,
   be as FieldError,
   Ut as FieldGroup,
-  ge as FieldLabel,
-  pn as FieldLegend,
+  pe as FieldLabel,
+  fn as FieldLegend,
   vn as FieldSeparator,
-  fn as FieldSet,
+  gn as FieldSet,
   bn as FieldTitle,
   xn as Form,
   zn as FormControl,
@@ -5776,11 +5795,11 @@ export {
   oa as NavigationMenuViewport,
   ci as Pagination,
   ui as PaginationContent,
-  gi as PaginationEllipsis,
+  pi as PaginationEllipsis,
   mi as PaginationItem,
   Re as PaginationLink,
-  pi as PaginationNext,
-  fi as PaginationPrevious,
+  fi as PaginationNext,
+  gi as PaginationPrevious,
   bi as Popover,
   xi as PopoverAnchor,
   vi as PopoverContent,
@@ -5810,10 +5829,10 @@ export {
   sa as Sheet,
   $i as SheetClose,
   ua as SheetContent,
-  pa as SheetDescription,
+  fa as SheetDescription,
   Ei as SheetFooter,
   ma as SheetHeader,
-  fa as SheetTitle,
+  ga as SheetTitle,
   Li as SheetTrigger,
   Bi as Sidebar,
   Xi as SidebarContent,
@@ -5845,12 +5864,12 @@ export {
   cs as Spinner,
   us as Switch,
   ms as Table,
-  ps as TableBody,
+  fs as TableBody,
   xs as TableCaption,
   vs as TableCell,
-  gs as TableFooter,
+  ps as TableFooter,
   hs as TableHead,
-  fs as TableHeader,
+  gs as TableHeader,
   bs as TableRow,
   ws as Tabs,
   zs as TabsContent,
@@ -5874,6 +5893,6 @@ export {
   je as toggleVariants,
   co as useComboboxAnchor,
   ee as useFormField,
-  ga as useIsMobile,
+  pa as useIsMobile,
   te as useSidebar
 };

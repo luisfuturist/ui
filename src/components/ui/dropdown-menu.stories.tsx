@@ -60,7 +60,7 @@ export const Basic: Story = {
   render: () => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="border px-3 py-2">Open menu</Button>
+        <Button variant="outline">Open menu</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>Profile</DropdownMenuItem>
@@ -75,7 +75,7 @@ export const WithLabelsAndSeparators: Story = {
   render: () => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="border px-3 py-2">Open menu</Button>
+        <Button variant="outline">Open menu</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -105,7 +105,7 @@ export const CheckboxItems: Story = {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button className="border px-3 py-2">View options</Button>
+          <Button variant="outline">View options</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56">
           <DropdownMenuLabel>Appearance</DropdownMenuLabel>
@@ -141,7 +141,7 @@ export const RadioGroup: Story = {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button className="border px-3 py-2">
+          <Button variant="outline">
             Panel position:
             {' '}
             {position}
@@ -165,7 +165,7 @@ export const SubMenu: Story = {
   render: () => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="border px-3 py-2">Open menu</Button>
+        <Button variant="outline">Open menu</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuItem>New Tab</DropdownMenuItem>
@@ -191,7 +191,7 @@ export const WithShortcuts: Story = {
   render: () => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="border px-3 py-2">Open menu</Button>
+        <Button variant="outline">Open menu</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>File</DropdownMenuLabel>
@@ -217,7 +217,7 @@ export const DisabledItems: Story = {
   render: () => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="border px-3 py-2">Open menu</Button>
+        <Button variant="outline">Open menu</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuItem>Enabled item</DropdownMenuItem>
@@ -255,7 +255,7 @@ export const KitchenSink: Story = {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button className="border px-3 py-2">Open menu</Button>
+          <Button variant="outline">Open menu</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56">
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -404,10 +404,7 @@ export const RealWorldExample: Story = {
   render: () => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          data-augmented-ui="tr-clip bl-clip both"
-          className="aug-button p-4 text-foreground bg-background-secondary"
-        >
+        <Button variant="augmented" size={null} className="p-4">
           <MaterialSettings className="size-6" />
         </Button>
       </DropdownMenuTrigger>
@@ -431,8 +428,10 @@ export const RealWorldExample: Story = {
       description: {
         story:
           'Recreation of the website\'s `NavbarMenu` + `SettingsMenu` + '
-          + '`ThemeToggleMenuItems`: an augmented-UI trigger, navigation '
-          + 'links, and a theme `RadioGroup`. (The site\'s '
+          + '`ThemeToggleMenuItems`: an augmented-UI trigger (`size={null}` '
+          + '+ `p-4` reproduces the site\'s 56px square — the published '
+          + 'package\'s button sizes are empty), square menu content, '
+          + 'navigation links, and a theme `RadioGroup`. (The site\'s '
           + '`menu-sharp`/`settings-sharp` icons don\'t exist in this '
           + 'repo\'s iconify version, so `settings` is used for the '
           + 'trigger.)',

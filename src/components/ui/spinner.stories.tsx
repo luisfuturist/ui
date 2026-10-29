@@ -101,16 +101,13 @@ export const WithText: Story = {
 export const InButton: Story = {
   render: () => (
     <div className="flex items-center justify-center gap-3 p-8">
-      <Button
-        disabled
-        className="inline-flex items-center gap-2 border bg-primary px-4 py-2 text-sm text-primary-foreground"
-      >
+      <Button disabled>
         <Spinner />
         Saving…
       </Button>
       <Button
         disabled
-        className="inline-flex items-center gap-2 border px-4 py-2 text-sm"
+        variant="outline"
       >
         <Spinner className="size-3" />
         Loading

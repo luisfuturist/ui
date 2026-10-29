@@ -263,6 +263,61 @@
   --aug-inlay-bg: var(--color-background-secondary) !important;
 }
 
+/* `augmented-outline` button variant: transparent inlay + solid
+ * foreground border ring — the clipped-corner counterpart of `outline`.
+ * Element-level `background-color`/`color` rules double as the square
+ * fallback when `augmented-ui`'s CSS isn't loaded (the inlay layer
+ * covers the element background when it is). */
+.aug-button-outline {
+  --aug-tr: 12px !important;
+  --aug-bl: 12px !important;
+  --aug-border-all: 1px !important;
+  --aug-border-bg: var(--foreground) !important;
+  --aug-inlay-all: 0px !important;
+  --aug-inlay-bg: transparent !important;
+  @apply cursor-pointer;
+  @apply focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-transparent focus:ring-offset-transparent;
+}
+
+.aug-button-outline:focus {
+  --aug-border-bg: var(--accent) !important;
+}
+
+.aug-button-outline[data-state='open'] {
+  --aug-inlay-bg: var(--accent) !important;
+  background-color: var(--accent) !important;
+  color: var(--accent-foreground) !important;
+}
+
+/* `augmented-inverted` button variant: solid foreground inlay — the
+ * clipped-corner counterpart of `default` (site: `.aug-button-div`,
+ * `.aug-logo`, `.aug-contact-cta`). */
+.aug-button-inverted {
+  --aug-tr: 12px !important;
+  --aug-bl: 12px !important;
+  --aug-border-all: 1px !important;
+  --aug-border-bg: var(--background) !important;
+  --aug-inlay-all: 0px !important;
+  --aug-inlay-bg: var(--foreground) !important;
+  @apply cursor-pointer;
+  @apply focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-transparent focus:ring-offset-transparent;
+}
+
+.aug-button-inverted:focus {
+  --aug-border-bg: var(--accent) !important;
+}
+
+.aug-button-inverted:hover {
+  --aug-inlay-bg: var(--link-primary-hover) !important;
+  background-color: var(--link-primary-hover) !important;
+}
+
+.aug-button-inverted[data-state='open'] {
+  --aug-inlay-bg: var(--accent) !important;
+  background-color: var(--accent) !important;
+  color: var(--accent-foreground) !important;
+}
+
 /* ----- Augmented surfaces ----- */
 /* Components tagged with `data-augmented-ui` render plain square surfaces by
  * default. When the consumer loads the `augmented-ui` package's CSS once
@@ -348,4 +403,20 @@
   [data-slot='navigation-menu-content'] {
   --aug-border: ;
   --aug-inlay: ;
+}
+
+@theme inline {
+  --animate-progress: progress 1s infinite ease-in-out;
+
+  @keyframes progress {
+    0% {
+      transform: translateX(0) scaleX(0);
+    }
+    40% {
+      transform: translateX(0) scaleX(0.4);
+    }
+    100% {
+      transform: translateX(100%) scaleX(0.5);
+    }
+  }
 }

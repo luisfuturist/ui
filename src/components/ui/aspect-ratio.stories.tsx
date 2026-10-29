@@ -38,8 +38,8 @@ type Story = StoryObj<typeof meta>
 
 function Placeholder({ label }: { label: string }) {
   return (
-    <div className="flex size-full items-center justify-center rounded-md bg-muted">
-      <span className="text-sm font-medium text-muted-foreground">
+    <div className="flex size-full items-center justify-center rounded-md border border-foreground bg-background-secondary">
+      <span className="text-sm font-medium text-foreground">
         {label}
       </span>
     </div>
@@ -91,8 +91,8 @@ export const MediaFrame: Story = {
     <div className="flex items-center justify-center p-8">
       <figure className="w-80">
         <AspectRatio ratio={3 / 2} className="overflow-hidden rounded-lg">
-          <div className="flex size-full items-center justify-center bg-gradient-to-br from-muted to-accent">
-            <span className="text-sm text-muted-foreground">
+          <div className="flex size-full items-center justify-center border border-foreground bg-background-secondary">
+            <span className="text-sm text-foreground">
               Cover frame 3 : 2
             </span>
           </div>
