@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { BellOff, FileSearch } from 'lucide-react'
+import MaterialDocumentSearch from '~icons/material-symbols/document-search'
+import MaterialNotificationsOff from '~icons/material-symbols/notifications-off'
 
 import { Button } from './button'
 import {
@@ -23,7 +24,9 @@ const meta = {
           + '(`variant="default" | "icon"`), `EmptyTitle` and '
           + '`EmptyDescription`; `EmptyContent` below fits actions or '
           + 'a small input. `Empty` itself is a centered dashed-border '
-          + 'column.',
+          + 'column. `EmptyMedia variant="icon"` shares the LFDS icon '
+          + 'chip with `ItemMedia` — card surface, foreground keyline, '
+          + 'clipped top-right/bottom-left corners — one size up.',
       },
     },
   },
@@ -46,7 +49,7 @@ export const Playground: Story = {
       <Empty className="w-[28rem] border">
         <EmptyHeader>
           <EmptyMedia variant="icon">
-            <FileSearch />
+            <MaterialDocumentSearch />
           </EmptyMedia>
           <EmptyTitle>No expeditions found</EmptyTitle>
           <EmptyDescription>
@@ -64,7 +67,7 @@ export const SearchResults: Story = {
       <Empty className="w-[28rem] border">
         <EmptyHeader>
           <EmptyMedia variant="icon">
-            <FileSearch />
+            <MaterialDocumentSearch />
           </EmptyMedia>
           <EmptyTitle>No results for “blue ridge”</EmptyTitle>
           <EmptyDescription>
@@ -103,7 +106,7 @@ export const NoNotifications: Story = {
       <Empty className="w-[28rem] border">
         <EmptyHeader>
           <EmptyMedia variant="icon">
-            <BellOff />
+            <MaterialNotificationsOff />
           </EmptyMedia>
           <EmptyTitle>No notifications</EmptyTitle>
           <EmptyDescription>

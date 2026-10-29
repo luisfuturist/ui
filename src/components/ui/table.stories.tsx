@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Inbox } from 'lucide-react'
+import MaterialInbox from '~icons/material-symbols/inbox'
 
 import { Badge } from './badge'
 import {
@@ -23,7 +23,7 @@ const meta = {
           'Semantic table primitives. `Table` wraps the `<table>` in '
           + 'a `ScrollArea` container for horizontal scrolling. '
           + '`TableRow` ships '
-          + '`hover:bg-muted/50` and `data-[state=selected]` styling; '
+          + '`hover:bg-card/50` and `data-[state=selected]` styling; '
           + 'stripes and alignment come from utility classes.',
       },
     },
@@ -98,9 +98,9 @@ export const Striped: Story = {
               <TableHead className="text-right">Stock</TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody className="[&_tr:nth-child(odd)]:bg-muted/50">
+          <TableBody className="[&_tr:nth-child(odd)]:bg-card">
             {supplies.map(row => (
-              <TableRow key={row.sku} className="border-b-0 hover:bg-muted">
+              <TableRow key={row.sku} className="border-b-0 hover:bg-primary hover:text-background">
                 <TableCell className="font-medium">{row.item}</TableCell>
                 <TableCell>{row.sku}</TableCell>
                 <TableCell className="text-right">{row.stock}</TableCell>
@@ -116,7 +116,7 @@ export const Striped: Story = {
       description: {
         story:
           'Striped rows are a `className` concern — '
-          + '`[&_tr:nth-child(odd)]:bg-muted/50` on `TableBody` plus '
+          + '`[&_tr:nth-child(odd)]:bg-card` on `TableBody` plus '
           + '`border-b-0` on the rows.',
       },
     },
@@ -139,7 +139,7 @@ export const EmptyState: Story = {
             <TableRow className="hover:bg-transparent">
               <TableCell colSpan={3}>
                 <div className="flex flex-col items-center gap-2 py-10 text-muted-foreground">
-                  <Inbox className="size-6" />
+                  <MaterialInbox className="size-6" />
                   <p className="text-sm">
                     No supplies match this filter.
                   </p>

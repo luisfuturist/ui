@@ -14,10 +14,14 @@ const meta = {
         component:
           'Thin wrapper around [sonner](https://sonner.emilkowal.ski/)\'s '
           + '`Toaster` that reads `useTheme()` from `next-themes` and maps '
-          + 'the toast surfaces to LFDS tokens (`--popover`, `--border`). '
-          + 'There is no `next-themes` provider in Storybook, so each '
-          + 'story passes the toolbar theme explicitly. Fire toasts with '
-          + 'the `toast` export from `sonner`.',
+          + 'the toast chrome to LFDS tokens: square `--popover` surface '
+          + 'with a solid `--foreground` border, and palette-colored '
+          + 'borders/icons per type (success=green, error=red, '
+          + 'warning=yellow, info=blue — also wired to the `--success-*` '
+          + 'etc. vars so `richColors` stays on-palette). There is no '
+          + '`next-themes` provider in Storybook, so each story passes '
+          + 'the toolbar theme explicitly. Fire toasts with the `toast` '
+          + 'export from `sonner`.',
       },
     },
   },

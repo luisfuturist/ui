@@ -1,8 +1,10 @@
+/* Roboto family — same Google Fonts set as luisfuturist.com */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import 'tailwindcss';
 @import '../styles/lfds.css';
 
 body {
-  @apply bg-background text-foreground;
+  @apply bg-background font-sans text-foreground;
 }
 
 /* Canvas surfaces (where components render) follow the LFDS theme */

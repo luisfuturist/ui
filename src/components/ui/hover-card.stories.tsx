@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { CalendarDaysIcon } from 'lucide-react'
+import MaterialCalendarToday from '~icons/material-symbols/calendar-today'
 
 import { Avatar, AvatarFallback } from './avatar'
 import {
@@ -53,7 +53,7 @@ function UserCard() {
           Building interfaces at the edge of the galaxy.
         </p>
         <div className="flex items-center pt-2">
-          <CalendarDaysIcon className="mr-2 size-4 opacity-70" />
+          <MaterialCalendarToday className="mr-2 size-4 opacity-70" />
           {' '}
           <span className="text-xs text-muted-foreground">
             Joined December 2021

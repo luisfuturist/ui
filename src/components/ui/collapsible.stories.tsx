@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { ChevronsUpDown } from 'lucide-react'
+import MaterialUnfoldMore from '~icons/material-symbols/unfold-more'
 import { useState } from 'react'
 
 import {
@@ -67,7 +67,7 @@ export const Playground: Story = {
       <Collapsible className="w-96 rounded-md border" {...args}>
         <CollapsibleTrigger className={triggerClass}>
           Supply manifest
-          <ChevronsUpDown className="size-4 shrink-0 text-muted-foreground transition-transform duration-200" />
+          <MaterialUnfoldMore className="size-4 shrink-0 text-muted-foreground transition-transform duration-200" />
         </CollapsibleTrigger>
         <CollapsibleContent className="grid gap-1.5 px-4 pb-4 text-sm text-muted-foreground">
           <span>Compass × 2</span>
@@ -93,7 +93,7 @@ export const Controlled: Story = {
           >
             <CollapsibleTrigger className={triggerClass}>
               Route details
-              <ChevronsUpDown className="size-4 shrink-0 text-muted-foreground transition-transform duration-200" />
+              <MaterialUnfoldMore className="size-4 shrink-0 text-muted-foreground transition-transform duration-200" />
             </CollapsibleTrigger>
             <CollapsibleContent className="px-4 pb-4 text-sm text-muted-foreground">
               Depart at dawn, follow the ridge east, regroup at the
@@ -132,7 +132,7 @@ export const DefaultOpen: Story = {
       >
         <CollapsibleTrigger className={triggerClass}>
           Weather bulletin
-          <ChevronsUpDown className="size-4 shrink-0 text-muted-foreground transition-transform duration-200" />
+          <MaterialUnfoldMore className="size-4 shrink-0 text-muted-foreground transition-transform duration-200" />
         </CollapsibleTrigger>
         <CollapsibleContent className="px-4 pb-4 text-sm text-muted-foreground">
           Clear skies for the next three days. Winds shift northerly on
@@ -158,7 +158,7 @@ export const DisabledTrigger: Story = {
       <Collapsible disabled className="w-96 rounded-md border">
         <CollapsibleTrigger className={triggerClass}>
           Locked section
-          <ChevronsUpDown className="size-4 shrink-0 text-muted-foreground transition-transform duration-200" />
+          <MaterialUnfoldMore className="size-4 shrink-0 text-muted-foreground transition-transform duration-200" />
         </CollapsibleTrigger>
         <CollapsibleContent className="px-4 pb-4 text-sm text-muted-foreground">
           This content is unreachable while the trigger is disabled.

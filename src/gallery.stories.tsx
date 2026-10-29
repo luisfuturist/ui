@@ -1,14 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import type { ReactNode } from 'react'
-import {
-  BoldIcon,
-  FileSearchIcon,
-  HomeIcon,
-  ItalicIcon,
-  SearchIcon,
-  SettingsIcon,
-  UnderlineIcon,
-} from 'lucide-react'
+import MaterialDocumentSearch from '~icons/material-symbols/document-search'
+import MaterialFormatBold from '~icons/material-symbols/format-bold'
+import MaterialFormatItalic from '~icons/material-symbols/format-italic'
+import MaterialFormatUnderlined from '~icons/material-symbols/format-underlined'
+import MaterialHome from '~icons/material-symbols/home'
+import MaterialSearch from '~icons/material-symbols/search'
+import MaterialSettings from '~icons/material-symbols/settings'
 import { useForm } from 'react-hook-form'
 import { Bar, BarChart } from 'recharts'
 import { toast } from 'sonner'
@@ -279,7 +277,7 @@ function Cell({ label, wide, children }: {
 }) {
   return (
     <div className={cn('flex flex-col gap-2', wide && 'sm:col-span-2')}>
-      <div className="flex min-h-28 w-full items-center justify-center border border-foreground/30 bg-background-secondary p-3">
+      <div className="flex min-h-28 w-full items-center justify-center border border-foreground bg-background p-3">
         {children}
       </div>
       <span className="font-mono text-xs text-muted-foreground">
@@ -423,7 +421,7 @@ export const Catalog: Story = {
             <InputGroup>
               <InputGroupInput placeholder="Search…" />
               <InputGroupAddon>
-                <SearchIcon />
+                <MaterialSearch />
               </InputGroupAddon>
             </InputGroup>
           </Cell>
@@ -489,20 +487,20 @@ export const Catalog: Story = {
 
           <Cell label="Toggle">
             <Toggle aria-label="bold">
-              <BoldIcon />
+              <MaterialFormatBold />
             </Toggle>
           </Cell>
 
           <Cell label="ToggleGroup">
             <ToggleGroup type="single" defaultValue="b">
               <ToggleGroupItem value="b" aria-label="bold">
-                <BoldIcon />
+                <MaterialFormatBold />
               </ToggleGroupItem>
               <ToggleGroupItem value="i" aria-label="italic">
-                <ItalicIcon />
+                <MaterialFormatItalic />
               </ToggleGroupItem>
               <ToggleGroupItem value="u" aria-label="underline">
-                <UnderlineIcon />
+                <MaterialFormatUnderlined />
               </ToggleGroupItem>
             </ToggleGroup>
           </Cell>
@@ -581,7 +579,7 @@ export const Catalog: Story = {
             <Empty className="w-full border p-4">
               <EmptyHeader>
                 <EmptyMedia variant="icon">
-                  <FileSearchIcon />
+                  <MaterialDocumentSearch />
                 </EmptyMedia>
                 <EmptyTitle>No results</EmptyTitle>
                 <EmptyDescription>Try a different query.</EmptyDescription>
@@ -592,7 +590,7 @@ export const Catalog: Story = {
           <Cell label="Item">
             <Item variant="outline" size="sm" className="w-full">
               <ItemMedia variant="icon">
-                <SearchIcon />
+                <MaterialSearch />
               </ItemMedia>
               <ItemContent>
                 <ItemTitle>Saved search</ItemTitle>
@@ -928,13 +926,13 @@ export const Catalog: Story = {
                       <SidebarMenu>
                         <SidebarMenuItem>
                           <SidebarMenuButton isActive>
-                            <HomeIcon />
+                            <MaterialHome />
                             Home
                           </SidebarMenuButton>
                         </SidebarMenuItem>
                         <SidebarMenuItem>
                           <SidebarMenuButton>
-                            <SettingsIcon />
+                            <MaterialSettings />
                             Settings
                           </SidebarMenuButton>
                         </SidebarMenuItem>
@@ -983,7 +981,7 @@ export const Catalog: Story = {
             </div>
 
             <div className="flex flex-col gap-2">
-              <div className="flex justify-center border border-foreground/30 bg-background-secondary p-6">
+              <div className="flex justify-center border border-foreground bg-background p-6">
                 <LoginForm className="w-full max-w-sm" />
               </div>
               <span className="font-mono text-xs text-muted-foreground">

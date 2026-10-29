@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Bell } from 'lucide-react'
+import MaterialNotifications from '~icons/material-symbols/notifications'
 
 import { Button } from './button'
 import {
@@ -80,7 +80,7 @@ export const WithAction: Story = {
           </CardDescription>
           <CardAction>
             <Button variant="outline" size="sm">
-              <Bell />
+              <MaterialNotifications />
               Subscribe
             </Button>
           </CardAction>

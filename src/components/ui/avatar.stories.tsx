@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Check } from 'lucide-react'
+import MaterialCheck from '~icons/material-symbols/check'
 
 import {
   Avatar,
@@ -117,7 +117,7 @@ export const WithBadge: Story = {
       <Avatar>
         <AvatarFallback>OK</AvatarFallback>
         <AvatarBadge>
-          <Check />
+          <MaterialCheck />
         </AvatarBadge>
       </Avatar>
       <Avatar size="lg">

@@ -10,7 +10,13 @@ const preview: Preview = {
   parameters: {
     options: {
       storySort: {
-        order: ['Introduction', 'Design Tokens', 'Components', 'Blocks'],
+        order: [
+          'Introduction',
+          ['Overview', 'Getting Started', 'Gallery'],
+          'Design Tokens',
+          'Components',
+          'Blocks',
+        ],
       },
     },
   },

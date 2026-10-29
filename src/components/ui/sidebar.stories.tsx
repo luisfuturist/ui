@@ -1,12 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import {
-  ChartColumnIcon,
-  FolderKanbanIcon,
-  HomeIcon,
-  SettingsIcon,
-  UsersIcon,
-  ZapIcon,
-} from 'lucide-react'
+import MaterialBarChart from '~icons/material-symbols/bar-chart'
+import MaterialBolt from '~icons/material-symbols/bolt'
+import MaterialGroup from '~icons/material-symbols/group'
+import MaterialHome from '~icons/material-symbols/home'
+import MaterialSettings from '~icons/material-symbols/settings'
+import MaterialViewKanban from '~icons/material-symbols/view-kanban'
 
 import { Separator } from './separator'
 import {
@@ -73,15 +71,15 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const platformItems = [
-  { icon: HomeIcon, label: 'Home', isActive: true },
-  { icon: ChartColumnIcon, label: 'Analytics' },
-  { icon: FolderKanbanIcon, label: 'Projects', badge: '12' },
+  { icon: MaterialHome, label: 'Home', isActive: true },
+  { icon: MaterialBarChart, label: 'Analytics' },
+  { icon: MaterialViewKanban, label: 'Projects', badge: '12' },
 ]
 
 const fleetItems = [
-  { icon: UsersIcon, label: 'Crew' },
-  { icon: ZapIcon, label: 'Reactor' },
-  { icon: SettingsIcon, label: 'Settings' },
+  { icon: MaterialGroup, label: 'Crew' },
+  { icon: MaterialBolt, label: 'Reactor' },
+  { icon: MaterialSettings, label: 'Settings' },
 ]
 
 function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
@@ -162,18 +160,18 @@ function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
 function MainArea() {
   return (
     <SidebarInset>
-      <header className="flex h-12 shrink-0 items-center gap-2 border-b px-4">
+      <header className="flex h-12 shrink-0 items-center gap-2 border-b border-foreground px-4">
         <SidebarTrigger />
         <Separator orientation="vertical" className="h-4" />
         <span className="text-sm font-medium">Dashboard</span>
       </header>
       <main className="flex flex-1 flex-col gap-4 p-4">
         <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-          <div className="aspect-video rounded-md border bg-muted/50" />
-          <div className="aspect-video rounded-md border bg-muted/50" />
-          <div className="aspect-video rounded-md border bg-muted/50" />
+          <div className="aspect-video rounded-md border border-foreground bg-card" />
+          <div className="aspect-video rounded-md border border-foreground bg-card" />
+          <div className="aspect-video rounded-md border border-foreground bg-card" />
         </div>
-        <div className="min-h-32 flex-1 rounded-md border bg-muted/50" />
+        <div className="min-h-32 flex-1 rounded-md border border-foreground bg-card" />
       </main>
     </SidebarInset>
   )

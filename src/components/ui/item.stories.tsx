@@ -1,5 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { ChevronDown, FileText, Music, Settings, Star } from 'lucide-react'
+import MaterialDescription from '~icons/material-symbols/description'
+import MaterialKeyboardArrowDown from '~icons/material-symbols/keyboard-arrow-down'
+import MaterialMusicNote from '~icons/material-symbols/music-note'
+import MaterialSettings from '~icons/material-symbols/settings'
+import MaterialStar from '~icons/material-symbols/star'
 
 import { Button } from './button'
 import {
@@ -25,7 +29,10 @@ const meta = {
           + '| "sm"` and `asChild`. Compose `ItemMedia` (`default` / '
           + '`icon` / `image`), `ItemContent` + `ItemTitle` + '
           + '`ItemDescription`, and `ItemActions`. `ItemGroup` and '
-          + '`ItemSeparator` assemble lists.',
+          + '`ItemSeparator` assemble lists. `ItemMedia variant="icon"` '
+          + 'renders the LFDS icon chip: card surface, foreground '
+          + 'keyline, clipped top-right/bottom-left corners (the same '
+          + 'cut as `tr-clip bl-clip` on augmented surfaces).',
       },
     },
   },
@@ -65,7 +72,7 @@ export const Playground: Story = {
     <div className="flex items-center justify-center p-8">
       <Item className="w-96" {...args}>
         <ItemMedia variant="icon">
-          <FileText />
+          <MaterialDescription />
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Field notes — day 12</ItemTitle>
@@ -126,7 +133,7 @@ export const AsChildLink: Story = {
       <Item asChild variant="outline" className="w-96">
         <a href="#settings">
           <ItemMedia variant="icon">
-            <Settings />
+            <MaterialSettings />
           </ItemMedia>
           <ItemContent>
             <ItemTitle>Expedition settings</ItemTitle>
@@ -135,7 +142,7 @@ export const AsChildLink: Story = {
             </ItemDescription>
           </ItemContent>
           <ItemActions>
-            <ChevronDown className="size-4 -rotate-90 text-muted-foreground" />
+            <MaterialKeyboardArrowDown className="size-4 -rotate-90 text-muted-foreground" />
           </ItemActions>
         </a>
       </Item>
@@ -159,7 +166,7 @@ export const Group: Story = {
       <ItemGroup className="w-96 rounded-md border">
         <Item size="sm">
           <ItemMedia variant="icon">
-            <FileText />
+            <MaterialDescription />
           </ItemMedia>
           <ItemContent>
             <ItemTitle>manifest.md</ItemTitle>
@@ -171,7 +178,7 @@ export const Group: Story = {
         <ItemSeparator />
         <Item size="sm">
           <ItemMedia variant="icon">
-            <Music />
+            <MaterialMusicNote />
           </ItemMedia>
           <ItemContent>
             <ItemTitle>campfire-tunes.ogg</ItemTitle>
@@ -183,7 +190,7 @@ export const Group: Story = {
         <ItemSeparator />
         <Item size="sm">
           <ItemMedia variant="icon">
-            <Star />
+            <MaterialStar />
           </ItemMedia>
           <ItemContent>
             <ItemTitle>star-chart.svg</ItemTitle>
@@ -211,7 +218,7 @@ export const LongDescription: Story = {
     <div className="flex items-center justify-center p-8">
       <Item variant="outline" className="w-80">
         <ItemMedia variant="icon">
-          <FileText />
+          <MaterialDescription />
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Quartermaster memo</ItemTitle>

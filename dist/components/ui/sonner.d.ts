@@ -1,3 +1,3 @@
 import type { ToasterProps } from 'sonner';
-declare function Toaster({ ...props }: ToasterProps): import("react").JSX.Element;
+declare function Toaster({ toastOptions, ...props }: ToasterProps): import("react").JSX.Element;
 export { Toaster };

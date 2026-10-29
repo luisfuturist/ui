@@ -1,12 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import {
-  Check,
-  Copy,
-  CreditCard,
-  HelpCircle,
-  Loader2,
-  Search,
-} from 'lucide-react'
+import MaterialCheck from '~icons/material-symbols/check'
+import MaterialContentCopy from '~icons/material-symbols/content-copy'
+import MaterialCreditCard from '~icons/material-symbols/credit-card'
+import MaterialHelp from '~icons/material-symbols/help'
+import MaterialProgressActivity from '~icons/material-symbols/progress-activity'
+import MaterialSearch from '~icons/material-symbols/search'
 import { useState } from 'react'
 
 import {
@@ -55,7 +53,7 @@ export const Playground: Story = {
       <InputGroup className="w-80">
         <InputGroupInput placeholder="Search…" />
         <InputGroupAddon>
-          <Search />
+          <MaterialSearch />
         </InputGroupAddon>
         <InputGroupAddon align="inline-end">
           <InputGroupText>12 results</InputGroupText>
@@ -71,14 +69,14 @@ export const WithIconsAndText: Story = {
       <div className="grid w-80 gap-4">
         <InputGroup>
           <InputGroupAddon>
-            <Search />
+            <MaterialSearch />
           </InputGroupAddon>
           <InputGroupInput placeholder="Search documentation…" />
         </InputGroup>
         <InputGroup>
           <InputGroupInput placeholder="card number" />
           <InputGroupAddon align="inline-end">
-            <CreditCard />
+            <MaterialCreditCard />
           </InputGroupAddon>
         </InputGroup>
         <InputGroup>
@@ -112,7 +110,7 @@ export const WithButtons: Story = {
                 setTimeout(() => setCopied(false), 1500)
               }}
             >
-              {copied ? <Check /> : <Copy />}
+              {copied ? <MaterialCheck /> : <MaterialContentCopy />}
             </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
@@ -139,7 +137,7 @@ export const BlockAddons: Story = {
             notes.md
           </InputGroupText>
           <InputGroupButton className="ml-auto" size="icon-xs">
-            <HelpCircle />
+            <MaterialHelp />
           </InputGroupButton>
         </InputGroupAddon>
         <InputGroupTextarea placeholder="Write your expedition notes…" />
@@ -202,7 +200,7 @@ export const Loading: Story = {
       <InputGroup className="w-80" data-disabled="true">
         <InputGroupInput placeholder="Checking availability…" disabled />
         <InputGroupAddon align="inline-end">
-          <Loader2 className="animate-spin" />
+          <MaterialProgressActivity className="animate-spin" />
         </InputGroupAddon>
       </InputGroup>
     </div>

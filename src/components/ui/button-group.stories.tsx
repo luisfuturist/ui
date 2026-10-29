@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Copy, Minus, Plus } from 'lucide-react'
+import MaterialAdd from '~icons/material-symbols/add'
+import MaterialContentCopy from '~icons/material-symbols/content-copy'
+import MaterialRemove from '~icons/material-symbols/remove'
 
 import { Button } from './button'
 import {
@@ -72,11 +74,11 @@ export const WithText: Story = {
         </ButtonGroup>
         <ButtonGroup>
           <Button variant="outline" aria-label="Decrease">
-            <Minus />
+            <MaterialRemove />
           </Button>
           <ButtonGroupText>3</ButtonGroupText>
           <Button variant="outline" aria-label="Increase">
-            <Plus />
+            <MaterialAdd />
           </Button>
         </ButtonGroup>
       </div>
@@ -101,7 +103,7 @@ export const WithSeparator: Story = {
         <Button variant="outline">Save</Button>
         <ButtonGroupSeparator />
         <Button variant="outline" aria-label="Copy">
-          <Copy />
+          <MaterialContentCopy />
         </Button>
       </ButtonGroup>
     </div>

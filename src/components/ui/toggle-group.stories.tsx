@@ -1,12 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import {
-  AlignCenter,
-  AlignLeft,
-  AlignRight,
-  Bold,
-  Italic,
-  Underline,
-} from 'lucide-react'
+import MaterialFormatAlignCenter from '~icons/material-symbols/format-align-center'
+import MaterialFormatAlignLeft from '~icons/material-symbols/format-align-left'
+import MaterialFormatAlignRight from '~icons/material-symbols/format-align-right'
+import MaterialFormatBold from '~icons/material-symbols/format-bold'
+import MaterialFormatItalic from '~icons/material-symbols/format-italic'
+import MaterialFormatUnderlined from '~icons/material-symbols/format-underlined'
 
 import { ToggleGroup, ToggleGroupItem } from './toggle-group'
 
@@ -21,7 +19,10 @@ const meta = {
           + '`type="single"` allows one active item, `type="multiple"` '
           + 'allows several. `variant`/`size` propagate to items through '
           + 'context, and `spacing` controls the gap — `0` (default) '
-          + 'fuses items into one segmented control.',
+          + 'fuses items into one segmented control. Items share '
+          + '`toggleVariants`, so the interaction states match `Toggle`: '
+          + 'subtle `bg-foreground/10` hover tint, accent surface + ring '
+          + 'on keyboard focus, solid `bg-primary` when on.',
       },
     },
   },
@@ -79,13 +80,13 @@ type Story = StoryObj<typeof meta>
 const alignItems = (
   <>
     <ToggleGroupItem value="left" aria-label="Align left">
-      <AlignLeft />
+      <MaterialFormatAlignLeft />
     </ToggleGroupItem>
     <ToggleGroupItem value="center" aria-label="Align center">
-      <AlignCenter />
+      <MaterialFormatAlignCenter />
     </ToggleGroupItem>
     <ToggleGroupItem value="right" aria-label="Align right">
-      <AlignRight />
+      <MaterialFormatAlignRight />
     </ToggleGroupItem>
   </>
 )
@@ -113,13 +114,13 @@ export const Single: Story = {
     <div className="flex items-center justify-center p-8">
       <ToggleGroup type="single" variant="outline" defaultValue="center">
         <ToggleGroupItem value="left" aria-label="Align left">
-          <AlignLeft />
+          <MaterialFormatAlignLeft />
         </ToggleGroupItem>
         <ToggleGroupItem value="center" aria-label="Align center">
-          <AlignCenter />
+          <MaterialFormatAlignCenter />
         </ToggleGroupItem>
         <ToggleGroupItem value="right" aria-label="Align right">
-          <AlignRight />
+          <MaterialFormatAlignRight />
         </ToggleGroupItem>
       </ToggleGroup>
     </div>
@@ -131,13 +132,13 @@ export const Multiple: Story = {
     <div className="flex items-center justify-center p-8">
       <ToggleGroup type="multiple" variant="outline" defaultValue={['bold']}>
         <ToggleGroupItem value="bold" aria-label="Bold">
-          <Bold />
+          <MaterialFormatBold />
         </ToggleGroupItem>
         <ToggleGroupItem value="italic" aria-label="Italic">
-          <Italic />
+          <MaterialFormatItalic />
         </ToggleGroupItem>
         <ToggleGroupItem value="underline" aria-label="Underline">
-          <Underline />
+          <MaterialFormatUnderlined />
         </ToggleGroupItem>
       </ToggleGroup>
     </div>
@@ -165,10 +166,10 @@ export const Sizes: Story = {
           defaultValue="bold"
         >
           <ToggleGroupItem value="bold" aria-label="Bold">
-            <Bold />
+            <MaterialFormatBold />
           </ToggleGroupItem>
           <ToggleGroupItem value="italic" aria-label="Italic">
-            <Italic />
+            <MaterialFormatItalic />
           </ToggleGroupItem>
         </ToggleGroup>
       ))}
@@ -186,13 +187,13 @@ export const Spaced: Story = {
         defaultValue="center"
       >
         <ToggleGroupItem value="left" aria-label="Align left">
-          <AlignLeft />
+          <MaterialFormatAlignLeft />
         </ToggleGroupItem>
         <ToggleGroupItem value="center" aria-label="Align center">
-          <AlignCenter />
+          <MaterialFormatAlignCenter />
         </ToggleGroupItem>
         <ToggleGroupItem value="right" aria-label="Align right">
-          <AlignRight />
+          <MaterialFormatAlignRight />
         </ToggleGroupItem>
       </ToggleGroup>
     </div>
@@ -213,13 +214,13 @@ export const Disabled: Story = {
     <div className="flex items-center justify-center gap-6 p-8">
       <ToggleGroup type="single" variant="outline" defaultValue="bold">
         <ToggleGroupItem value="bold" aria-label="Bold">
-          <Bold />
+          <MaterialFormatBold />
         </ToggleGroupItem>
         <ToggleGroupItem value="italic" aria-label="Italic" disabled>
-          <Italic />
+          <MaterialFormatItalic />
         </ToggleGroupItem>
         <ToggleGroupItem value="underline" aria-label="Underline">
-          <Underline />
+          <MaterialFormatUnderlined />
         </ToggleGroupItem>
       </ToggleGroup>
       <ToggleGroup type="single" variant="outline" disabled>

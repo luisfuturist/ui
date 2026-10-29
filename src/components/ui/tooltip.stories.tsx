@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { InfoIcon } from 'lucide-react'
+import MaterialInfo from '~icons/material-symbols/info'
 
 import { Button } from './button'
 import {
@@ -114,7 +114,7 @@ export const IconTrigger: Story = {
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="outline" className="p-2">
-            <InfoIcon />
+            <MaterialInfo />
             <span className="sr-only">Info</span>
           </Button>
         </TooltipTrigger>

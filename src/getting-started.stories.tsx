@@ -46,7 +46,7 @@ function Code({ children }: { children: ReactNode }) {
   )
 }
 
-export const Overview: Story = {
+export const Setup: Story = {
   render: () => (
     <div className="bg-background text-foreground">
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-10 px-6 py-12">
@@ -55,7 +55,7 @@ export const Overview: Story = {
             LFDS · luisfuturist design system
           </p>
           <h1 className="font-mono text-3xl font-semibold tracking-tight sm:text-4xl">
-            @luisfuturist/ui
+            Getting started
           </h1>
           <p className="max-w-prose text-sm text-muted-foreground">
             LFDS — luisfuturist's React component library (shadcn-style).
@@ -158,6 +158,29 @@ export default defineConfig({
           </Code>
 
           <p>
+            <strong>tw-animate-css</strong>
+            {' '}
+            — overlay components use
+            {' '}
+            <code className="font-mono">animate-in</code>
+            /
+            <code className="font-mono">fade-in-*</code>
+            /
+            <code className="font-mono">zoom-*</code>
+            /
+            <code className="font-mono">slide-in-from-*</code>
+            {' '}
+            utilities. Those ship in
+            {' '}
+            <code className="font-mono">tw-animate-css</code>
+            {' '}
+            (the Tailwind v4 port of tailwindcss-animate), not in core
+            Tailwind — without it panels render fine but skip their
+            enter/exit motion:
+          </p>
+          <Code>{'pnpm add tw-animate-css'}</Code>
+
+          <p>
             <strong>Styles</strong>
             {' '}
             — in the consumer's global CSS, after
@@ -167,6 +190,7 @@ export default defineConfig({
           </p>
           <Code>
 {`@import 'tailwindcss';
+@import 'tw-animate-css';
 @import '@luisfuturist/ui/styles.css';
 @source "../node_modules/@luisfuturist/ui";`}
           </Code>
@@ -182,6 +206,50 @@ export default defineConfig({
             {' '}
             during automatic
             content detection otherwise.
+          </p>
+
+          <p>
+            <strong>Fonts</strong>
+            {' '}
+            —
+            {' '}
+            <code className="font-mono">styles.css</code>
+            {' '}
+            defines
+            {' '}
+            <code className="font-mono">--font-display</code>
+            /
+            <code className="font-mono">--font-sans</code>
+            /
+            <code className="font-mono">--font-mono</code>
+            /
+            <code className="font-mono">--font-flex</code>
+            {' '}
+            tokens pointing at the Roboto family, but doesn't fetch the
+            faces — load them once in your HTML head:
+          </p>
+          <Code>
+{`<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+/>`}
+          </Code>
+          <p>
+            Set
+            {' '}
+            <code className="font-mono">font-sans</code>
+            {' '}
+            (or
+            {' '}
+            <code className="font-mono">font-family: var(--font-sans)</code>
+            ) on
+            {' '}
+            <code className="font-mono">html</code>
+            /
+            <code className="font-mono">body</code>
+            {' '}
+            for the site default.
           </p>
 
           <p>

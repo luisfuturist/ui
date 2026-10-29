@@ -2,11 +2,9 @@
 
 import * as React from "react"
 import { cn } from "cn"
-import {
-  ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from "lucide-react"
+import MaterialChevronLeft from '~icons/material-symbols/chevron-left'
+import MaterialChevronRight from '~icons/material-symbols/chevron-right'
+import MaterialKeyboardArrowDown from '~icons/material-symbols/keyboard-arrow-down'
 import {
   DayPicker,
   getDefaultClassNames,
@@ -145,13 +143,13 @@ function Calendar({
         Chevron: ({ className, orientation, ...props }) => {
           if (orientation === "left") {
             return (
-              <ChevronLeftIcon className={cn("size-4", className)} {...props} />
+              <MaterialChevronLeft className={cn("size-4", className)} {...props} />
             )
           }
 
           if (orientation === "right") {
             return (
-              <ChevronRightIcon
+              <MaterialChevronRight
                 className={cn("size-4", className)}
                 {...props}
               />
@@ -159,7 +157,7 @@ function Calendar({
           }
 
           return (
-            <ChevronDownIcon className={cn("size-4", className)} {...props} />
+            <MaterialKeyboardArrowDown className={cn("size-4", className)} {...props} />
           )
         },
         DayButton: CalendarDayButton,

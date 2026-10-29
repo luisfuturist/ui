@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { AtSign, Globe, Mail } from 'lucide-react'
+import MaterialAlternateEmail from '~icons/material-symbols/alternate-email'
+import MaterialLanguage from '~icons/material-symbols/language'
+import MaterialMail from '~icons/material-symbols/mail'
 
 import { SiteFooter } from './site-footer'
 
@@ -55,9 +57,9 @@ const columns = [
 ]
 
 const socials = [
-  { label: 'GitHub', href: 'https://github.com/luisfuturist', icon: <Globe className="size-4" /> },
-  { label: '@luisfuturist', href: 'https://x.com/luisfuturist', icon: <AtSign className="size-4" /> },
-  { label: 'Email', href: 'mailto:luisfuturist@gmail.com', icon: <Mail className="size-4" /> },
+  { label: 'GitHub', href: 'https://github.com/luisfuturist', icon: <MaterialLanguage className="size-4" /> },
+  { label: '@luisfuturist', href: 'https://x.com/luisfuturist', icon: <MaterialAlternateEmail className="size-4" /> },
+  { label: 'Email', href: 'mailto:luisfuturist@gmail.com', icon: <MaterialMail className="size-4" /> },
 ]
 
 export const Default: Story = {

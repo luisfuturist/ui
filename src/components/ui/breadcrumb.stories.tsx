@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { SlashIcon } from 'lucide-react'
+import MaterialAsterisk from '~icons/material-symbols/asterisk'
 
 import {
   Breadcrumb,
@@ -115,13 +115,13 @@ export const CustomSeparator: Story = {
             <BreadcrumbLink href="#">Home</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator>
-            <SlashIcon />
+            <MaterialAsterisk />
           </BreadcrumbSeparator>
           <BreadcrumbItem>
             <BreadcrumbLink href="#library">Library</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator>
-            <SlashIcon />
+            <MaterialAsterisk />
           </BreadcrumbSeparator>
           <BreadcrumbItem>
             <BreadcrumbPage>Star charts</BreadcrumbPage>
@@ -135,8 +135,8 @@ export const CustomSeparator: Story = {
       description: {
         story:
           '`BreadcrumbSeparator` accepts any child — `BreadcrumbEllipsis` '
-          + 'or a custom icon like `SlashIcon` replaces the default '
-          + 'chevron.',
+          + 'or a custom icon like `MaterialAsterisk` replaces the '
+          + 'default chevron.',
       },
     },
   },

@@ -1,12 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import {
-  CalculatorIcon,
-  CalendarIcon,
-  CreditCardIcon,
-  SettingsIcon,
-  SmileIcon,
-  UserIcon,
-} from 'lucide-react'
+import MaterialCalculate from '~icons/material-symbols/calculate'
+import MaterialCalendarToday from '~icons/material-symbols/calendar-today'
+import MaterialCreditCard from '~icons/material-symbols/credit-card'
+import MaterialMood from '~icons/material-symbols/mood'
+import MaterialPerson from '~icons/material-symbols/person'
+import MaterialSettings from '~icons/material-symbols/settings'
 import { useEffect, useState } from 'react'
 
 import { Button } from './button'
@@ -47,32 +45,32 @@ function CommandItems() {
     <>
       <CommandGroup heading="Suggestions">
         <CommandItem>
-          <CalendarIcon />
+          <MaterialCalendarToday />
           Calendar
         </CommandItem>
         <CommandItem>
-          <SmileIcon />
+          <MaterialMood />
           Search Emoji
         </CommandItem>
         <CommandItem disabled>
-          <CalculatorIcon />
+          <MaterialCalculate />
           Calculator
         </CommandItem>
       </CommandGroup>
       <CommandSeparator />
       <CommandGroup heading="Settings">
         <CommandItem>
-          <UserIcon />
+          <MaterialPerson />
           Profile
           <CommandShortcut>⌘P</CommandShortcut>
         </CommandItem>
         <CommandItem>
-          <CreditCardIcon />
+          <MaterialCreditCard />
           Billing
           <CommandShortcut>⌘B</CommandShortcut>
         </CommandItem>
         <CommandItem>
-          <SettingsIcon />
+          <MaterialSettings />
           Settings
           <CommandShortcut>⌘S</CommandShortcut>
         </CommandItem>

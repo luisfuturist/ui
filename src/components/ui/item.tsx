@@ -77,7 +77,10 @@ const itemMediaVariants = cva(
     variants: {
       variant: {
         default: "bg-transparent",
-        icon: "size-8 rounded-sm border bg-muted [&_svg:not([class*='size-'])]:size-4",
+        // Icon chip: card surface + foreground keyline with the LFDS
+        // signature tr/bl corner clips (same cut as `tr-clip bl-clip`
+        // on augmented surfaces, done in pure CSS so it always renders).
+        icon: "size-8 border border-foreground bg-card text-foreground [clip-path:polygon(0_0,calc(100%_-_8px)_0,100%_8px,100%_100%,8px_100%,0_calc(100%_-_8px))] [&_svg:not([class*='size-'])]:size-4",
         image:
           "size-10 overflow-hidden rounded-sm [&_img]:size-full [&_img]:object-cover",
       },

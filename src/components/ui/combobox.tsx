@@ -1,7 +1,9 @@
 import * as React from "react"
 import { Combobox as ComboboxPrimitive } from "@base-ui/react"
 import { cn } from "cn"
-import { CheckIcon, ChevronDownIcon, XIcon } from "lucide-react"
+import MaterialCheck from '~icons/material-symbols/check'
+import MaterialClose from '~icons/material-symbols/close'
+import MaterialKeyboardArrowDown from '~icons/material-symbols/keyboard-arrow-down'
 
 import { Button } from "./button"
 import {
@@ -30,7 +32,7 @@ function ComboboxTrigger({
       {...props}
     >
       {children}
-      <ChevronDownIcon
+      <MaterialKeyboardArrowDown
         data-slot="combobox-trigger-icon"
         className="pointer-events-none size-4 text-muted-foreground"
       />
@@ -46,7 +48,7 @@ function ComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props) {
       className={cn(className)}
       {...props}
     >
-      <XIcon className="pointer-events-none" />
+      <MaterialClose className="pointer-events-none" />
     </ComboboxPrimitive.Clear>
   )
 }
@@ -161,7 +163,7 @@ function ComboboxItem({
           <span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center" />
         }
       >
-        <CheckIcon className="pointer-events-none size-4 pointer-coarse:size-5" />
+        <MaterialCheck className="pointer-events-none size-4 pointer-coarse:size-5" />
       </ComboboxPrimitive.ItemIndicator>
     </ComboboxPrimitive.Item>
   )
@@ -234,7 +236,7 @@ function ComboboxChips({
     <ComboboxPrimitive.Chips
       data-slot="combobox-chips"
       className={cn(
-        "flex min-h-9 flex-wrap items-center gap-1.5 rounded-md border border-input bg-transparent bg-clip-padding px-2.5 py-1.5 text-sm shadow-xs transition-[color,box-shadow] focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/50 has-aria-invalid:border-destructive has-aria-invalid:ring-[3px] has-aria-invalid:ring-destructive/20 has-data-[slot=combobox-chip]:px-1.5 dark:bg-input/30 dark:has-aria-invalid:border-destructive/50 dark:has-aria-invalid:ring-destructive/40",
+        "flex min-h-9 flex-wrap items-center gap-1.5 rounded-md border border-input bg-transparent bg-clip-padding px-2.5 py-1.5 text-sm shadow-xs transition-[color,box-shadow] focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/50 has-aria-invalid:border-destructive has-aria-invalid:ring-[3px] has-aria-invalid:ring-destructive/20 has-data-[slot=combobox-chip]:px-1.5 dark:bg-background dark:has-aria-invalid:border-destructive/50 dark:has-aria-invalid:ring-destructive/40",
         className
       )}
       {...props}
@@ -266,7 +268,7 @@ function ComboboxChip({
           className="-ml-1 text-background/70 hover:bg-background/20 hover:text-background focus-visible:ring-background/60"
           data-slot="combobox-chip-remove"
         >
-          <XIcon className="pointer-events-none" />
+          <MaterialClose className="pointer-events-none" />
         </ComboboxPrimitive.ChipRemove>
       )}
     </ComboboxPrimitive.Chip>

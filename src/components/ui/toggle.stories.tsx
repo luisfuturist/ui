@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Bold, Italic, Star } from 'lucide-react'
+import MaterialFormatBold from '~icons/material-symbols/format-bold'
+import MaterialFormatItalic from '~icons/material-symbols/format-italic'
+import MaterialStar from '~icons/material-symbols/star'
 
 import { Toggle } from './toggle'
 
@@ -14,7 +16,10 @@ const meta = {
           + 'styled by a real cva map — unlike `Button`, `variant` '
           + '(`"default"`/`"outline"`) and `size` (`"sm"`/`"default"`/'
           + '`"lg"`) apply visible styles. Pressed state is exposed as '
-          + '`data-state="on"`.',
+          + '`data-state="on"`. Interaction states are deliberately '
+          + 'distinct: hover paints a subtle `bg-foreground/10` tint, '
+          + 'keyboard focus inverts to the orange accent surface plus '
+          + 'ring, and pressed/on commits to solid `bg-primary`.',
       },
     },
   },
@@ -68,7 +73,7 @@ export const Playground: Story = {
   render: args => (
     <div className="flex items-center justify-center p-8">
       <Toggle {...args} aria-label="Toggle bold">
-        <Bold />
+        <MaterialFormatBold />
       </Toggle>
     </div>
   ),
@@ -78,16 +83,16 @@ export const Variants: Story = {
   render: () => (
     <div className="flex items-center justify-center gap-4 p-8">
       <Toggle aria-label="Toggle italic (default)">
-        <Italic />
+        <MaterialFormatItalic />
       </Toggle>
       <Toggle variant="outline" aria-label="Toggle italic (outline)">
-        <Italic />
+        <MaterialFormatItalic />
       </Toggle>
       <Toggle defaultPressed aria-label="Pressed (default)">
-        <Star />
+        <MaterialStar />
       </Toggle>
       <Toggle variant="outline" defaultPressed aria-label="Pressed (outline)">
-        <Star />
+        <MaterialStar />
       </Toggle>
     </div>
   ),
@@ -97,13 +102,13 @@ export const Sizes: Story = {
   render: () => (
     <div className="flex items-center justify-center gap-4 p-8">
       <Toggle size="sm" variant="outline" aria-label="Small">
-        <Bold />
+        <MaterialFormatBold />
       </Toggle>
       <Toggle size="default" variant="outline" aria-label="Default">
-        <Bold />
+        <MaterialFormatBold />
       </Toggle>
       <Toggle size="lg" variant="outline" aria-label="Large">
-        <Bold />
+        <MaterialFormatBold />
       </Toggle>
     </div>
   ),
@@ -113,11 +118,11 @@ export const WithText: Story = {
   render: () => (
     <div className="flex items-center justify-center gap-4 p-8">
       <Toggle variant="outline" defaultPressed>
-        <Italic />
+        <MaterialFormatItalic />
         Italic
       </Toggle>
       <Toggle variant="outline">
-        <Star />
+        <MaterialStar />
         Favorite
       </Toggle>
     </div>
@@ -128,10 +133,10 @@ export const Disabled: Story = {
   render: () => (
     <div className="flex items-center justify-center gap-4 p-8">
       <Toggle disabled aria-label="Disabled off">
-        <Bold />
+        <MaterialFormatBold />
       </Toggle>
       <Toggle disabled defaultPressed variant="outline" aria-label="Disabled on">
-        <Bold />
+        <MaterialFormatBold />
       </Toggle>
     </div>
   ),

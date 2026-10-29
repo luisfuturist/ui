@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { CheckCircle2, Star } from 'lucide-react'
+import MaterialCheckCircle from '~icons/material-symbols/check-circle'
+import MaterialStar from '~icons/material-symbols/star'
 
 import { Badge } from './badge'
 
@@ -78,15 +79,15 @@ export const WithIcons: Story = {
   render: () => (
     <div className="flex items-center justify-center gap-3 p-8">
       <Badge>
-        <CheckCircle2 />
+        <MaterialCheckCircle />
         Verified
       </Badge>
       <Badge variant="secondary">
-        <Star />
+        <MaterialStar />
         Featured
       </Badge>
       <Badge variant="outline">
-        <CheckCircle2 />
+        <MaterialCheckCircle />
         Passing
       </Badge>
     </div>

@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { CircleAlert, Info, Terminal } from 'lucide-react'
+import MaterialError from '~icons/material-symbols/error'
+import MaterialInfo from '~icons/material-symbols/info'
+import MaterialTerminal from '~icons/material-symbols/terminal'
 
 import { Alert, AlertDescription, AlertTitle } from './alert'
 
@@ -43,7 +45,7 @@ export const Playground: Story = {
   render: args => (
     <div className="flex items-center justify-center p-8">
       <Alert className="w-96" {...args}>
-        <Terminal />
+        <MaterialTerminal />
         <AlertTitle>Heads up!</AlertTitle>
         <AlertDescription>
           You can add components to your expedition using the CLI.
@@ -58,14 +60,14 @@ export const Variants: Story = {
     <div className="flex items-center justify-center p-8">
       <div className="grid w-96 gap-4">
         <Alert>
-          <Info />
+          <MaterialInfo />
           <AlertTitle>New route available</AlertTitle>
           <AlertDescription>
             The northern pass has reopened for the season.
           </AlertDescription>
         </Alert>
         <Alert variant="destructive">
-          <CircleAlert />
+          <MaterialError />
           <AlertTitle>Expedition cancelled</AlertTitle>
           <AlertDescription>
             Storm warnings forced this departure to be cancelled. Your
@@ -122,7 +124,7 @@ export const LongTitle: Story = {
   render: () => (
     <div className="flex items-center justify-center p-8">
       <Alert className="w-96">
-        <Info />
+        <MaterialInfo />
         <AlertTitle>
           A very long alert title that keeps going to verify the
           line-clamp-1 truncation applied by AlertTitle

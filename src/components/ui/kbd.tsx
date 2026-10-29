@@ -9,8 +9,8 @@ function Kbd({ className, ...props }: React.ComponentProps<"kbd">) {
         "[&_svg:not([class*='size-'])]:size-3",
         // Highlighted items paint the accent surface — the keycap inverts
         // to match (cmdk `data-selected`, Radix/Base UI `data-highlighted`).
-        "[[data-selected=true]_&]:border-accent [[data-selected=true]_&]:bg-accent-foreground [[data-selected=true]_&]:text-accent",
-        "[[data-highlighted]_&]:border-accent [[data-highlighted]_&]:bg-accent-foreground [[data-highlighted]_&]:text-accent",
+        "[[data-selected=true]_&]:border-accent-foreground [[data-selected=true]_&]:bg-accent [[data-selected=true]_&]:text-accent-foreground",
+        "[[data-highlighted]_&]:border-accent-foreground [[data-highlighted]_&]:bg-accent [[data-highlighted]_&]:text-accent-foreground",
         // Inverted keycap on the inverted tooltip surface.
         "[[data-slot=tooltip-content]_&]:border-foreground [[data-slot=tooltip-content]_&]:bg-background [[data-slot=tooltip-content]_&]:text-foreground",
         className

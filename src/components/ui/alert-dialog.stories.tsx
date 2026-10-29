@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Trash2Icon } from 'lucide-react'
+import MaterialDelete from '~icons/material-symbols/delete'
 import { useState } from 'react'
 
 import {
@@ -77,7 +77,7 @@ export const WithMedia: Story = {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogMedia>
-              <Trash2Icon />
+              <MaterialDelete />
             </AlertDialogMedia>
             <AlertDialogTitle>Empty the archive?</AlertDialogTitle>
             <AlertDialogDescription>

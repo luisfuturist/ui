@@ -33,7 +33,9 @@ const emptyMediaVariants = cva(
     variants: {
       variant: {
         default: "bg-transparent",
-        icon: "flex size-10 shrink-0 items-center justify-center rounded-lg bg-muted text-foreground [&_svg:not([class*='size-'])]:size-6",
+        // Icon chip: same container language as `ItemMedia` — card
+        // surface, foreground keyline, tr/bl corner clips — scaled up.
+        icon: "flex size-10 shrink-0 items-center justify-center border border-foreground bg-card text-foreground [clip-path:polygon(0_0,calc(100%_-_10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%_-_10px))] [&_svg:not([class*='size-'])]:size-6",
       },
     },
     defaultVariants: {
