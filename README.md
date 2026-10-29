@@ -17,7 +17,7 @@ pnpm add github:luisfuturist/ui
 
 This package is designed for **Vite-based projects** (e.g. Astro) using **Tailwind CSS v4** and **React 19**.
 
-1. **unplugin-icons** — `dropdown-menu` imports `~icons/material-symbols/*` virtual modules. In the consumer's Vite config add the plugin with the JSX compiler, install `@iconify/json`, and add the ambient types to your tsconfig:
+1. **unplugin-icons** — Material Symbols icons are used throughout the library (~20 component files import `~icons/material-symbols/*` virtual modules). In the consumer's Vite config add the plugin with the JSX compiler, install `@iconify/json`, and add the ambient types to your tsconfig:
 
    ```ts
    // vite.config.ts (or astro.config.* integrations)
@@ -55,9 +55,12 @@ This package is designed for **Vite-based projects** (e.g. Astro) using **Tailwi
 
 ## Augmented corners
 
-LFDS surfaces are squared by default. Panel/floating components (cards,
-dialogs, sheets, drawers, popovers, menus, tooltips, the command palette…) also
-carry `data-augmented-ui` attributes — for the clipped "augmented" corner look,
+LFDS surfaces are squared by default. Panel/floating components (card, alert,
+alert-dialog, dialog, sheet, drawer, popover, hover-card) carry
+`data-augmented-ui` attributes, `Button` ships augmented variants
+(`aug-button`, `aug-button-outline`, `aug-button-inverted`), and the
+`ContactCTA` block is augmented too — menus, the command palette, select,
+combobox and tooltip stay square. For the clipped "augmented" corner look,
 consumers install and import `augmented-ui` once:
 
 ```sh
@@ -80,7 +83,7 @@ import { Button, Toaster } from '@luisfuturist/ui'
 export function App() {
   return (
     <>
-      <Button data-augmented-ui="tr-clip bl-clip" className="aug-button">
+      <Button data-augmented-ui="tr-clip bl-clip both" className="aug-button">
         Click me
       </Button>
       <Toaster />

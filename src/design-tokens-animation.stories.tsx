@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Progress } from './components/ui/progress'
+import { PageHeader, Section } from './docs/primitives'
 
 const meta = {
   title: 'Design Tokens/Animation',
@@ -31,22 +32,37 @@ const patterns = [
   {
     name: 'Enter',
     cls: 'animate-in fade-in-0 zoom-in-95',
-    use: 'data-[state=open] on popovers, menus, dialogs',
+    use: 'data-[state=open]/data-open on popovers, menus, dialogs',
   },
   {
     name: 'Exit',
     cls: 'animate-out fade-out-0 zoom-out-95',
-    use: 'data-[state=closed] on the same panels',
+    use: 'data-[state=closed]/data-closed on the same panels',
   },
   {
     name: 'Side slide',
     cls: 'slide-in-from-{top,right,bottom,left}-2',
-    use: 'data-[side=*] on floating panels',
+    use: 'data-[side=*] on floating panels — 2-step offset from the trigger edge',
   },
   {
-    name: 'Menus',
+    name: 'Sheet slide',
+    cls: 'slide-in-from-{side} / slide-out-to-{side}',
+    use: 'Sheet content travels the full edge distance',
+  },
+  {
+    name: 'Nav menu',
+    cls: 'slide-{in,out}-{from,to}-{left,right}-52',
+    use: 'data-[motion=from-*/to-*] on NavigationMenu viewport content',
+  },
+  {
+    name: 'Accordion',
+    cls: 'animate-accordion-down / animate-accordion-up',
+    use: 'AccordionContent open/close on data-[state=*]',
+  },
+  {
+    name: 'Combobox',
     cls: 'duration-100',
-    use: 'Dropdowns, selects, context menus',
+    use: 'The only panel with an explicit duration — menus set none',
   },
   {
     name: 'Dialogs',
@@ -55,8 +71,28 @@ const patterns = [
   },
   {
     name: 'Sheet',
-    cls: 'duration-300 / duration-500',
-    use: 'Sheet close / open, ease-in-out',
+    cls: 'duration-500 / duration-300',
+    use: 'Sheet open / close, ease-in-out',
+  },
+  {
+    name: 'Drawer',
+    cls: 'vaul-driven transform',
+    use: 'Drag + snap motion comes from vaul inline styles, not classes; the overlay uses animate-in fade-in-0',
+  },
+  {
+    name: 'Skeleton',
+    cls: 'animate-pulse',
+    use: 'Skeleton loading placeholder',
+  },
+  {
+    name: 'Spinner',
+    cls: 'animate-spin',
+    use: 'Spinner icon',
+  },
+  {
+    name: 'Caret',
+    cls: 'animate-caret-blink',
+    use: 'InputOTP fake caret',
   },
   {
     name: 'Hover/focus',
@@ -68,6 +104,13 @@ const patterns = [
 export const Tokens: Story = {
   render: () => (
     <div className="flex flex-col gap-10 bg-background p-6 text-foreground">
+      <PageHeader eyebrow="Design tokens" title="Animation">
+        One token — the indeterminate
+        {' '}
+        <code className="font-mono">Progress</code>
+        {' '}
+        sweep — plus the motion conventions the components actually use.
+      </PageHeader>
       <section className="flex flex-col gap-3">
         <h3 className="text-sm font-medium">
           <code>--animate-progress</code>
@@ -107,37 +150,40 @@ export const Tokens: Story = {
           ))}
         </div>
       </section>
-      <section className="flex flex-col gap-1">
-        <h3 className="text-sm font-medium">Motion patterns</h3>
+      <Section title="Motion patterns" className="gap-1">
         <p className="max-w-prose text-sm">
           Not tokens — conventions. Panels animate via radix
           {' '}
           <code>data-state</code>
           /
-          {' '}
           <code>data-side</code>
           {' '}
           attributes with
           {' '}
           <code>tw-animate-css</code>
           {' '}
-          classes (the Tailwind v4 port of tailwindcss-animate — the
-          consumer imports it, LFDS doesn't ship it); components use
+          classes (the Tailwind v4 port of tailwindcss-animate —
+          shipped inside
+          {' '}
+          <code>styles.css</code>
+          , consumers don't install it); components use
           plain transitions for hover/focus.
         </p>
         {patterns.map(pattern => (
           <div
             key={pattern.name}
-            className="flex items-baseline gap-4 border-t border-foreground/15 py-3"
+            className="grid grid-cols-[7rem_minmax(0,5fr)_minmax(0,6fr)] items-baseline gap-x-4 border-t border-foreground/15 py-3"
           >
-            <code className="w-32 shrink-0 text-xs opacity-60">
+            <code className="text-xs opacity-60">
               {pattern.name}
             </code>
-            <code className="flex-1 text-xs">{pattern.cls}</code>
-            <span className="w-72 text-xs opacity-70">{pattern.use}</span>
+            <code className="min-w-0 text-xs wrap-break-word">
+              {pattern.cls}
+            </code>
+            <span className="min-w-0 text-xs opacity-70">{pattern.use}</span>
           </div>
         ))}
-      </section>
+      </Section>
     </div>
   ),
 }

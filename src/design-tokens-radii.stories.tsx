@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { PageHeader, Section } from './docs/primitives'
+
 const meta = {
   title: 'Design Tokens/Radii',
   parameters: {
@@ -19,136 +21,136 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const radii = [
-  'radius-xs',
-  'radius-sm',
-  'radius-md',
-  'radius-lg',
-  'radius-xl',
-  'radius-2xl',
-  'radius-3xl',
-]
+const radii = ['radius-sm', 'radius-md', 'radius-2xl']
 
 export const Scale: Story = {
   render: () => (
-    <div className="flex flex-col gap-6 bg-background p-6 text-foreground">
-      <p className="max-w-prose text-sm">
-        Every
+    <div className="flex flex-col gap-8 bg-background p-6 text-foreground">
+      <PageHeader eyebrow="Design tokens" title="Radii">
+        Squared by design — every
         {' '}
-        <code>--radius-*</code>
-        {' '}
-        in
-        {' '}
-        <code>lfds.css</code>
+        <code className="font-mono">--radius-*</code>
         {' '}
         resolves to
         {' '}
-        <code>var(--radius)</code>
+        <code className="font-mono">var(--radius)</code>
         , which is
         {' '}
-        <code>0</code>
-        {' '}
-        — intentional. The boxes below apply the utilities; none of them
-        can produce a rounded corner.
-      </p>
-      <div className="flex flex-wrap items-end gap-6">
-        {radii.map(name => (
-          <div key={name} className="flex flex-col items-start gap-2">
-            <div
-              className="size-16"
-              style={{
-                borderRadius: `var(--${name})`,
-                border: '2px solid var(--accent)',
-                backgroundColor: 'var(--background-secondary)',
-              }}
-            />
-            <code className="text-xs">--{name}</code>
-            <span className="text-xs opacity-60">→ 0</span>
-          </div>
-        ))}
-      </div>
+        <code className="font-mono">0</code>
+        . Corner shaping comes from aug clips instead.
+      </PageHeader>
       <section className="flex flex-col gap-3">
-        <h3 className="text-sm font-medium">Corner shaping: aug clips</h3>
+        <p className="max-w-prose text-sm">
+          All seven
+          {' '}
+          <code>--radius-*</code>
+          {' '}
+          utilities in
+          {' '}
+          <code>lfds.css</code>
+          {' '}
+          map to
+          {' '}
+          <code>var(--radius)</code>
+          {' '}
+          — intentional, three shown here (the other four are identical).
+          The boxes apply the utilities; none of them can produce a rounded
+          corner.
+        </p>
+        <div className="flex flex-wrap items-end gap-6">
+          {radii.map(name => (
+            <div key={name} className="flex flex-col items-start gap-2">
+              <div
+                className="size-16"
+                style={{
+                  borderRadius: `var(--${name})`,
+                  border: '2px solid var(--accent)',
+                  backgroundColor: 'var(--background-secondary)',
+                }}
+              />
+              <code className="text-xs">--{name}</code>
+              <span className="text-xs opacity-60">→ 0</span>
+            </div>
+          ))}
+        </div>
+      </section>
+      <Section title="Corner shaping: aug clips">
         <p className="max-w-prose text-sm">
           Instead of radius, LFDS surfaces get clipped corners from
           {' '}
           <code>augmented-ui</code>
-          :
+          . The demos below use the real
           {' '}
-          <code>.aug-surface</code>
+          <code>.aug-*</code>
           {' '}
-          cuts all four corners at
+          classes (the engine is loaded in this docs
+          site): a plain
           {' '}
-          <code>12px</code>
+          <code>border</code>
           {' '}
-          (
-          <code>--aug-tl1/tr1/bl1/br1</code>
-          ),
-          {' '}
-          <code>.aug-surface-sm</code>
-          {' '}
-          at
-          {' '}
-          <code>8px</code>
-          , and
-          {' '}
-          <code>.aug-button</code>
-          {' '}
-          cuts only
-          {' '}
-          <code>tr/bl</code>
-          {' '}
-          at
-          {' '}
-          <code>12px</code>
-          . Rendered here with equivalent
+          on a
           {' '}
           <code>clip-path</code>
           {' '}
-          polygons.
+          element gets clipped away, so aug draws the border ring on its own
+          clipped
+          {' '}
+          <code>::after</code>
+          {' '}
+          layer — the
+          {' '}
+          <code>outline</code>
+          {' '}
+          demo shows the ring following the contour.
         </p>
         <div className="flex flex-wrap items-end gap-6">
           <div className="flex flex-col items-start gap-2">
             <div
-              className="h-16 w-24"
-              style={{
-                clipPath:
-                  'polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px)',
-                backgroundColor: 'var(--popover)',
-                border: '1px solid var(--border)',
-              }}
+              data-augmented-ui="tl-clip tr-clip bl-clip br-clip both"
+              className="aug-surface h-16 w-24"
             />
             <code className="text-xs">.aug-surface</code>
             <span className="text-xs opacity-60">all corners 12px</span>
           </div>
           <div className="flex flex-col items-start gap-2">
             <div
-              className="h-16 w-24"
-              style={{
-                clipPath:
-                  'polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px)',
-                backgroundColor: 'var(--popover)',
-                border: '1px solid var(--border)',
-              }}
+              data-augmented-ui="tl-clip tr-clip bl-clip br-clip both"
+              className="aug-surface aug-surface-sm h-16 w-24"
             />
             <code className="text-xs">.aug-surface-sm</code>
             <span className="text-xs opacity-60">all corners 8px</span>
           </div>
           <div className="flex flex-col items-start gap-2">
             <div
-              className="h-16 w-24"
-              style={{
-                clipPath:
-                  'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px), 0 0)',
-                backgroundColor: 'var(--background-secondary)',
-                border: '1px solid var(--border)',
-              }}
+              data-augmented-ui="tr-clip bl-clip both"
+              className="aug-button-outline h-16 w-24"
             />
-            <code className="text-xs">.aug-button</code>
-            <span className="text-xs opacity-60">tr + bl 12px</span>
+            <code className="text-xs">.aug-button-outline</code>
+            <span className="text-xs opacity-60">tr + bl 12px, fg ring</span>
+          </div>
+          <div className="flex flex-col items-start gap-2">
+            <div
+              data-augmented-ui="tr-clip bl-clip both"
+              className="aug-button-inverted h-16 w-24"
+            />
+            <code className="text-xs">.aug-button-inverted</code>
+            <span className="text-xs opacity-60">tr + bl 12px, fg inlay</span>
           </div>
         </div>
-      </section>
+        <p className="max-w-prose text-sm">
+          Full attribute patterns, class inventory and the component
+          coverage matrix live on
+          {' '}
+          <a
+            className="text-link-primary underline underline-offset-4 hover:text-link-primary-hover"
+            href="?path=/docs/design-tokens-augmented--docs"
+            target="_top"
+          >
+            Design Tokens/Augmented
+          </a>
+          .
+        </p>
+      </Section>
     </div>
   ),
 }

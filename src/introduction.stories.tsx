@@ -15,6 +15,7 @@ import { Kbd, KbdGroup } from './components/ui/kbd'
 import { Label } from './components/ui/label'
 import { Progress } from './components/ui/progress'
 import { Switch } from './components/ui/switch'
+import { Swatch } from './docs/primitives'
 
 const meta = {
   title: 'Introduction/Overview',
@@ -46,21 +47,6 @@ function Section({ title, children }: {
       </h2>
       {children}
     </section>
-  )
-}
-
-function Swatch({ name }: { name: string }) {
-  return (
-    <div className="flex flex-col gap-1.5">
-      <div
-        className="h-20 w-full"
-        style={{
-          backgroundColor: `var(--${name})`,
-          border: '1px solid var(--gray-2)',
-        }}
-      />
-      <code className="font-mono text-xs">--{name}</code>
-    </div>
   )
 }
 
@@ -108,15 +94,32 @@ export const DesignLanguage: Story = {
               {' '}
               <em>augmented</em>
               {' '}
-              corners on every panel and button. Ships the full shadcn
+              corners on the carriers that opt in: cards, alerts, dialogs,
+              sheets, drawers, popovers, hover-cards, the aug-button
+              variants and the ContactCTA block (menus, tooltips, command,
+              select and combobox stay square). Ships the full shadcn
               component catalog plus page-level blocks, re-exported from
               {' '}
               <code className="font-mono">@luisfuturist/ui</code>
               .
             </p>
             <div className="flex flex-wrap items-center gap-3">
-              <Button variant="augmented-inverted">Get started</Button>
-              <Button variant="augmented-outline">Browse the gallery</Button>
+              <Button asChild variant="augmented-inverted">
+                <a
+                  href="?path=/docs/introduction-getting-started--docs"
+                  target="_top"
+                >
+                  Get started
+                </a>
+              </Button>
+              <Button asChild variant="augmented-outline">
+                <a
+                  href="?path=/docs/introduction-gallery--docs"
+                  target="_top"
+                >
+                  Browse the gallery
+                </a>
+              </Button>
               <span className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
                 <KbdGroup>
                   <Kbd>⌘</Kbd>
@@ -222,7 +225,8 @@ export const DesignLanguage: Story = {
                 />
               )}
             >
-              Panels and buttons carry
+              Panels that opt in — cards, dialogs, sheets, drawers,
+              popovers, hover-cards — carry
               {' '}
               <code className="font-mono">data-augmented-ui</code>
               {' '}
@@ -351,11 +355,23 @@ export const DesignLanguage: Story = {
         <footer className="border-t border-foreground/30 pt-6 font-mono text-xs text-muted-foreground">
           Next:
           {' '}
-          <strong>Getting Started</strong>
+          <a
+            className="text-link-primary underline underline-offset-4 hover:text-link-primary-hover"
+            href="?path=/docs/introduction-getting-started--docs"
+            target="_top"
+          >
+            <strong>Getting Started</strong>
+          </a>
           {' '}
           for consumer setup, or jump straight to the
           {' '}
-          <strong>Gallery</strong>
+          <a
+            className="text-link-primary underline underline-offset-4 hover:text-link-primary-hover"
+            href="?path=/docs/introduction-gallery--docs"
+            target="_top"
+          >
+            <strong>Gallery</strong>
+          </a>
           {' '}
           for the full component catalog.
         </footer>

@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import type { ReactNode } from 'react'
 
+import { Code } from './docs/primitives'
+
 const meta = {
   title: 'Introduction/Getting Started',
   parameters: {
@@ -35,14 +37,6 @@ function Step({ index, title, children }: {
         {children}
       </div>
     </section>
-  )
-}
-
-function Code({ children }: { children: ReactNode }) {
-  return (
-    <pre className="overflow-x-auto border border-foreground/30 bg-background-secondary p-4 font-mono text-xs leading-relaxed text-foreground">
-      <code>{children}</code>
-    </pre>
   )
 }
 
@@ -109,11 +103,8 @@ export const Setup: Story = {
           <p>
             <strong>unplugin-icons</strong>
             {' '}
-            —
-            {' '}
-            <code className="font-mono">dropdown-menu</code>
-            {' '}
-            imports
+            — roughly twenty component files across the catalog
+            (accordion, breadcrumb, calendar, dropdown-menu, sidebar…) import
             {' '}
             <code className="font-mono">~icons/material-symbols/*</code>
             {' '}
@@ -158,29 +149,6 @@ export default defineConfig({
           </Code>
 
           <p>
-            <strong>tw-animate-css</strong>
-            {' '}
-            — overlay components use
-            {' '}
-            <code className="font-mono">animate-in</code>
-            /
-            <code className="font-mono">fade-in-*</code>
-            /
-            <code className="font-mono">zoom-*</code>
-            /
-            <code className="font-mono">slide-in-from-*</code>
-            {' '}
-            utilities. Those ship in
-            {' '}
-            <code className="font-mono">tw-animate-css</code>
-            {' '}
-            (the Tailwind v4 port of tailwindcss-animate), not in core
-            Tailwind — without it panels render fine but skip their
-            enter/exit motion:
-          </p>
-          <Code>{'pnpm add tw-animate-css'}</Code>
-
-          <p>
             <strong>Styles</strong>
             {' '}
             — in the consumer's global CSS, after
@@ -190,10 +158,30 @@ export default defineConfig({
           </p>
           <Code>
 {`@import 'tailwindcss';
-@import 'tw-animate-css';
 @import '@luisfuturist/ui/styles.css';
 @source "../node_modules/@luisfuturist/ui";`}
           </Code>
+          <p>
+            The overlay motion utilities (
+            <code className="font-mono">animate-in</code>
+            /
+            <code className="font-mono">fade-in-*</code>
+            /
+            <code className="font-mono">zoom-*</code>
+            /
+            <code className="font-mono">slide-in-from-*</code>
+            ) come from
+            {' '}
+            <code className="font-mono">tw-animate-css</code>
+            , which
+            {' '}
+            <code className="font-mono">styles.css</code>
+            {' '}
+            already
+            {' '}
+            <code className="font-mono">@import</code>
+            s — no extra install needed.
+          </p>
           <p>
             The
             {' '}
@@ -259,13 +247,19 @@ export default defineConfig({
 
         <Step index={3} title="Augmented corners">
           <p>
-            LFDS surfaces are squared by default. Panel/floating components
-            (cards, dialogs, sheets, drawers, popovers, menus, tooltips, the
-            command palette…) also carry
+            LFDS surfaces are squared by default — menus, tooltips, command,
+            select and combobox panels stay plain square. The clipped-corner
+            carriers are Card, Alert, AlertDialog, Dialog, Sheet, Drawer,
+            Popover, HoverCard, the
+            {' '}
+            <code className="font-mono">augmented*</code>
+            {' '}
+            Button
+            variants and the ContactCTA block, each tagged with
             {' '}
             <code className="font-mono">data-augmented-ui</code>
             {' '}
-            attributes — for the clipped "augmented" corner look, consumers
+            — for the clipped "augmented" corner look, consumers
             install and import
             {' '}
             <code className="font-mono">augmented-ui</code>

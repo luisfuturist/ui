@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { PageHeader } from './docs/primitives'
+
 const meta = {
   title: 'Design Tokens/Typography',
   parameters: {
@@ -24,8 +26,8 @@ type Story = StoryObj<typeof meta>
 const roles = [
   {
     name: 'Eyebrow',
-    cls: 'font-mono text-xs tracking-widest uppercase',
-    note: 'Section labels, overlines — hero-section, gallery, getting-started',
+    cls: 'font-mono text-sm tracking-widest uppercase',
+    note: 'Section labels, overlines — hero-section eyebrow, docs page eyebrows',
     sample: 'Design tokens',
   },
   {
@@ -49,8 +51,14 @@ const roles = [
   {
     name: 'Heading',
     cls: 'font-mono text-3xl font-semibold tracking-tight',
-    note: 'Block headings — hero-section, contact-cta (up to text-6xl)',
+    note: 'Block headings — hero-section (font-mono, up to sm:text-6xl)',
     sample: 'Deploy complete.',
+  },
+  {
+    name: 'Display',
+    cls: 'font-display text-6xl font-medium',
+    note: 'contact-cta headline — the one component that sets font-display',
+    sample: 'Connect now',
   },
 ]
 
@@ -71,7 +79,7 @@ const families = [
     cls: 'font-display',
     token: '--font-display',
     stack: "'Roboto Condensed', sans-serif",
-    use: 'Display headlines (site hero, section titles)',
+    use: 'Display headline — the contact-cta block',
   },
   {
     cls: 'font-flex',
@@ -90,12 +98,17 @@ const scale = [
   { cls: 'text-2xl', px: '24px' },
   { cls: 'text-3xl', px: '30px' },
   { cls: 'text-4xl', px: '36px' },
+  { cls: 'text-5xl', px: '48px' },
   { cls: 'text-6xl', px: '60px' },
 ]
 
 export const Type: Story = {
   render: () => (
     <div className="flex flex-col gap-10 bg-background p-6 text-foreground">
+      <PageHeader eyebrow="Design tokens" title="Typography">
+        Four Roboto faces — the families, the size/weight roles components
+        use, and the scale. Consumers load the faces once via Google Fonts.
+      </PageHeader>
       <section className="flex flex-col gap-3">
         <h3 className="text-sm font-medium">Families</h3>
         <p className="max-w-prose text-sm">

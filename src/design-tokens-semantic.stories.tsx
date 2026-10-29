@@ -1,5 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { useEffect, useRef, useState } from 'react'
+
+import {
+  PageHeader,
+  Section,
+  TOKEN_ROW_COLS,
+  TokenRow,
+} from './docs/primitives'
 
 const meta = {
   title: 'Design Tokens/Semantic',
@@ -23,62 +29,12 @@ type Story = StoryObj<typeof meta>
 
 type Token = { name: string, chain: string, use: string }
 
-function ResolvedHex({ name }: { name: string }) {
-  const ref = useRef<HTMLSpanElement>(null)
-  const [hex, setHex] = useState('')
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    setHex(getComputedStyle(el).backgroundColor)
-  }, [name])
-  return (
-    <>
-      <span
-        ref={ref}
-        className="hidden"
-        style={{ backgroundColor: `var(--${name})` }}
-      />
-      {hex}
-    </>
-  )
-}
-
-// One fixed track template shared by header and every row, so the
-// swatch / token / chain / usage columns line up across all groups.
-const COLS = 'grid-cols-[2.5rem_17rem_14rem_minmax(0,1fr)]'
-
-function TokenRow({ token }: { token: Token }) {
-  return (
-    <div className={`grid ${COLS} items-center gap-x-4 border-t border-foreground/15 py-3`}>
-      <div
-        className="size-10"
-        style={{
-          backgroundColor: `var(--${token.name})`,
-          border: '1px solid var(--gray-2)',
-        }}
-      />
-      <div className="flex min-w-0 flex-col">
-        <code className="font-mono text-sm wrap-break-word">
-          --{token.name}
-        </code>
-        <span className="font-mono text-xs opacity-60">
-          <ResolvedHex name={token.name} />
-        </span>
-      </div>
-      <code className="min-w-0 font-mono text-xs wrap-break-word opacity-70">
-        {token.chain}
-      </code>
-      <span className="min-w-0 text-xs opacity-70">{token.use}</span>
-    </div>
-  )
-}
-
 function TokenGroup({ title, tokens }: { title: string, tokens: Token[] }) {
   return (
     <section className="flex flex-col gap-1">
       <h3 className="text-sm font-medium">{title}</h3>
       <div
-        className={`grid ${COLS} items-center gap-x-4 font-mono text-[10px] tracking-widest uppercase opacity-50`}
+        className={`grid ${TOKEN_ROW_COLS} items-center gap-x-4 font-mono text-[10px] tracking-widest uppercase opacity-50`}
       >
         <span />
         <span>token / resolved</span>
@@ -86,7 +42,12 @@ function TokenGroup({ title, tokens }: { title: string, tokens: Token[] }) {
         <span>usage</span>
       </div>
       {tokens.map(token => (
-        <TokenRow key={token.name} token={token} />
+        <TokenRow
+          key={token.name}
+          name={token.name}
+          chain={token.chain}
+          use={token.use}
+        />
       ))}
     </section>
   )
@@ -128,7 +89,7 @@ const actions: Token[] = [
   {
     name: 'muted-foreground',
     chain: '--foreground',
-    use: 'Subdued text: descriptions, placeholders',
+    use: 'Muted text — resolves to full --foreground by design, not a subdued step',
   },
   {
     name: 'accent',
@@ -161,7 +122,11 @@ const surfaces: Token[] = [
     chain: '--foreground',
     use: 'border-input on Input, Select, Toggle, Checkbox',
   },
-  { name: 'ring', chain: '--blue', use: 'focus-visible rings: ring-ring/50' },
+  {
+    name: 'ring',
+    chain: '--accent → --orange',
+    use: 'focus-visible rings: ring-ring/50 — orange focus ring in both themes',
+  },
   {
     name: 'border',
     chain: '--white',
@@ -212,27 +177,68 @@ const sidebar: Token[] = [
 export const Roles: Story = {
   render: () => (
     <div className="flex flex-col gap-8 bg-background p-6 text-foreground">
-      <p className="max-w-prose text-sm">
+      <PageHeader eyebrow="Design tokens" title="Semantic roles">
         Semantic roles decouple components from the palette: a Button reads
         {' '}
-        <code>bg-primary</code>
+        <code className="font-mono">bg-primary</code>
         , never
         {' '}
-        <code>--blue</code>
+        <code className="font-mono">--blue</code>
         {' '}
         directly. Chains below are the light
         {' '}
-        <code>:root</code>
+        <code className="font-mono">:root</code>
         {' '}
         definitions — dark theme rebinds the same roles to dark palette
         values.
-      </p>
+      </PageHeader>
       <TokenGroup title="Base" tokens={base} />
       <TokenGroup title="Actions" tokens={actions} />
       <TokenGroup title="Surfaces" tokens={surfaces} />
       <TokenGroup title="Links" tokens={links} />
       <TokenGroup title="Charts" tokens={charts} />
       <TokenGroup title="Sidebar" tokens={sidebar} />
+      <Section title="Conventions — flat by design">
+        <p className="max-w-prose text-sm">
+          LFDS ships no shadow or elevation tokens: depth is expressed with
+          1px borders and clipped corners, not box-shadow. Overlays simply
+          pin
+          {' '}
+          <code className="font-mono">z-50</code>
+          {' '}
+          (dialogs, sheets,
+          drawers, popovers, tooltips) — there is no z-index scale to
+          negotiate.
+        </p>
+        <p className="max-w-prose text-sm">
+          Two more deliberate non-subtractions:
+          {' '}
+          <code className="font-mono">--muted-foreground</code>
+          {' '}
+          resolves
+          to
+          {' '}
+          <code className="font-mono">--foreground</code>
+          {' '}
+          (muted text stays
+          full-strength phosphor), and
+          {' '}
+          <code className="font-mono">--border</code>
+          {' '}
+          matches
+          the background, so the bare
+          {' '}
+          <code className="font-mono">border-border</code>
+          {' '}
+          utility is invisible by design — components that need a visible
+          ring use
+          {' '}
+          <code className="font-mono">border-foreground</code>
+          {' '}
+          or an
+          aug border layer.
+        </p>
+      </Section>
     </div>
   ),
 }

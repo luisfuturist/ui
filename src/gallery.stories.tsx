@@ -281,6 +281,7 @@ function LabelLink({ story, children }: {
   return (
     <a
       href={`?path=/docs/${story}`}
+      target="_top"
       className={cn('w-fit', labelLinkClass)}
     >
       {children}

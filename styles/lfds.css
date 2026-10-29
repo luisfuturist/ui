@@ -10,6 +10,7 @@
   --color-cyan: var(--cyan);
   --color-green: var(--green);
   --color-magenta: var(--magenta);
+  --color-orange: var(--orange);
   --color-red: var(--red);
   --color-yellow: var(--yellow);
   --color-gray-1: var(--gray-1);
@@ -264,15 +265,6 @@
   color: var(--link-primary-hover) !important;
 }
 
-.aug-button-2 {
-  --aug-tr: 12px !important;
-  --aug-bl: 12px !important;
-  --aug-border-all: 1px !important;
-  --aug-border-bg: var(--color-background) !important;
-  --aug-inlay-all: 0px !important;
-  --aug-inlay-bg: var(--color-background-secondary) !important;
-}
-
 /* `augmented-outline` button variant: transparent inlay + solid
  * foreground border ring — the clipped-corner counterpart of `outline`.
  * Element-level `background-color`/`color` rules double as the square
@@ -349,7 +341,7 @@
   --aug-inlay-bg: var(--popover) !important;
 }
 
-/* Tighter clips for small floating surfaces (menus, tooltips). */
+/* Tighter clips for small floating surfaces (hover-card). */
 .aug-surface-sm {
   --aug-tl1: 8px !important;
   --aug-tr1: 8px !important;
@@ -366,22 +358,12 @@
   --aug-inlay-bg: var(--background) !important;
 }
 
-/* Inverted surface (tooltip): foreground fill, no border ring. */
-.aug-surface-fg {
-  --aug-inlay-bg: var(--foreground) !important;
-  --aug-border-all: 0px !important;
-}
-
 /* augmented-ui forces position:relative|static on [data-augmented-ui] to anchor
  * the border/inlay pseudo-layers; restore the positioning floating panels need.
  * Higher specificity than [data-augmented-ui] so it wins regardless of CSS
  * import order. */
 [data-augmented-ui].aug-pos-fixed {
   position: fixed !important;
-}
-
-[data-augmented-ui].aug-pos-absolute {
-  position: absolute !important;
 }
 
 /* Drawer: only clip the corners that don't sit on the screen edge. */
