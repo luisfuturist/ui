@@ -62,7 +62,7 @@ export const Horizontal: Story = {
           {Array.from({ length: 12 }, (_, i) => (
             <div
               key={i}
-              className="flex size-32 shrink-0 items-center justify-center rounded-md bg-muted"
+              className="flex size-32 shrink-0 items-center justify-center rounded-md bg-card"
             >
               <span className="text-sm text-muted-foreground">
                 Map {i + 1}
