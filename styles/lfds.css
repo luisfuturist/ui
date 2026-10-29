@@ -109,7 +109,7 @@
   --secondary: var(--magenta);
   --secondary-foreground: var(--white);
   --muted: var(--gray-3);
-  --muted-foreground: color-mix(in oklab, var(--foreground) 60%, transparent);
+  --muted-foreground: var(--foreground);
   --accent: var(--orange);
   --accent-foreground: var(--white);
   --destructive: var(--red);
@@ -125,7 +125,7 @@
   --popover: var(--background-secondary);
   --popover-foreground: var(--foreground);
 
-  --input: color-mix(in oklab, var(--foreground) 40%, transparent);
+  --input: var(--foreground);
 
   --chart-1: var(--blue);
   --chart-2: var(--green);
