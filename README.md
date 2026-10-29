@@ -65,6 +65,19 @@ export function App() {
 }
 ```
 
+## Storybook
+
+Component docs and playgrounds are published at
+**https://luisfuturist.github.io/ui/** (deployed to GitHub Pages on every push to
+`main`).
+
+For local development:
+
+```sh
+pnpm storybook        # dev server on :6006
+pnpm build-storybook  # static build → storybook-static/
+```
+
 ## Dev
 
 ```sh
