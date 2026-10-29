@@ -2,6 +2,11 @@
 
 LFDS — luisfuturist's React component library (shadcn-style).
 
+Ships the full shadcn component catalog under `src/components/ui/`, plus
+composite page-level blocks (`LoginForm`, `SiteHeader`, `SiteFooter`,
+`ContactCTA`, `HeroSection`) under `src/blocks/` — all re-exported from the
+package root.
+
 ## Install
 
 ```sh
@@ -67,7 +72,7 @@ export function App() {
 
 ## Storybook
 
-Component docs and playgrounds are published at
+Component docs and playgrounds — including the `Blocks/*` composites — are published at
 **https://luisfuturist.github.io/ui/** (deployed to GitHub Pages on every push to
 `main`).
 
@@ -87,3 +92,27 @@ pnpm typecheck
 ```
 
 `dist/` is committed to the repo so installs via git URL work without a build step.
+
+### Adding shadcn components
+
+This repo is set up for the shadcn CLI (`components.json` at the root, registry
+items land in `src/components/ui/`):
+
+```sh
+pnpm dlx shadcn@latest add <component>
+pnpm fix:shadcn   # REQUIRED after every `shadcn add`
+```
+
+`pnpm fix:shadcn` (`scripts/fix-shadcn-imports.mjs`) rewrites the `@/…` import
+aliases the CLI emits into relative paths — `@/…` specifiers would otherwise
+end up verbatim in `dist/` and break consumers.
+
+Two more caveats when running `shadcn add`:
+
+- Say **no** when it asks to overwrite `button.tsx`, `dropdown-menu.tsx`,
+  `sonner.tsx` or `lib/utils.ts` — those are LFDS-authored (or restore them
+  from git afterwards).
+- The CLI will not overwrite without `--overwrite` for registry dependencies
+  (e.g. `button` for `calendar`/`sidebar`); answer `n` at the prompt and the
+  generated files will still import `./button`, which LFDS's `Button`
+  satisfies (including `buttonVariants`).

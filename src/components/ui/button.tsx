@@ -2,7 +2,7 @@ import type { VariantProps } from 'class-variance-authority'
 import { Slot } from '@radix-ui/react-slot'
 import * as React from 'react'
 
-import { cn } from '../lib/utils'
+import { cn } from '../../lib/utils'
 import { buttonVariants } from './button-variants'
 
 function Button({
@@ -30,3 +30,6 @@ function Button({
 }
 
 export { Button }
+// shadcn registry components (e.g. calendar, pagination) import buttonVariants
+// from './button' — re-export so the module surface matches the registry contract.
+export { buttonVariants }

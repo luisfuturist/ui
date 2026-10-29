@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": { "@/*": ["./src/*"] },
     "strict": true,
     "jsx": "react-jsx",
     "module": "esnext",

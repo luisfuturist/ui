@@ -6,3 +6,4 @@ declare function Button({ className, variant, size, 'data-augmented-ui': dataAug
     'data-augmented-ui'?: string;
 }): React.JSX.Element;
 export { Button };
+export { buttonVariants };

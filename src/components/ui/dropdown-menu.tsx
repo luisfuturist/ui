@@ -4,7 +4,7 @@ import MaterialCheck from '~icons/material-symbols/check'
 import MaterialChevronRight from '~icons/material-symbols/chevron-right'
 import MaterialCircle from '~icons/material-symbols/circle'
 
-import { cn } from '../lib/utils'
+import { cn } from '../../lib/utils'
 
 function DropdownMenu({
   ...props
