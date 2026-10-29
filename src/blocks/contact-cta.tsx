@@ -21,8 +21,9 @@ export function ContactCTA({
   return (
     <section
       data-slot="contact-cta"
+      data-augmented-ui="tr-clip bl-clip both"
       className={cn(
-        'flex w-full flex-col items-center gap-6 rounded-xl border bg-card px-6 py-16 text-center text-card-foreground sm:py-20',
+ 'aug-surface aug-surface-card flex w-full flex-col items-center gap-6 rounded-xl bg-card px-6 py-16 text-center text-card-foreground sm:py-20',
         className,
       )}
       {...props}

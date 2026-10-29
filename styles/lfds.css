@@ -37,10 +37,13 @@
   --color-ring: var(--ring);
   --color-border: var(--border);
 
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-xs: var(--radius);
+  --radius-sm: var(--radius);
+  --radius-md: var(--radius);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: var(--radius);
+  --radius-2xl: var(--radius);
+  --radius-3xl: var(--radius);
 
   /* Shadcn component colors */
 
@@ -73,7 +76,8 @@
 
 :root {
   /* Common shadcn utilities */
-  --radius: 0.625rem;
+  /* LFDS is squared: every rounded-* utility resolves to 0 */
+  --radius: 0;
 
   /* ----- light theme ----- */
 
@@ -105,7 +109,7 @@
   --secondary: var(--magenta);
   --secondary-foreground: var(--white);
   --muted: var(--gray-3);
-  --muted-foreground: var(--white);
+  --muted-foreground: color-mix(in oklab, var(--foreground) 60%, transparent);
   --accent: var(--orange);
   --accent-foreground: var(--white);
   --destructive: var(--red);
@@ -121,7 +125,7 @@
   --popover: var(--background-secondary);
   --popover-foreground: var(--foreground);
 
-  --input: var(--white);
+  --input: color-mix(in oklab, var(--foreground) 40%, transparent);
 
   --chart-1: var(--blue);
   --chart-2: var(--green);
@@ -172,7 +176,6 @@
   --secondary: var(--magenta);
   --secondary-foreground: var(--black);
   --muted: var(--gray-3);
-  --muted-foreground: var(--blue);
   --accent: var(--orange);
   --accent-foreground: var(--black);
   --destructive: var(--red);
@@ -187,8 +190,6 @@
 
   --popover: var(--background-secondary);
   --popover-foreground: var(--foreground);
-
-  --input: var(--black);
 
   --chart-1: var(--blue);
   --chart-2: var(--green);
@@ -260,4 +261,91 @@
   --aug-border-bg: var(--color-background) !important;
   --aug-inlay-all: 0px !important;
   --aug-inlay-bg: var(--color-background-secondary) !important;
+}
+
+/* ----- Augmented surfaces ----- */
+/* Components tagged with `data-augmented-ui` render plain square surfaces by
+ * default. When the consumer loads the `augmented-ui` package's CSS once
+ * (import 'augmented-ui' — pure CSS, no JS), the corners get clipped and the
+ * aug border (::after) + inlay (::before) layers take over the panel chrome.
+ *
+ * Clip sizes live in --aug-{tl,tr,bl,br}1 (augmented-ui default: 15px).
+ * The inlay paints the element background and the border layer draws a ring
+ * that follows the clipped contour.
+ */
+.aug-surface {
+  --aug-tl1: 12px !important;
+  --aug-tr1: 12px !important;
+  --aug-bl1: 12px !important;
+  --aug-br1: 12px !important;
+  --aug-border-all: 1px !important;
+  --aug-border-bg: var(--border) !important;
+  --aug-inlay-all: 0px !important;
+  --aug-inlay-bg: var(--popover) !important;
+}
+
+/* Tighter clips for small floating surfaces (menus, tooltips). */
+.aug-surface-sm {
+  --aug-tl1: 8px !important;
+  --aug-tr1: 8px !important;
+  --aug-bl1: 8px !important;
+  --aug-br1: 8px !important;
+}
+
+/* Inlay (surface background) roles */
+.aug-surface-card {
+  --aug-inlay-bg: var(--card) !important;
+}
+
+.aug-surface-bg {
+  --aug-inlay-bg: var(--background) !important;
+}
+
+/* Inverted surface (tooltip): foreground fill, no border ring. */
+.aug-surface-fg {
+  --aug-inlay-bg: var(--foreground) !important;
+  --aug-border-all: 0px !important;
+}
+
+/* augmented-ui forces position:relative|static on [data-augmented-ui] to anchor
+ * the border/inlay pseudo-layers; restore the positioning floating panels need.
+ * Higher specificity than [data-augmented-ui] so it wins regardless of CSS
+ * import order. */
+[data-augmented-ui].aug-pos-fixed {
+  position: fixed !important;
+}
+
+[data-augmented-ui].aug-pos-absolute {
+  position: absolute !important;
+}
+
+/* Drawer: only clip the corners that don't sit on the screen edge. */
+.aug-drawer[data-vaul-drawer-direction='bottom'] {
+  --aug-bl1: 0px !important;
+  --aug-br1: 0px !important;
+}
+
+.aug-drawer[data-vaul-drawer-direction='top'] {
+  --aug-tl1: 0px !important;
+  --aug-tr1: 0px !important;
+}
+
+.aug-drawer[data-vaul-drawer-direction='left'] {
+  --aug-tl1: 0px !important;
+  --aug-bl1: 0px !important;
+}
+
+.aug-drawer[data-vaul-drawer-direction='right'] {
+  --aug-tr1: 0px !important;
+  --aug-br1: 0px !important;
+}
+
+/* NavigationMenuContent is a floating panel only when the menu has no Viewport
+ * (data-viewport=false). With a viewport it lives inside the (already
+ * augmented) viewport panel, so disable its aug border/inlay layers — an empty
+ * custom-property value is augmented-ui's "off" space-toggle. */
+[data-slot='navigation-menu'][data-viewport='true']
+  [data-slot='navigation-menu-content'] {
+  --aug-border: ;
+  --aug-inlay: ;
 }

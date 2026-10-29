@@ -2,9 +2,18 @@ import type { Preview } from '@storybook/react-vite'
 import { createElement, useEffect } from 'react'
 
 import './preview.css'
+// aug engine (CSS-only): clips [data-augmented-ui] corners in stories
+import 'augmented-ui'
 
 const preview: Preview = {
   tags: ['autodocs'],
+  parameters: {
+    options: {
+      storySort: {
+        order: ['Design Tokens', 'Components', 'Blocks'],
+      },
+    },
+  },
   globalTypes: {
     theme: {
       name: 'Theme',

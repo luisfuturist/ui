@@ -41,7 +41,7 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: () => (
     <div className="flex items-center justify-center p-8">
-      <AlertDialog>
+      <AlertDialog defaultOpen>
         <AlertDialogTrigger asChild>
           <Button className="border px-3 py-2">Delete expedition</Button>
         </AlertDialogTrigger>

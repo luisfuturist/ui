@@ -1,4 +1,4 @@
-import { jsx as a, jsxs as d, Fragment as he } from "react/jsx-runtime";
+import { jsx as a, jsxs as d, Fragment as ve } from "react/jsx-runtime";
 import { Slot as je } from "@radix-ui/react-slot";
 import * as u from "react";
 import { useMemo as Ae } from "react";
@@ -13,7 +13,7 @@ import { Accordion as B, AlertDialog as P, AspectRatio as Je, Avatar as ie, Slot
 import { getDefaultClassNames as Ne, DayPicker as tt } from "react-day-picker";
 import at from "embla-carousel-react";
 import * as de from "recharts";
-import { Combobox as h } from "@base-ui/react";
+import { Combobox as v } from "@base-ui/react";
 import { Command as $ } from "cmdk";
 import { Drawer as A } from "vaul";
 import * as y from "@radix-ui/react-dropdown-menu";
@@ -96,7 +96,7 @@ function R({
     }
   );
 }
-function Wa({ ...e }) {
+function Ua({ ...e }) {
   const { theme: t = "system" } = $e();
   return /* @__PURE__ */ a(
     Ee,
@@ -113,12 +113,12 @@ function Wa({ ...e }) {
     }
   );
 }
-function Ua({
+function Xa({
   ...e
 }) {
   return /* @__PURE__ */ a(B.Root, { "data-slot": "accordion", ...e });
 }
-function Xa({
+function Ya({
   className: e,
   ...t
 }) {
@@ -131,7 +131,7 @@ function Xa({
     }
   );
 }
-function Ya({
+function Ja({
   className: e,
   children: t,
   ...o
@@ -152,7 +152,7 @@ function Ya({
     }
   ) });
 }
-function Ja({
+function Qa({
   className: e,
   children: t,
   ...o
@@ -168,7 +168,7 @@ function Ja({
   );
 }
 const mt = _(
-  "relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 rounded-lg border px-4 py-3 text-sm has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
+  "aug-surface aug-surface-card relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 rounded-lg px-4 py-3 text-sm has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
   {
     variants: {
       variant: {
@@ -181,7 +181,7 @@ const mt = _(
     }
   }
 );
-function Qa({
+function Za({
   className: e,
   variant: t,
   ...o
@@ -190,13 +190,14 @@ function Qa({
     "div",
     {
       "data-slot": "alert",
+      "data-augmented-ui": "tr-clip bl-clip both",
       role: "alert",
       className: r(mt({ variant: t }), e),
       ...o
     }
   );
 }
-function Za({ className: e, ...t }) {
+function er({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -209,7 +210,7 @@ function Za({ className: e, ...t }) {
     }
   );
 }
-function er({
+function tr({
   className: e,
   ...t
 }) {
@@ -225,12 +226,12 @@ function er({
     }
   );
 }
-function tr({
+function ar({
   ...e
 }) {
   return /* @__PURE__ */ a(P.Root, { "data-slot": "alert-dialog", ...e });
 }
-function ar({
+function rr({
   ...e
 }) {
   return /* @__PURE__ */ a(P.Trigger, { "data-slot": "alert-dialog-trigger", ...e });
@@ -256,7 +257,7 @@ function pt({
     }
   );
 }
-function rr({
+function or({
   className: e,
   size: t = "default",
   ...o
@@ -267,9 +268,10 @@ function rr({
       P.Content,
       {
         "data-slot": "alert-dialog-content",
+        "data-augmented-ui": "tr-clip bl-clip both",
         "data-size": t,
         className: r(
-          "group/alert-dialog-content fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-200 data-[size=sm]:max-w-xs data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[size=default]:sm:max-w-lg",
+          "aug-surface aug-surface-bg aug-pos-fixed group/alert-dialog-content fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg bg-background p-6 duration-200 data-[size=sm]:max-w-xs data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[size=default]:sm:max-w-lg",
           e
         ),
         ...o
@@ -277,7 +279,7 @@ function rr({
     )
   ] });
 }
-function or({
+function nr({
   className: e,
   ...t
 }) {
@@ -293,7 +295,7 @@ function or({
     }
   );
 }
-function nr({
+function ir({
   className: e,
   ...t
 }) {
@@ -309,7 +311,7 @@ function nr({
     }
   );
 }
-function ir({
+function sr({
   className: e,
   ...t
 }) {
@@ -325,7 +327,7 @@ function ir({
     }
   );
 }
-function sr({
+function dr({
   className: e,
   ...t
 }) {
@@ -338,7 +340,7 @@ function sr({
     }
   );
 }
-function dr({
+function lr({
   className: e,
   ...t
 }) {
@@ -354,7 +356,7 @@ function dr({
     }
   );
 }
-function lr({
+function cr({
   className: e,
   variant: t = "default",
   size: o = "default",
@@ -369,7 +371,7 @@ function lr({
     }
   ) });
 }
-function cr({
+function ur({
   className: e,
   variant: t = "outline",
   size: o = "default",
@@ -384,12 +386,12 @@ function cr({
     }
   ) });
 }
-function ur({
+function mr({
   ...e
 }) {
   return /* @__PURE__ */ a(Je.Root, { "data-slot": "aspect-ratio", ...e });
 }
-function mr({
+function fr({
   className: e,
   size: t = "default",
   ...o
@@ -407,7 +409,7 @@ function mr({
     }
   );
 }
-function fr({
+function pr({
   className: e,
   ...t
 }) {
@@ -420,7 +422,7 @@ function fr({
     }
   );
 }
-function pr({
+function gr({
   className: e,
   ...t
 }) {
@@ -436,7 +438,7 @@ function pr({
     }
   );
 }
-function gr({ className: e, ...t }) {
+function br({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "span",
     {
@@ -452,7 +454,7 @@ function gr({ className: e, ...t }) {
     }
   );
 }
-function br({ className: e, ...t }) {
+function hr({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -482,7 +484,7 @@ function vr({
   );
 }
 const gt = _(
-  "inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-full border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3",
+  "inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3",
   {
     variants: {
       variant: {
@@ -499,7 +501,7 @@ const gt = _(
     }
   }
 );
-function hr({
+function xr({
   className: e,
   variant: t = "default",
   asChild: o = !1,
@@ -516,10 +518,10 @@ function hr({
     }
   );
 }
-function xr({ ...e }) {
+function wr({ ...e }) {
   return /* @__PURE__ */ a("nav", { "aria-label": "breadcrumb", "data-slot": "breadcrumb", ...e });
 }
-function wr({ className: e, ...t }) {
+function Nr({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "ol",
     {
@@ -532,7 +534,7 @@ function wr({ className: e, ...t }) {
     }
   );
 }
-function Nr({ className: e, ...t }) {
+function yr({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "li",
     {
@@ -542,7 +544,7 @@ function Nr({ className: e, ...t }) {
     }
   );
 }
-function yr({
+function zr({
   asChild: e,
   className: t,
   ...o
@@ -557,7 +559,7 @@ function yr({
     }
   );
 }
-function zr({ className: e, ...t }) {
+function kr({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "span",
     {
@@ -570,7 +572,7 @@ function zr({ className: e, ...t }) {
     }
   );
 }
-function kr({
+function Cr({
   children: e,
   className: t,
   ...o
@@ -587,7 +589,7 @@ function kr({
     }
   );
 }
-function Cr({
+function _r({
   className: e,
   ...t
 }) {
@@ -640,7 +642,7 @@ const bt = _(
     }
   }
 );
-function _r({
+function Sr({
   className: e,
   orientation: t,
   ...o
@@ -656,7 +658,7 @@ function _r({
     }
   );
 }
-function Sr({
+function Ir({
   className: e,
   asChild: t = !1,
   ...o
@@ -673,7 +675,7 @@ function Sr({
     }
   );
 }
-function Ir({
+function Tr({
   className: e,
   orientation: t = "vertical",
   ...o
@@ -691,7 +693,7 @@ function Ir({
     }
   );
 }
-function Tr({
+function Mr({
   className: e,
   classNames: t,
   showOutsideDays: o = !0,
@@ -801,23 +803,23 @@ function Tr({
         ...t
       },
       components: {
-        Root: ({ className: f, rootRef: b, ...v }) => /* @__PURE__ */ a(
+        Root: ({ className: f, rootRef: b, ...h }) => /* @__PURE__ */ a(
           "div",
           {
             "data-slot": "calendar",
             ref: b,
             className: r(f),
-            ...v
+            ...h
           }
         ),
-        Chevron: ({ className: f, orientation: b, ...v }) => b === "left" ? /* @__PURE__ */ a(xe, { className: r("size-4", f), ...v }) : b === "right" ? /* @__PURE__ */ a(
+        Chevron: ({ className: f, orientation: b, ...h }) => b === "left" ? /* @__PURE__ */ a(xe, { className: r("size-4", f), ...h }) : b === "right" ? /* @__PURE__ */ a(
           U,
           {
             className: r("size-4", f),
-            ...v
+            ...h
           }
-        ) : /* @__PURE__ */ a(L, { className: r("size-4", f), ...v }),
-        DayButton: vt,
+        ) : /* @__PURE__ */ a(L, { className: r("size-4", f), ...h }),
+        DayButton: ht,
         WeekNumber: ({ children: f, ...b }) => /* @__PURE__ */ a("td", { ...b, children: /* @__PURE__ */ a("div", { className: "flex size-(--cell-size) items-center justify-center text-center", children: f }) }),
         ...c
       },
@@ -825,7 +827,7 @@ function Tr({
     }
   );
 }
-function vt({
+function ht({
   className: e,
   day: t,
   modifiers: o,
@@ -854,13 +856,14 @@ function vt({
     }
   );
 }
-function ht({ className: e, ...t }) {
+function vt({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
       "data-slot": "card",
+      "data-augmented-ui": "tr-clip bl-clip both",
       className: r(
-        "flex flex-col gap-6 rounded-xl border bg-card py-6 text-card-foreground shadow-sm",
+        "aug-surface aug-surface-card flex flex-col gap-6 rounded-xl bg-card py-6 text-card-foreground ",
         e
       ),
       ...t
@@ -900,7 +903,7 @@ function Nt({ className: e, ...t }) {
     }
   );
 }
-function Mr({ className: e, ...t }) {
+function Dr({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -940,7 +943,7 @@ function Q() {
     throw new Error("useCarousel must be used within a <Carousel />");
   return e;
 }
-function Dr({
+function Rr({
   orientation: e = "horizontal",
   opts: t,
   setApi: o,
@@ -955,7 +958,7 @@ function Dr({
       axis: e === "horizontal" ? "x" : "y"
     },
     n
-  ), [f, b] = u.useState(!1), [v, I] = u.useState(!1), z = u.useCallback((g) => {
+  ), [f, b] = u.useState(!1), [h, I] = u.useState(!1), z = u.useCallback((g) => {
     g && (b(g.canScrollPrev()), I(g.canScrollNext()));
   }, []), T = u.useCallback(() => {
     l?.scrollPrev();
@@ -985,7 +988,7 @@ function Dr({
         scrollPrev: T,
         scrollNext: M,
         canScrollPrev: f,
-        canScrollNext: v
+        canScrollNext: h
       },
       children: /* @__PURE__ */ a(
         "div",
@@ -1002,7 +1005,7 @@ function Dr({
     }
   );
 }
-function Rr({ className: e, ...t }) {
+function Pr({ className: e, ...t }) {
   const { carouselRef: o, orientation: n } = Q();
   return /* @__PURE__ */ a(
     "div",
@@ -1024,7 +1027,7 @@ function Rr({ className: e, ...t }) {
     }
   );
 }
-function Pr({ className: e, ...t }) {
+function jr({ className: e, ...t }) {
   const { orientation: o } = Q();
   return /* @__PURE__ */ a(
     "div",
@@ -1041,7 +1044,7 @@ function Pr({ className: e, ...t }) {
     }
   );
 }
-function jr({
+function Ar({
   className: e,
   variant: t = "outline",
   size: o = "icon",
@@ -1055,7 +1058,7 @@ function jr({
       variant: t,
       size: o,
       className: r(
-        "absolute size-8 rounded-full",
+        "absolute size-8",
         i === "horizontal" ? "top-1/2 -left-12 -translate-y-1/2" : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
         e
       ),
@@ -1069,7 +1072,7 @@ function jr({
     }
   );
 }
-function Ar({
+function Gr({
   className: e,
   variant: t = "outline",
   size: o = "icon",
@@ -1083,7 +1086,7 @@ function Ar({
       variant: t,
       size: o,
       className: r(
-        "absolute size-8 rounded-full",
+        "absolute size-8",
         i === "horizontal" ? "top-1/2 -right-12 -translate-y-1/2" : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
         e
       ),
@@ -1104,7 +1107,7 @@ function ke() {
     throw new Error("useChart must be used within a <ChartContainer />");
   return e;
 }
-function Gr({
+function Lr({
   id: e,
   className: t,
   children: o,
@@ -1159,8 +1162,8 @@ ${o.map(([s, c]) => {
       }
     }
   ) : null;
-}, Lr = de.Tooltip;
-function $r({
+}, $r = de.Tooltip;
+function Er({
   active: e,
   payload: t,
   className: o,
@@ -1172,7 +1175,7 @@ function $r({
   labelClassName: l,
   formatter: f,
   color: b,
-  nameKey: v,
+  nameKey: h,
   labelKey: I
 }) {
   const { config: z } = ke(), T = u.useMemo(() => {
@@ -1202,7 +1205,7 @@ function $r({
       children: [
         M ? null : T,
         /* @__PURE__ */ a("div", { className: "grid gap-1.5", children: t.filter((p) => p.type !== "none").map((p, g) => {
-          const S = `${v ?? p.name ?? p.dataKey ?? "value"}`, G = oe(z, p, S), ce = b ?? p.payload?.fill ?? p.color;
+          const S = `${h ?? p.name ?? p.dataKey ?? "value"}`, G = oe(z, p, S), ce = b ?? p.payload?.fill ?? p.color;
           return /* @__PURE__ */ a(
             "div",
             {
@@ -1210,12 +1213,12 @@ function $r({
                 "flex w-full flex-wrap items-stretch gap-2 [&>svg]:h-2.5 [&>svg]:w-2.5 [&>svg]:text-muted-foreground",
                 n === "dot" && "items-center"
               ),
-              children: f && p?.value !== void 0 && p.name ? f(p.value, p.name, p, g, p.payload) : /* @__PURE__ */ d(he, { children: [
+              children: f && p?.value !== void 0 && p.name ? f(p.value, p.name, p, g, p.payload) : /* @__PURE__ */ d(ve, { children: [
                 G?.icon ? /* @__PURE__ */ a(G.icon, {}) : !s && /* @__PURE__ */ a(
                   "div",
                   {
                     className: r(
-                      "shrink-0 rounded-[2px] border-(--color-border) bg-(--color-bg)",
+                      "shrink-0 border-(--color-border) bg-(--color-bg)",
                       {
                         "h-2.5 w-2.5": n === "dot",
                         "w-1": n === "line",
@@ -1254,8 +1257,8 @@ function $r({
     }
   );
 }
-const Er = de.Legend;
-function Fr({
+const Fr = de.Legend;
+function Br({
   className: e,
   hideIcon: t = !1,
   payload: o,
@@ -1283,7 +1286,7 @@ function Fr({
               f?.icon && !t ? /* @__PURE__ */ a(f.icon, {}) : /* @__PURE__ */ a(
                 "div",
                 {
-                  className: "h-2 w-2 shrink-0 rounded-[2px]",
+                  className: "h-2 w-2 shrink-0",
                   style: {
                     backgroundColor: c.color
                   }
@@ -1305,7 +1308,7 @@ function oe(e, t, o) {
   let i = o;
   return o in t && typeof t[o] == "string" ? i = t[o] : n && o in n && typeof n[o] == "string" && (i = n[o]), i in e ? e[i] : e[o];
 }
-function Br({
+function Or({
   className: e,
   ...t
 }) {
@@ -1314,7 +1317,7 @@ function Br({
     {
       "data-slot": "checkbox",
       className: r(
-        "peer size-4 shrink-0 rounded-[4px] border border-input shadow-xs transition-shadow outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:bg-input/30 dark:aria-invalid:ring-destructive/40 dark:data-[state=checked]:bg-primary",
+        "peer size-4 shrink-0 border border-input shadow-xs transition-shadow outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:bg-input/30 dark:aria-invalid:ring-destructive/40 dark:data-[state=checked]:bg-primary",
         e
       ),
       ...t,
@@ -1329,12 +1332,12 @@ function Br({
     }
   );
 }
-function Or({
+function Vr({
   ...e
 }) {
   return /* @__PURE__ */ a(se.Root, { "data-slot": "collapsible", ...e });
 }
-function Vr({
+function Hr({
   ...e
 }) {
   return /* @__PURE__ */ a(
@@ -1345,7 +1348,7 @@ function Vr({
     }
   );
 }
-function Hr({
+function Kr({
   ...e
 }) {
   return /* @__PURE__ */ a(
@@ -1410,7 +1413,7 @@ function It({ className: e, ...t }) {
   );
 }
 const Tt = _(
-  "flex h-auto cursor-text items-center justify-center gap-2 py-1.5 text-sm font-medium text-muted-foreground select-none group-data-[disabled=true]/input-group:opacity-50 [&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-4",
+  "flex h-auto cursor-text items-center justify-center gap-2 py-1.5 text-sm font-medium text-muted-foreground select-none group-data-[disabled=true]/input-group:opacity-50 [&>kbd]:rounded-sm [&>svg:not([class*='size-'])]:size-4",
   {
     variants: {
       align: {
@@ -1449,9 +1452,9 @@ const Dt = _(
   {
     variants: {
       size: {
-        xs: "h-6 gap-1 rounded-[calc(var(--radius)-5px)] px-2 has-[>svg]:px-2 [&>svg:not([class*='size-'])]:size-3.5",
+        xs: "h-6 gap-1 rounded-sm px-2 has-[>svg]:px-2 [&>svg:not([class*='size-'])]:size-3.5",
         sm: "h-8 gap-1.5 rounded-md px-2.5 has-[>svg]:px-2.5",
-        "icon-xs": "size-6 rounded-[calc(var(--radius)-5px)] p-0 has-[>svg]:p-0",
+        "icon-xs": "size-6 rounded-sm p-0 has-[>svg]:p-0",
         "icon-sm": "size-8 p-0 has-[>svg]:p-0"
       }
     },
@@ -1478,7 +1481,7 @@ function Ce({
     }
   );
 }
-function Kr({ className: e, ...t }) {
+function qr({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "span",
     {
@@ -1506,7 +1509,7 @@ function Rt({
     }
   );
 }
-function qr({
+function Wr({
   className: e,
   ...t
 }) {
@@ -1522,9 +1525,9 @@ function qr({
     }
   );
 }
-const Wr = h.Root;
-function Ur({ ...e }) {
-  return /* @__PURE__ */ a(h.Value, { "data-slot": "combobox-value", ...e });
+const Ur = v.Root;
+function Xr({ ...e }) {
+  return /* @__PURE__ */ a(v.Value, { "data-slot": "combobox-value", ...e });
 }
 function Pt({
   className: e,
@@ -1532,7 +1535,7 @@ function Pt({
   ...o
 }) {
   return /* @__PURE__ */ d(
-    h.Trigger,
+    v.Trigger,
     {
       "data-slot": "combobox-trigger",
       className: r("[&_svg:not([class*='size-'])]:size-4", e),
@@ -1552,7 +1555,7 @@ function Pt({
 }
 function jt({ className: e, ...t }) {
   return /* @__PURE__ */ a(
-    h.Clear,
+    v.Clear,
     {
       "data-slot": "combobox-clear",
       render: /* @__PURE__ */ a(Ce, { variant: "ghost", size: "icon-xs" }),
@@ -1562,7 +1565,7 @@ function jt({ className: e, ...t }) {
     }
   );
 }
-function Xr({
+function Yr({
   className: e,
   children: t,
   disabled: o = !1,
@@ -1572,7 +1575,7 @@ function Xr({
 }) {
   return /* @__PURE__ */ d(It, { className: r("w-auto", e), children: [
     /* @__PURE__ */ a(
-      h.Input,
+      v.Input,
       {
         render: /* @__PURE__ */ a(Rt, { disabled: o }),
         ...s
@@ -1596,7 +1599,7 @@ function Xr({
     t
   ] });
 }
-function Yr({
+function Jr({
   className: e,
   side: t = "bottom",
   sideOffset: o = 6,
@@ -1605,8 +1608,8 @@ function Yr({
   anchor: s,
   ...c
 }) {
-  return /* @__PURE__ */ a(h.Portal, { children: /* @__PURE__ */ a(
-    h.Positioner,
+  return /* @__PURE__ */ a(v.Portal, { children: /* @__PURE__ */ a(
+    v.Positioner,
     {
       side: t,
       sideOffset: o,
@@ -1615,12 +1618,13 @@ function Yr({
       anchor: s,
       className: "isolate z-50",
       children: /* @__PURE__ */ a(
-        h.Popup,
+        v.Popup,
         {
           "data-slot": "combobox-content",
+          "data-augmented-ui": "tr-clip bl-clip both",
           "data-chips": !!s,
           className: r(
-            "group/combobox-content relative max-h-96 w-(--anchor-width) max-w-(--available-width) min-w-[calc(var(--anchor-width)+--spacing(7))] origin-(--transform-origin) overflow-hidden rounded-md bg-popover text-popover-foreground shadow-md ring-1 ring-foreground/10 duration-100 data-[chips=true]:min-w-(--anchor-width) data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 *:data-[slot=input-group]:m-1 *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-8 *:data-[slot=input-group]:border-input/30 *:data-[slot=input-group]:bg-input/30 *:data-[slot=input-group]:shadow-none data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+            "aug-surface aug-surface-sm group/combobox-content relative max-h-96 w-(--anchor-width) max-w-(--available-width) min-w-[calc(var(--anchor-width)+--spacing(7))] origin-(--transform-origin) overflow-hidden rounded-md bg-popover text-popover-foreground duration-100 data-[chips=true]:min-w-(--anchor-width) data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 *:data-[slot=input-group]:m-1 *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-8 *:data-[slot=input-group]:-input/30 *:data-[slot=input-group]:bg-input/30 *:data-[slot=input-group]:-none data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
             e
           ),
           ...c
@@ -1629,9 +1633,9 @@ function Yr({
     }
   ) });
 }
-function Jr({ className: e, ...t }) {
+function Qr({ className: e, ...t }) {
   return /* @__PURE__ */ a(
-    h.List,
+    v.List,
     {
       "data-slot": "combobox-list",
       className: r(
@@ -1642,13 +1646,13 @@ function Jr({ className: e, ...t }) {
     }
   );
 }
-function Qr({
+function Zr({
   className: e,
   children: t,
   ...o
 }) {
   return /* @__PURE__ */ d(
-    h.Item,
+    v.Item,
     {
       "data-slot": "combobox-item",
       className: r(
@@ -1659,7 +1663,7 @@ function Qr({
       children: [
         t,
         /* @__PURE__ */ a(
-          h.ItemIndicator,
+          v.ItemIndicator,
           {
             "data-slot": "combobox-item-indicator",
             render: /* @__PURE__ */ a("span", { className: "pointer-events-none absolute right-2 flex size-4 items-center justify-center" }),
@@ -1670,9 +1674,9 @@ function Qr({
     }
   );
 }
-function Zr({ className: e, ...t }) {
+function eo({ className: e, ...t }) {
   return /* @__PURE__ */ a(
-    h.Group,
+    v.Group,
     {
       "data-slot": "combobox-group",
       className: r(e),
@@ -1680,12 +1684,12 @@ function Zr({ className: e, ...t }) {
     }
   );
 }
-function eo({
+function to({
   className: e,
   ...t
 }) {
   return /* @__PURE__ */ a(
-    h.GroupLabel,
+    v.GroupLabel,
     {
       "data-slot": "combobox-label",
       className: r(
@@ -1696,12 +1700,12 @@ function eo({
     }
   );
 }
-function to({ ...e }) {
-  return /* @__PURE__ */ a(h.Collection, { "data-slot": "combobox-collection", ...e });
+function ao({ ...e }) {
+  return /* @__PURE__ */ a(v.Collection, { "data-slot": "combobox-collection", ...e });
 }
-function ao({ className: e, ...t }) {
+function ro({ className: e, ...t }) {
   return /* @__PURE__ */ a(
-    h.Empty,
+    v.Empty,
     {
       "data-slot": "combobox-empty",
       className: r(
@@ -1712,12 +1716,12 @@ function ao({ className: e, ...t }) {
     }
   );
 }
-function ro({
+function oo({
   className: e,
   ...t
 }) {
   return /* @__PURE__ */ a(
-    h.Separator,
+    v.Separator,
     {
       "data-slot": "combobox-separator",
       className: r("-mx-1 my-1 h-px bg-border", e),
@@ -1725,12 +1729,12 @@ function ro({
     }
   );
 }
-function oo({
+function no({
   className: e,
   ...t
 }) {
   return /* @__PURE__ */ a(
-    h.Chips,
+    v.Chips,
     {
       "data-slot": "combobox-chips",
       className: r(
@@ -1741,14 +1745,14 @@ function oo({
     }
   );
 }
-function no({
+function io({
   className: e,
   children: t,
   showRemove: o = !0,
   ...n
 }) {
   return /* @__PURE__ */ d(
-    h.Chip,
+    v.Chip,
     {
       "data-slot": "combobox-chip",
       className: r(
@@ -1759,7 +1763,7 @@ function no({
       children: [
         t,
         o && /* @__PURE__ */ a(
-          h.ChipRemove,
+          v.ChipRemove,
           {
             render: /* @__PURE__ */ a(R, { variant: "ghost", size: "icon-xs" }),
             className: "-ml-1 opacity-50 hover:opacity-100",
@@ -1771,13 +1775,13 @@ function no({
     }
   );
 }
-function io({
+function so({
   className: e,
   children: t,
   ...o
 }) {
   return /* @__PURE__ */ a(
-    h.Input,
+    v.Input,
     {
       "data-slot": "combobox-chip-input",
       className: r("min-w-16 flex-1 outline-none", e),
@@ -1785,7 +1789,7 @@ function io({
     }
   );
 }
-function so() {
+function lo() {
   return u.useRef(null);
 }
 function At({
@@ -1793,7 +1797,7 @@ function At({
 }) {
   return /* @__PURE__ */ a(x.Root, { "data-slot": "dialog", ...e });
 }
-function lo({
+function co({
   ...e
 }) {
   return /* @__PURE__ */ a(x.Trigger, { "data-slot": "dialog-trigger", ...e });
@@ -1803,7 +1807,7 @@ function Gt({
 }) {
   return /* @__PURE__ */ a(x.Portal, { "data-slot": "dialog-portal", ...e });
 }
-function co({
+function uo({
   ...e
 }) {
   return /* @__PURE__ */ a(x.Close, { "data-slot": "dialog-close", ...e });
@@ -1836,8 +1840,9 @@ function $t({
       x.Content,
       {
         "data-slot": "dialog-content",
+        "data-augmented-ui": "tr-clip bl-clip both",
         className: r(
-          "fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-200 outline-none data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg",
+          "aug-surface aug-surface-bg aug-pos-fixed fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg bg-background p-6 duration-200 outline-none data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg",
           e
         ),
         ...n,
@@ -1869,7 +1874,7 @@ function Et({ className: e, ...t }) {
     }
   );
 }
-function uo({
+function mo({
   className: e,
   showCloseButton: t = !1,
   children: o,
@@ -1925,15 +1930,16 @@ function Ot({
     $,
     {
       "data-slot": "command",
+      "data-augmented-ui": "tr-clip bl-clip both",
       className: r(
-        "flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground",
+        "aug-surface flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground",
         e
       ),
       ...t
     }
   );
 }
-function mo({
+function fo({
   title: e = "Command Palette",
   description: t = "Search for a command to run...",
   children: o,
@@ -1951,12 +1957,19 @@ function mo({
       {
         className: r("overflow-hidden p-0", n),
         showCloseButton: i,
-        children: /* @__PURE__ */ a(Ot, { className: "**:data-[slot=command-input-wrapper]:h-12 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5", children: o })
+        children: /* @__PURE__ */ a(
+          Ot,
+          {
+            "data-augmented-ui": !1,
+            className: "**:data-[slot=command-input-wrapper]:h-12 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5",
+            children: o
+          }
+        )
       }
     )
   ] });
 }
-function fo({
+function po({
   className: e,
   ...t
 }) {
@@ -1982,7 +1995,7 @@ function fo({
     }
   );
 }
-function po({
+function go({
   className: e,
   ...t
 }) {
@@ -1998,7 +2011,7 @@ function po({
     }
   );
 }
-function go({
+function bo({
   ...e
 }) {
   return /* @__PURE__ */ a(
@@ -2010,7 +2023,7 @@ function go({
     }
   );
 }
-function bo({
+function ho({
   className: e,
   ...t
 }) {
@@ -2039,7 +2052,7 @@ function vo({
     }
   );
 }
-function ho({
+function xo({
   className: e,
   ...t
 }) {
@@ -2055,7 +2068,7 @@ function ho({
     }
   );
 }
-function xo({
+function wo({
   className: e,
   ...t
 }) {
@@ -2071,32 +2084,32 @@ function xo({
     }
   );
 }
-function wo({
+function No({
   ...e
 }) {
   return /* @__PURE__ */ a(w.Root, { "data-slot": "context-menu", ...e });
 }
-function No({
+function yo({
   ...e
 }) {
   return /* @__PURE__ */ a(w.Trigger, { "data-slot": "context-menu-trigger", ...e });
 }
-function yo({
+function zo({
   ...e
 }) {
   return /* @__PURE__ */ a(w.Group, { "data-slot": "context-menu-group", ...e });
 }
-function zo({
+function ko({
   ...e
 }) {
   return /* @__PURE__ */ a(w.Portal, { "data-slot": "context-menu-portal", ...e });
 }
-function ko({
+function Co({
   ...e
 }) {
   return /* @__PURE__ */ a(w.Sub, { "data-slot": "context-menu-sub", ...e });
 }
-function Co({
+function _o({
   ...e
 }) {
   return /* @__PURE__ */ a(
@@ -2107,7 +2120,7 @@ function Co({
     }
   );
 }
-function _o({
+function So({
   className: e,
   inset: t,
   children: o,
@@ -2130,7 +2143,7 @@ function _o({
     }
   );
 }
-function So({
+function Io({
   className: e,
   ...t
 }) {
@@ -2138,15 +2151,16 @@ function So({
     w.SubContent,
     {
       "data-slot": "context-menu-sub-content",
+      "data-augmented-ui": "tr-clip bl-clip both",
       className: r(
-        "z-50 min-w-[8rem] origin-(--radix-context-menu-content-transform-origin) overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-lg data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+        "aug-surface aug-surface-sm z-50 min-w-[8rem] origin-(--radix-context-menu-content-transform-origin) overflow-hidden rounded-md bg-popover p-1 text-popover-foreground data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
         e
       ),
       ...t
     }
   );
 }
-function Io({
+function To({
   className: e,
   ...t
 }) {
@@ -2154,15 +2168,16 @@ function Io({
     w.Content,
     {
       "data-slot": "context-menu-content",
+      "data-augmented-ui": "tr-clip bl-clip both",
       className: r(
-        "z-50 max-h-(--radix-context-menu-content-available-height) min-w-[8rem] origin-(--radix-context-menu-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border bg-popover p-1 text-popover-foreground shadow-md data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+        "aug-surface aug-surface-sm z-50 max-h-(--radix-context-menu-content-available-height) min-w-[8rem] origin-(--radix-context-menu-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md bg-popover p-1 text-popover-foreground data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
         e
       ),
       ...t
     }
   ) });
 }
-function To({
+function Mo({
   className: e,
   inset: t,
   variant: o = "default",
@@ -2182,7 +2197,7 @@ function To({
     }
   );
 }
-function Mo({
+function Do({
   className: e,
   children: t,
   checked: o,
@@ -2205,7 +2220,7 @@ function Mo({
     }
   );
 }
-function Do({
+function Ro({
   className: e,
   children: t,
   ...o
@@ -2226,7 +2241,7 @@ function Do({
     }
   );
 }
-function Ro({
+function Po({
   className: e,
   inset: t,
   ...o
@@ -2244,7 +2259,7 @@ function Ro({
     }
   );
 }
-function Po({
+function jo({
   className: e,
   ...t
 }) {
@@ -2257,7 +2272,7 @@ function Po({
     }
   );
 }
-function jo({
+function Ao({
   className: e,
   ...t
 }) {
@@ -2273,12 +2288,12 @@ function jo({
     }
   );
 }
-function Ao({
+function Go({
   ...e
 }) {
   return /* @__PURE__ */ a(A.Root, { "data-slot": "drawer", ...e });
 }
-function Go({
+function Lo({
   ...e
 }) {
   return /* @__PURE__ */ a(A.Trigger, { "data-slot": "drawer-trigger", ...e });
@@ -2288,7 +2303,7 @@ function Vt({
 }) {
   return /* @__PURE__ */ a(A.Portal, { "data-slot": "drawer-portal", ...e });
 }
-function Lo({
+function $o({
   ...e
 }) {
   return /* @__PURE__ */ a(A.Close, { "data-slot": "drawer-close", ...e });
@@ -2309,7 +2324,7 @@ function Ht({
     }
   );
 }
-function $o({
+function Eo({
   className: e,
   children: t,
   ...o
@@ -2320,24 +2335,25 @@ function $o({
       A.Content,
       {
         "data-slot": "drawer-content",
+        "data-augmented-ui": "tl-clip tr-clip bl-clip br-clip both",
         className: r(
-          "group/drawer-content fixed z-50 flex h-auto flex-col bg-background",
-          "data-[vaul-drawer-direction=top]:inset-x-0 data-[vaul-drawer-direction=top]:top-0 data-[vaul-drawer-direction=top]:mb-24 data-[vaul-drawer-direction=top]:max-h-[80vh] data-[vaul-drawer-direction=top]:rounded-b-lg data-[vaul-drawer-direction=top]:border-b",
-          "data-[vaul-drawer-direction=bottom]:inset-x-0 data-[vaul-drawer-direction=bottom]:bottom-0 data-[vaul-drawer-direction=bottom]:mt-24 data-[vaul-drawer-direction=bottom]:max-h-[80vh] data-[vaul-drawer-direction=bottom]:rounded-t-lg data-[vaul-drawer-direction=bottom]:border-t",
-          "data-[vaul-drawer-direction=right]:inset-y-0 data-[vaul-drawer-direction=right]:right-0 data-[vaul-drawer-direction=right]:w-3/4 data-[vaul-drawer-direction=right]:border-l data-[vaul-drawer-direction=right]:sm:max-w-sm",
-          "data-[vaul-drawer-direction=left]:inset-y-0 data-[vaul-drawer-direction=left]:left-0 data-[vaul-drawer-direction=left]:w-3/4 data-[vaul-drawer-direction=left]:border-r data-[vaul-drawer-direction=left]:sm:max-w-sm",
+          "aug-surface aug-surface-bg aug-pos-fixed aug-drawer group/drawer-content fixed z-50 flex h-auto flex-col bg-background",
+          "data-[vaul-drawer-direction=top]:inset-x-0 data-[vaul-drawer-direction=top]:top-0 data-[vaul-drawer-direction=top]:mb-24 data-[vaul-drawer-direction=top]:max-h-[80vh] data-[vaul-drawer-direction=top]:rounded-b-lg ",
+          "data-[vaul-drawer-direction=bottom]:inset-x-0 data-[vaul-drawer-direction=bottom]:bottom-0 data-[vaul-drawer-direction=bottom]:mt-24 data-[vaul-drawer-direction=bottom]:max-h-[80vh] data-[vaul-drawer-direction=bottom]:rounded-t-lg ",
+          "data-[vaul-drawer-direction=right]:inset-y-0 data-[vaul-drawer-direction=right]:right-0 data-[vaul-drawer-direction=right]:w-3/4 data-[vaul-drawer-direction=right]:sm:max-w-sm",
+          "data-[vaul-drawer-direction=left]:inset-y-0 data-[vaul-drawer-direction=left]:left-0 data-[vaul-drawer-direction=left]:w-3/4 data-[vaul-drawer-direction=left]:sm:max-w-sm",
           e
         ),
         ...o,
         children: [
-          /* @__PURE__ */ a("div", { className: "mx-auto mt-4 hidden h-2 w-[100px] shrink-0 rounded-full bg-muted group-data-[vaul-drawer-direction=bottom]/drawer-content:block" }),
+          /* @__PURE__ */ a("div", { className: "mx-auto mt-4 hidden h-2 w-[100px] shrink-0 bg-muted group-data-[vaul-drawer-direction=bottom]/drawer-content:block" }),
           t
         ]
       }
     )
   ] });
 }
-function Eo({ className: e, ...t }) {
+function Fo({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -2350,7 +2366,7 @@ function Eo({ className: e, ...t }) {
     }
   );
 }
-function Fo({ className: e, ...t }) {
+function Bo({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -2360,7 +2376,7 @@ function Fo({ className: e, ...t }) {
     }
   );
 }
-function Bo({
+function Oo({
   className: e,
   ...t
 }) {
@@ -2373,7 +2389,7 @@ function Bo({
     }
   );
 }
-function Oo({
+function Vo({
   className: e,
   ...t
 }) {
@@ -2386,17 +2402,17 @@ function Oo({
     }
   );
 }
-function Vo({
+function Ho({
   ...e
 }) {
   return /* @__PURE__ */ a(y.Root, { "data-slot": "dropdown-menu", ...e });
 }
-function Ho({
+function Ko({
   ...e
 }) {
   return /* @__PURE__ */ a(y.Portal, { "data-slot": "dropdown-menu-portal", ...e });
 }
-function Ko({
+function qo({
   ...e
 }) {
   return /* @__PURE__ */ a(
@@ -2407,7 +2423,7 @@ function Ko({
     }
   );
 }
-function qo({
+function Wo({
   className: e,
   sideOffset: t = 4,
   ...o
@@ -2416,21 +2432,22 @@ function qo({
     y.Content,
     {
       "data-slot": "dropdown-menu-content",
+      "data-augmented-ui": "tr-clip bl-clip both",
       sideOffset: t,
       className: C(
-        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto border p-1",
+        "aug-surface aug-surface-sm bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto p-1",
         e
       ),
       ...o
     }
   ) });
 }
-function Wo({
+function Uo({
   ...e
 }) {
   return /* @__PURE__ */ a(y.Group, { "data-slot": "dropdown-menu-group", ...e });
 }
-function Uo({
+function Xo({
   className: e,
   inset: t,
   variant: o = "default",
@@ -2450,7 +2467,7 @@ function Uo({
     }
   );
 }
-function Xo({
+function Yo({
   className: e,
   children: t,
   checked: o,
@@ -2473,7 +2490,7 @@ function Xo({
     }
   );
 }
-function Yo({
+function Jo({
   ...e
 }) {
   return /* @__PURE__ */ a(
@@ -2484,7 +2501,7 @@ function Yo({
     }
   );
 }
-function Jo({
+function Qo({
   className: e,
   children: t,
   ...o
@@ -2505,7 +2522,7 @@ function Jo({
     }
   );
 }
-function Qo({
+function Zo({
   className: e,
   inset: t,
   ...o
@@ -2523,7 +2540,7 @@ function Qo({
     }
   );
 }
-function Zo({
+function en({
   className: e,
   ...t
 }) {
@@ -2536,7 +2553,7 @@ function Zo({
     }
   );
 }
-function en({
+function tn({
   className: e,
   ...t
 }) {
@@ -2552,12 +2569,12 @@ function en({
     }
   );
 }
-function tn({
+function an({
   ...e
 }) {
   return /* @__PURE__ */ a(y.Sub, { "data-slot": "dropdown-menu-sub", ...e });
 }
-function an({
+function rn({
   className: e,
   inset: t,
   children: o,
@@ -2580,7 +2597,7 @@ function an({
     }
   );
 }
-function rn({
+function on({
   className: e,
   ...t
 }) {
@@ -2588,15 +2605,16 @@ function rn({
     y.SubContent,
     {
       "data-slot": "dropdown-menu-sub-content",
+      "data-augmented-ui": "tr-clip bl-clip both",
       className: C(
-        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-hidden border p-1",
+        "aug-surface aug-surface-sm bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-hidden p-1",
         e
       ),
       ...t
     }
   );
 }
-function on({ className: e, ...t }) {
+function nn({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -2609,7 +2627,7 @@ function on({ className: e, ...t }) {
     }
   );
 }
-function nn({ className: e, ...t }) {
+function sn({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -2636,7 +2654,7 @@ const Kt = _(
     }
   }
 );
-function sn({
+function dn({
   className: e,
   variant: t = "default",
   ...o
@@ -2651,7 +2669,7 @@ function sn({
     }
   );
 }
-function dn({ className: e, ...t }) {
+function ln({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -2661,7 +2679,7 @@ function dn({ className: e, ...t }) {
     }
   );
 }
-function ln({ className: e, ...t }) {
+function cn({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -2674,7 +2692,7 @@ function ln({ className: e, ...t }) {
     }
   );
 }
-function cn({ className: e, ...t }) {
+function un({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -2703,7 +2721,7 @@ function _e({
     }
   );
 }
-function un({ className: e, ...t }) {
+function mn({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "fieldset",
     {
@@ -2717,7 +2735,7 @@ function un({ className: e, ...t }) {
     }
   );
 }
-function mn({
+function fn({
   className: e,
   variant: t = "legend",
   ...o
@@ -2789,7 +2807,7 @@ function te({
     }
   );
 }
-function fn({ className: e, ...t }) {
+function pn({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -2820,7 +2838,7 @@ function pe({
     }
   );
 }
-function pn({ className: e, ...t }) {
+function gn({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -2833,7 +2851,7 @@ function pn({ className: e, ...t }) {
     }
   );
 }
-function gn({ className: e, ...t }) {
+function bn({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "p",
     {
@@ -2848,7 +2866,7 @@ function gn({ className: e, ...t }) {
     }
   );
 }
-function bn({
+function hn({
   children: e,
   className: t,
   ...o
@@ -2908,7 +2926,7 @@ function ge({
 }
 const vn = it, Se = u.createContext(
   {}
-), hn = ({
+), xn = ({
   ...e
 }) => /* @__PURE__ */ a(Se.Provider, { value: { name: e.name }, children: /* @__PURE__ */ a(st, { ...e }) }), Z = () => {
   const e = u.useContext(Se), t = u.useContext(Ie), { getFieldState: o } = dt(), n = lt({ name: e.name }), i = o(e.name, n);
@@ -2926,7 +2944,7 @@ const vn = it, Se = u.createContext(
 }, Ie = u.createContext(
   {}
 );
-function xn({ className: e, ...t }) {
+function wn({ className: e, ...t }) {
   const o = u.useId();
   return /* @__PURE__ */ a(Ie.Provider, { value: { id: o }, children: /* @__PURE__ */ a(
     "div",
@@ -2937,7 +2955,7 @@ function xn({ className: e, ...t }) {
     }
   ) });
 }
-function wn({
+function Nn({
   className: e,
   ...t
 }) {
@@ -2953,7 +2971,7 @@ function wn({
     }
   );
 }
-function Nn({ ...e }) {
+function yn({ ...e }) {
   const { error: t, formItemId: o, formDescriptionId: n, formMessageId: i } = Z();
   return /* @__PURE__ */ a(
     D.Root,
@@ -2966,7 +2984,7 @@ function Nn({ ...e }) {
     }
   );
 }
-function yn({ className: e, ...t }) {
+function zn({ className: e, ...t }) {
   const { formDescriptionId: o } = Z();
   return /* @__PURE__ */ a(
     "p",
@@ -2978,7 +2996,7 @@ function yn({ className: e, ...t }) {
     }
   );
 }
-function zn({ className: e, ...t }) {
+function kn({ className: e, ...t }) {
   const { error: o, formMessageId: n } = Z(), i = o ? String(o?.message ?? "") : t.children;
   return i ? /* @__PURE__ */ a(
     "p",
@@ -2991,17 +3009,17 @@ function zn({ className: e, ...t }) {
     }
   ) : null;
 }
-function kn({
+function Cn({
   ...e
 }) {
   return /* @__PURE__ */ a(K.Root, { "data-slot": "hover-card", ...e });
 }
-function Cn({
+function _n({
   ...e
 }) {
   return /* @__PURE__ */ a(K.Trigger, { "data-slot": "hover-card-trigger", ...e });
 }
-function _n({
+function Sn({
   className: e,
   align: t = "center",
   sideOffset: o = 4,
@@ -3011,17 +3029,18 @@ function _n({
     K.Content,
     {
       "data-slot": "hover-card-content",
+      "data-augmented-ui": "tr-clip bl-clip both",
       align: t,
       sideOffset: o,
       className: r(
-        "z-50 w-64 origin-(--radix-hover-card-content-transform-origin) rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-hidden data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+        "aug-surface aug-surface-sm z-50 w-64 origin-(--radix-hover-card-content-transform-origin) rounded-md bg-popover p-4 text-popover-foreground outline-hidden data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
         e
       ),
       ...n
     }
   ) });
 }
-function Sn({
+function In({
   className: e,
   containerClassName: t,
   ...o
@@ -3039,7 +3058,7 @@ function Sn({
     }
   );
 }
-function In({ className: e, ...t }) {
+function Tn({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -3049,7 +3068,7 @@ function In({ className: e, ...t }) {
     }
   );
 }
-function Tn({
+function Mn({
   index: e,
   className: t,
   ...o
@@ -3072,10 +3091,10 @@ function Tn({
     }
   );
 }
-function Mn({ ...e }) {
+function Dn({ ...e }) {
   return /* @__PURE__ */ a("div", { "data-slot": "input-otp-separator", role: "separator", ...e, children: /* @__PURE__ */ a(Ke, {}) });
 }
-function Dn({ className: e, ...t }) {
+function Rn({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -3086,7 +3105,7 @@ function Dn({ className: e, ...t }) {
     }
   );
 }
-function Rn({
+function Pn({
   className: e,
   ...t
 }) {
@@ -3120,7 +3139,7 @@ const Ut = _(
     }
   }
 );
-function Pn({
+function jn({
   className: e,
   variant: t = "default",
   size: o = "default",
@@ -3154,7 +3173,7 @@ const Xt = _(
     }
   }
 );
-function jn({
+function An({
   className: e,
   variant: t = "default",
   ...o
@@ -3169,7 +3188,7 @@ function jn({
     }
   );
 }
-function An({ className: e, ...t }) {
+function Gn({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -3182,7 +3201,7 @@ function An({ className: e, ...t }) {
     }
   );
 }
-function Gn({ className: e, ...t }) {
+function Ln({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -3195,7 +3214,7 @@ function Gn({ className: e, ...t }) {
     }
   );
 }
-function Ln({ className: e, ...t }) {
+function $n({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "p",
     {
@@ -3209,7 +3228,7 @@ function Ln({ className: e, ...t }) {
     }
   );
 }
-function $n({ className: e, ...t }) {
+function En({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -3219,7 +3238,7 @@ function $n({ className: e, ...t }) {
     }
   );
 }
-function En({ className: e, ...t }) {
+function Fn({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -3232,7 +3251,7 @@ function En({ className: e, ...t }) {
     }
   );
 }
-function Fn({ className: e, ...t }) {
+function Bn({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -3245,7 +3264,7 @@ function Fn({ className: e, ...t }) {
     }
   );
 }
-function Bn({ className: e, ...t }) {
+function On({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "kbd",
     {
@@ -3260,7 +3279,7 @@ function Bn({ className: e, ...t }) {
     }
   );
 }
-function On({ className: e, ...t }) {
+function Vn({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "kbd",
     {
@@ -3270,7 +3289,7 @@ function On({ className: e, ...t }) {
     }
   );
 }
-function Vn({
+function Hn({
   className: e,
   ...t
 }) {
@@ -3286,12 +3305,12 @@ function Vn({
     }
   );
 }
-function Hn({
+function Kn({
   ...e
 }) {
   return /* @__PURE__ */ a(N.Menu, { "data-slot": "menubar-menu", ...e });
 }
-function Kn({
+function qn({
   ...e
 }) {
   return /* @__PURE__ */ a(N.Group, { "data-slot": "menubar-group", ...e });
@@ -3301,12 +3320,12 @@ function Yt({
 }) {
   return /* @__PURE__ */ a(N.Portal, { "data-slot": "menubar-portal", ...e });
 }
-function qn({
+function Wn({
   ...e
 }) {
   return /* @__PURE__ */ a(N.RadioGroup, { "data-slot": "menubar-radio-group", ...e });
 }
-function Wn({
+function Un({
   className: e,
   ...t
 }) {
@@ -3322,7 +3341,7 @@ function Wn({
     }
   );
 }
-function Un({
+function Xn({
   className: e,
   align: t = "start",
   alignOffset: o = -4,
@@ -3333,18 +3352,19 @@ function Un({
     N.Content,
     {
       "data-slot": "menubar-content",
+      "data-augmented-ui": "tr-clip bl-clip both",
       align: t,
       alignOffset: o,
       sideOffset: n,
       className: r(
-        "z-50 min-w-[12rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+        "aug-surface aug-surface-sm z-50 min-w-[12rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden rounded-md bg-popover p-1 text-popover-foreground data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
         e
       ),
       ...i
     }
   ) });
 }
-function Xn({
+function Yn({
   className: e,
   inset: t,
   variant: o = "default",
@@ -3364,7 +3384,7 @@ function Xn({
     }
   );
 }
-function Yn({
+function Jn({
   className: e,
   children: t,
   checked: o,
@@ -3387,7 +3407,7 @@ function Yn({
     }
   );
 }
-function Jn({
+function Qn({
   className: e,
   children: t,
   ...o
@@ -3408,7 +3428,7 @@ function Jn({
     }
   );
 }
-function Qn({
+function Zn({
   className: e,
   inset: t,
   ...o
@@ -3426,7 +3446,7 @@ function Qn({
     }
   );
 }
-function Zn({
+function ei({
   className: e,
   ...t
 }) {
@@ -3439,7 +3459,7 @@ function Zn({
     }
   );
 }
-function ei({
+function ti({
   className: e,
   ...t
 }) {
@@ -3455,12 +3475,12 @@ function ei({
     }
   );
 }
-function ti({
+function ai({
   ...e
 }) {
   return /* @__PURE__ */ a(N.Sub, { "data-slot": "menubar-sub", ...e });
 }
-function ai({
+function ri({
   className: e,
   inset: t,
   children: o,
@@ -3483,7 +3503,7 @@ function ai({
     }
   );
 }
-function ri({
+function oi({
   className: e,
   ...t
 }) {
@@ -3491,15 +3511,16 @@ function ri({
     N.SubContent,
     {
       "data-slot": "menubar-sub-content",
+      "data-augmented-ui": "tr-clip bl-clip both",
       className: r(
-        "z-50 min-w-[8rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-lg data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+        "aug-surface aug-surface-sm z-50 min-w-[8rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden rounded-md bg-popover p-1 text-popover-foreground data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
         e
       ),
       ...t
     }
   );
 }
-function oi({
+function ni({
   className: e,
   size: t = "default",
   ...o
@@ -3536,7 +3557,7 @@ function oi({
     }
   );
 }
-function ni({
+function ii({
   className: e,
   ...t
 }) {
@@ -3549,7 +3570,7 @@ function ni({
     }
   );
 }
-function ii({
+function si({
   className: e,
   ...t
 }) {
@@ -3650,9 +3671,10 @@ function ta({
     j.Content,
     {
       "data-slot": "navigation-menu-content",
+      "data-augmented-ui": "tr-clip bl-clip both",
       className: r(
-        "top-0 left-0 w-full p-2 pr-2.5 data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 data-[motion^=from-]:animate-in data-[motion^=from-]:fade-in data-[motion^=to-]:animate-out data-[motion^=to-]:fade-out md:absolute md:w-auto",
-        "group-data-[viewport=false]/navigation-menu:top-full group-data-[viewport=false]/navigation-menu:mt-1.5 group-data-[viewport=false]/navigation-menu:overflow-hidden group-data-[viewport=false]/navigation-menu:rounded-md group-data-[viewport=false]/navigation-menu:border group-data-[viewport=false]/navigation-menu:bg-popover group-data-[viewport=false]/navigation-menu:text-popover-foreground group-data-[viewport=false]/navigation-menu:shadow group-data-[viewport=false]/navigation-menu:duration-200 **:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none group-data-[viewport=false]/navigation-menu:data-[state=closed]:animate-out group-data-[viewport=false]/navigation-menu:data-[state=closed]:fade-out-0 group-data-[viewport=false]/navigation-menu:data-[state=closed]:zoom-out-95 group-data-[viewport=false]/navigation-menu:data-[state=open]:animate-in group-data-[viewport=false]/navigation-menu:data-[state=open]:fade-in-0 group-data-[viewport=false]/navigation-menu:data-[state=open]:zoom-in-95",
+        "aug-surface aug-pos-absolute top-0 left-0 w-full p-2 pr-2.5 data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 data-[motion^=from-]:animate-in data-[motion^=from-]:fade-in data-[motion^=to-]:animate-out data-[motion^=to-]:fade-out md:absolute md:w-auto",
+        "group-data-[viewport=false]/navigation-menu:top-full group-data-[viewport=false]/navigation-menu:mt-1.5 group-data-[viewport=false]/navigation-menu:overflow-hidden group-data-[viewport=false]/navigation-menu:rounded-md group-data-[viewport=false]/navigation-menu:bg-popover group-data-[viewport=false]/navigation-menu:text-popover-foreground group-data-[viewport=false]/navigation-menu:shadow group-data-[viewport=false]/navigation-menu:duration-200 **:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none group-data-[viewport=false]/navigation-menu:data-[state=closed]:animate-out group-data-[viewport=false]/navigation-menu:data-[state=closed]:fade-out-0 group-data-[viewport=false]/navigation-menu:data-[state=closed]:zoom-out-95 group-data-[viewport=false]/navigation-menu:data-[state=open]:animate-in group-data-[viewport=false]/navigation-menu:data-[state=open]:fade-in-0 group-data-[viewport=false]/navigation-menu:data-[state=open]:zoom-in-95",
         e
       ),
       ...t
@@ -3673,8 +3695,9 @@ function aa({
         j.Viewport,
         {
           "data-slot": "navigation-menu-viewport",
+          "data-augmented-ui": "tr-clip bl-clip both",
           className: r(
-            "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]",
+            "aug-surface origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md bg-popover text-popover-foreground data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]",
             e
           ),
           ...t
@@ -3699,7 +3722,7 @@ function be({
     }
   );
 }
-function si({
+function di({
   className: e,
   ...t
 }) {
@@ -3716,7 +3739,7 @@ function si({
     }
   );
 }
-function di({ className: e, ...t }) {
+function li({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "nav",
     {
@@ -3728,7 +3751,7 @@ function di({ className: e, ...t }) {
     }
   );
 }
-function li({
+function ci({
   className: e,
   ...t
 }) {
@@ -3741,7 +3764,7 @@ function li({
     }
   );
 }
-function ci({ ...e }) {
+function ui({ ...e }) {
   return /* @__PURE__ */ a("li", { "data-slot": "pagination-item", ...e });
 }
 function Me({
@@ -3767,7 +3790,7 @@ function Me({
     }
   );
 }
-function ui({
+function mi({
   className: e,
   ...t
 }) {
@@ -3785,7 +3808,7 @@ function ui({
     }
   );
 }
-function mi({
+function fi({
   className: e,
   ...t
 }) {
@@ -3803,7 +3826,7 @@ function mi({
     }
   );
 }
-function fi({
+function pi({
   className: e,
   ...t
 }) {
@@ -3821,17 +3844,17 @@ function fi({
     }
   );
 }
-function pi({
+function gi({
   ...e
 }) {
   return /* @__PURE__ */ a(O.Root, { "data-slot": "popover", ...e });
 }
-function gi({
+function bi({
   ...e
 }) {
   return /* @__PURE__ */ a(O.Trigger, { "data-slot": "popover-trigger", ...e });
 }
-function bi({
+function hi({
   className: e,
   align: t = "center",
   sideOffset: o = 4,
@@ -3841,10 +3864,11 @@ function bi({
     O.Content,
     {
       "data-slot": "popover-content",
+      "data-augmented-ui": "tr-clip bl-clip both",
       align: t,
       sideOffset: o,
       className: r(
-        "z-50 w-72 origin-(--radix-popover-content-transform-origin) rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-hidden data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+        "aug-surface z-50 w-72 origin-(--radix-popover-content-transform-origin) rounded-md bg-popover p-4 text-popover-foreground outline-hidden data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
         e
       ),
       ...n
@@ -3856,7 +3880,7 @@ function vi({
 }) {
   return /* @__PURE__ */ a(O.Anchor, { "data-slot": "popover-anchor", ...e });
 }
-function hi({ className: e, ...t }) {
+function xi({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -3866,7 +3890,7 @@ function hi({ className: e, ...t }) {
     }
   );
 }
-function xi({ className: e, ...t }) {
+function wi({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -3876,7 +3900,7 @@ function xi({ className: e, ...t }) {
     }
   );
 }
-function wi({
+function Ni({
   className: e,
   ...t
 }) {
@@ -3889,7 +3913,7 @@ function wi({
     }
   );
 }
-function Ni({
+function yi({
   className: e,
   value: t,
   ...o
@@ -3899,7 +3923,7 @@ function Ni({
     {
       "data-slot": "progress",
       className: r(
-        "relative h-2 w-full overflow-hidden rounded-full bg-primary/20",
+        "relative h-2 w-full overflow-hidden bg-primary/20",
         e
       ),
       ...o,
@@ -3914,7 +3938,7 @@ function Ni({
     }
   );
 }
-function yi({
+function zi({
   className: e,
   ...t
 }) {
@@ -3927,7 +3951,7 @@ function yi({
     }
   );
 }
-function zi({
+function ki({
   className: e,
   ...t
 }) {
@@ -3951,7 +3975,7 @@ function zi({
     }
   );
 }
-function ki({
+function Ci({
   className: e,
   ...t
 }) {
@@ -3967,10 +3991,10 @@ function ki({
     }
   );
 }
-function Ci({ ...e }) {
+function _i({ ...e }) {
   return /* @__PURE__ */ a(le.Panel, { "data-slot": "resizable-panel", ...e });
 }
-function _i({
+function Si({
   withHandle: e,
   className: t,
   ...o
@@ -3988,7 +4012,7 @@ function _i({
     }
   );
 }
-function Si({
+function Ii({
   className: e,
   children: t,
   ...o
@@ -4035,28 +4059,28 @@ function ra({
         F.ScrollAreaThumb,
         {
           "data-slot": "scroll-area-thumb",
-          className: "relative flex-1 rounded-full bg-border"
+          className: "relative flex-1 bg-border"
         }
       )
     }
   );
 }
-function Ii({
+function Ti({
   ...e
 }) {
   return /* @__PURE__ */ a(k.Root, { "data-slot": "select", ...e });
 }
-function Ti({
+function Mi({
   ...e
 }) {
   return /* @__PURE__ */ a(k.Group, { "data-slot": "select-group", ...e });
 }
-function Mi({
+function Di({
   ...e
 }) {
   return /* @__PURE__ */ a(k.Value, { "data-slot": "select-value", ...e });
 }
-function Di({
+function Ri({
   className: e,
   size: t = "default",
   children: o,
@@ -4079,7 +4103,7 @@ function Di({
     }
   );
 }
-function Ri({
+function Pi({
   className: e,
   children: t,
   position: o = "item-aligned",
@@ -4090,8 +4114,9 @@ function Ri({
     k.Content,
     {
       "data-slot": "select-content",
+      "data-augmented-ui": "tr-clip bl-clip both",
       className: r(
-        "relative z-50 max-h-(--radix-select-content-available-height) min-w-[8rem] origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border bg-popover text-popover-foreground shadow-md data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+        "aug-surface aug-surface-sm relative z-50 max-h-(--radix-select-content-available-height) min-w-[8rem] origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md bg-popover text-popover-foreground data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
         o === "popper" && "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
         e
       ),
@@ -4115,7 +4140,7 @@ function Ri({
     }
   ) });
 }
-function Pi({
+function ji({
   className: e,
   ...t
 }) {
@@ -4128,7 +4153,7 @@ function Pi({
     }
   );
 }
-function ji({
+function Ai({
   className: e,
   children: t,
   ...o
@@ -4156,7 +4181,7 @@ function ji({
     }
   );
 }
-function Ai({
+function Gi({
   className: e,
   ...t
 }) {
@@ -4206,12 +4231,12 @@ function na({
 function ia({ ...e }) {
   return /* @__PURE__ */ a(x.Root, { "data-slot": "sheet", ...e });
 }
-function Gi({
+function Li({
   ...e
 }) {
   return /* @__PURE__ */ a(x.Trigger, { "data-slot": "sheet-trigger", ...e });
 }
-function Li({
+function $i({
   ...e
 }) {
   return /* @__PURE__ */ a(x.Close, { "data-slot": "sheet-close", ...e });
@@ -4237,7 +4262,13 @@ function da({
     }
   );
 }
-function la({
+const la = {
+  right: "tl-clip bl-clip both",
+  left: "tr-clip br-clip both",
+  top: "bl-clip br-clip both",
+  bottom: "tl-clip tr-clip both"
+};
+function ca({
   className: e,
   children: t,
   side: o = "right",
@@ -4250,12 +4281,13 @@ function la({
       x.Content,
       {
         "data-slot": "sheet-content",
+        "data-augmented-ui": la[o],
         className: r(
-          "fixed z-50 flex flex-col gap-4 bg-background shadow-lg transition ease-in-out data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:animate-in data-[state=open]:duration-500",
-          o === "right" && "inset-y-0 right-0 h-full w-3/4 border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm",
-          o === "left" && "inset-y-0 left-0 h-full w-3/4 border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm",
-          o === "top" && "inset-x-0 top-0 h-auto border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
-          o === "bottom" && "inset-x-0 bottom-0 h-auto border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
+          "aug-surface aug-surface-bg aug-pos-fixed fixed z-50 flex flex-col gap-4 bg-background transition ease-in-out data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:animate-in data-[state=open]:duration-500",
+          o === "right" && "inset-y-0 right-0 h-full w-3/4 data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm",
+          o === "left" && "inset-y-0 left-0 h-full w-3/4 data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm",
+          o === "top" && "inset-x-0 top-0 h-auto data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
+          o === "bottom" && "inset-x-0 bottom-0 h-auto data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
           e
         ),
         ...i,
@@ -4270,7 +4302,7 @@ function la({
     )
   ] });
 }
-function ca({ className: e, ...t }) {
+function ua({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -4280,7 +4312,7 @@ function ca({ className: e, ...t }) {
     }
   );
 }
-function $i({ className: e, ...t }) {
+function Ei({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -4290,7 +4322,7 @@ function $i({ className: e, ...t }) {
     }
   );
 }
-function ua({
+function ma({
   className: e,
   ...t
 }) {
@@ -4303,7 +4335,7 @@ function ua({
     }
   );
 }
-function ma({
+function fa({
   className: e,
   ...t
 }) {
@@ -4317,7 +4349,7 @@ function ma({
   );
 }
 const ae = 768;
-function fa() {
+function pa() {
   const [e, t] = u.useState(void 0);
   return u.useEffect(() => {
     const o = window.matchMedia(`(max-width: ${ae - 1}px)`), n = () => {
@@ -4326,7 +4358,7 @@ function fa() {
     return o.addEventListener("change", n), t(window.innerWidth < ae), () => o.removeEventListener("change", n);
   }, []), !!e;
 }
-function ve({ className: e, ...t }) {
+function he({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -4336,7 +4368,7 @@ function ve({ className: e, ...t }) {
     }
   );
 }
-function pa({
+function ga({
   delayDuration: e = 0,
   ...t
 }) {
@@ -4349,12 +4381,12 @@ function pa({
     }
   );
 }
-function ga({
+function ba({
   ...e
 }) {
   return /* @__PURE__ */ a(E.Root, { "data-slot": "tooltip", ...e });
 }
-function ba({
+function ha({
   ...e
 }) {
   return /* @__PURE__ */ a(E.Trigger, { "data-slot": "tooltip-trigger", ...e });
@@ -4369,27 +4401,28 @@ function va({
     E.Content,
     {
       "data-slot": "tooltip-content",
+      "data-augmented-ui": "tr-clip bl-clip both",
       sideOffset: t,
       className: r(
-        "z-50 w-fit origin-(--radix-tooltip-content-transform-origin) animate-in rounded-md bg-foreground px-3 py-1.5 text-xs text-balance text-background fade-in-0 zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
+        "aug-surface aug-surface-sm aug-surface-fg z-50 w-fit origin-(--radix-tooltip-content-transform-origin) animate-in rounded-md bg-foreground px-3 py-1.5 text-xs text-balance text-background fade-in-0 zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
         e
       ),
       ...n,
       children: [
         o,
-        /* @__PURE__ */ a(E.Arrow, { className: "z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px] bg-foreground fill-foreground" })
+        /* @__PURE__ */ a(E.Arrow, { className: "z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 bg-foreground fill-foreground" })
       ]
     }
   ) });
 }
-const ha = "sidebar_state", xa = 3600 * 24 * 7, wa = "16rem", Na = "18rem", ya = "3rem", za = "b", De = u.createContext(null);
+const xa = "sidebar_state", wa = 3600 * 24 * 7, Na = "16rem", ya = "18rem", za = "3rem", ka = "b", De = u.createContext(null);
 function ee() {
   const e = u.useContext(De);
   if (!e)
     throw new Error("useSidebar must be used within a SidebarProvider.");
   return e;
 }
-function Ei({
+function Fi({
   defaultOpen: e = !0,
   open: t,
   onOpenChange: o,
@@ -4398,16 +4431,16 @@ function Ei({
   children: s,
   ...c
 }) {
-  const m = fa(), [l, f] = u.useState(!1), [b, v] = u.useState(e), I = t ?? b, z = u.useCallback(
+  const m = pa(), [l, f] = u.useState(!1), [b, h] = u.useState(e), I = t ?? b, z = u.useCallback(
     (g) => {
       const S = typeof g == "function" ? g(I) : g;
-      o ? o(S) : v(S), document.cookie = `${ha}=${S}; path=/; max-age=${xa}`;
+      o ? o(S) : h(S), document.cookie = `${xa}=${S}; path=/; max-age=${wa}`;
     },
     [o, I]
   ), T = u.useCallback(() => m ? f((g) => !g) : z((g) => !g), [m, z, f]);
   u.useEffect(() => {
     const g = (S) => {
-      S.key === za && (S.metaKey || S.ctrlKey) && (S.preventDefault(), T());
+      S.key === ka && (S.metaKey || S.ctrlKey) && (S.preventDefault(), T());
     };
     return window.addEventListener("keydown", g), () => window.removeEventListener("keydown", g);
   }, [T]);
@@ -4423,13 +4456,13 @@ function Ei({
     }),
     [M, I, z, m, l, f, T]
   );
-  return /* @__PURE__ */ a(De.Provider, { value: p, children: /* @__PURE__ */ a(pa, { delayDuration: 0, children: /* @__PURE__ */ a(
+  return /* @__PURE__ */ a(De.Provider, { value: p, children: /* @__PURE__ */ a(ga, { delayDuration: 0, children: /* @__PURE__ */ a(
     "div",
     {
       "data-slot": "sidebar-wrapper",
       style: {
-        "--sidebar-width": wa,
-        "--sidebar-width-icon": ya,
+        "--sidebar-width": Na,
+        "--sidebar-width-icon": za,
         ...i
       },
       className: r(
@@ -4441,7 +4474,7 @@ function Ei({
     }
   ) }) });
 }
-function Fi({
+function Bi({
   side: e = "left",
   variant: t = "sidebar",
   collapsible: o = "offcanvas",
@@ -4462,20 +4495,20 @@ function Fi({
       children: i
     }
   ) : c ? /* @__PURE__ */ a(ia, { open: l, onOpenChange: f, ...s, children: /* @__PURE__ */ d(
-    la,
+    ca,
     {
       "data-sidebar": "sidebar",
       "data-slot": "sidebar",
       "data-mobile": "true",
       className: "w-(--sidebar-width) bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden",
       style: {
-        "--sidebar-width": Na
+        "--sidebar-width": ya
       },
       side: e,
       children: [
-        /* @__PURE__ */ d(ca, { className: "sr-only", children: [
-          /* @__PURE__ */ a(ua, { children: "Sidebar" }),
-          /* @__PURE__ */ a(ma, { children: "Displays the mobile sidebar." })
+        /* @__PURE__ */ d(ua, { className: "sr-only", children: [
+          /* @__PURE__ */ a(ma, { children: "Sidebar" }),
+          /* @__PURE__ */ a(fa, { children: "Displays the mobile sidebar." })
         ] }),
         /* @__PURE__ */ a("div", { className: "flex h-full w-full flex-col", children: i })
       ]
@@ -4529,7 +4562,7 @@ function Fi({
     }
   );
 }
-function Bi({
+function Oi({
   className: e,
   onClick: t,
   ...o
@@ -4554,7 +4587,7 @@ function Bi({
     }
   );
 }
-function Oi({ className: e, ...t }) {
+function Vi({ className: e, ...t }) {
   const { toggleSidebar: o } = ee();
   return /* @__PURE__ */ a(
     "button",
@@ -4578,7 +4611,7 @@ function Oi({ className: e, ...t }) {
     }
   );
 }
-function Vi({ className: e, ...t }) {
+function Hi({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "main",
     {
@@ -4592,7 +4625,7 @@ function Vi({ className: e, ...t }) {
     }
   );
 }
-function Hi({
+function Ki({
   className: e,
   ...t
 }) {
@@ -4606,7 +4639,7 @@ function Hi({
     }
   );
 }
-function Ki({ className: e, ...t }) {
+function qi({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -4617,7 +4650,7 @@ function Ki({ className: e, ...t }) {
     }
   );
 }
-function qi({ className: e, ...t }) {
+function Wi({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -4628,7 +4661,7 @@ function qi({ className: e, ...t }) {
     }
   );
 }
-function Wi({
+function Ui({
   className: e,
   ...t
 }) {
@@ -4642,7 +4675,7 @@ function Wi({
     }
   );
 }
-function Ui({ className: e, ...t }) {
+function Xi({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -4656,7 +4689,7 @@ function Ui({ className: e, ...t }) {
     }
   );
 }
-function Xi({ className: e, ...t }) {
+function Yi({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -4667,7 +4700,7 @@ function Xi({ className: e, ...t }) {
     }
   );
 }
-function Yi({
+function Ji({
   className: e,
   asChild: t = !1,
   ...o
@@ -4687,7 +4720,7 @@ function Yi({
     }
   );
 }
-function Ji({
+function Qi({
   className: e,
   asChild: t = !1,
   ...o
@@ -4709,7 +4742,7 @@ function Ji({
     }
   );
 }
-function Qi({
+function Zi({
   className: e,
   ...t
 }) {
@@ -4723,7 +4756,7 @@ function Qi({
     }
   );
 }
-function Zi({ className: e, ...t }) {
+function es({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "ul",
     {
@@ -4734,7 +4767,7 @@ function Zi({ className: e, ...t }) {
     }
   );
 }
-function es({ className: e, ...t }) {
+function ts({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "li",
     {
@@ -4745,7 +4778,7 @@ function es({ className: e, ...t }) {
     }
   );
 }
-const ka = _(
+const Ca = _(
   "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm ring-sidebar-ring outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
   {
     variants: {
@@ -4765,7 +4798,7 @@ const ka = _(
     }
   }
 );
-function ts({
+function as({
   asChild: e = !1,
   isActive: t = !1,
   variant: o = "default",
@@ -4781,14 +4814,14 @@ function ts({
       "data-sidebar": "menu-button",
       "data-size": n,
       "data-active": t,
-      className: r(ka({ variant: o, size: n }), s),
+      className: r(Ca({ variant: o, size: n }), s),
       ...c
     }
   );
   return i ? (typeof i == "string" && (i = {
     children: i
-  }), /* @__PURE__ */ d(ga, { children: [
-    /* @__PURE__ */ a(ba, { asChild: !0, children: b }),
+  }), /* @__PURE__ */ d(ba, { children: [
+    /* @__PURE__ */ a(ha, { asChild: !0, children: b }),
     /* @__PURE__ */ a(
       va,
       {
@@ -4800,7 +4833,7 @@ function ts({
     )
   ] })) : b;
 }
-function as({
+function rs({
   className: e,
   asChild: t = !1,
   showOnHover: o = !1,
@@ -4827,7 +4860,7 @@ function as({
     }
   );
 }
-function rs({
+function os({
   className: e,
   ...t
 }) {
@@ -4849,7 +4882,7 @@ function rs({
     }
   );
 }
-function os({
+function ns({
   className: e,
   showIcon: t = !1,
   ...o
@@ -4864,14 +4897,14 @@ function os({
       ...o,
       children: [
         t && /* @__PURE__ */ a(
-          ve,
+          he,
           {
             className: "size-4 rounded-md",
             "data-sidebar": "menu-skeleton-icon"
           }
         ),
         /* @__PURE__ */ a(
-          ve,
+          he,
           {
             className: "h-4 max-w-(--skeleton-width) flex-1",
             "data-sidebar": "menu-skeleton-text",
@@ -4884,7 +4917,7 @@ function os({
     }
   );
 }
-function ns({ className: e, ...t }) {
+function is({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "ul",
     {
@@ -4899,7 +4932,7 @@ function ns({ className: e, ...t }) {
     }
   );
 }
-function is({
+function ss({
   className: e,
   ...t
 }) {
@@ -4913,7 +4946,7 @@ function is({
     }
   );
 }
-function ss({
+function ds({
   asChild: e = !1,
   size: t = "md",
   isActive: o = !1,
@@ -4940,7 +4973,7 @@ function ss({
     }
   );
 }
-function ds({
+function ls({
   className: e,
   defaultValue: t,
   value: o,
@@ -4971,7 +5004,7 @@ function ds({
           {
             "data-slot": "slider-track",
             className: r(
-              "relative grow overflow-hidden rounded-full bg-muted data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5"
+              "relative grow overflow-hidden bg-muted data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5"
             ),
             children: /* @__PURE__ */ a(
               H.Range,
@@ -4996,7 +5029,7 @@ function ds({
     }
   );
 }
-function ls({ className: e, ...t }) {
+function cs({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     Ye,
     {
@@ -5007,7 +5040,7 @@ function ls({ className: e, ...t }) {
     }
   );
 }
-function cs({
+function us({
   className: e,
   size: t = "default",
   ...o
@@ -5018,7 +5051,7 @@ function cs({
       "data-slot": "switch",
       "data-size": t,
       className: r(
-        "peer group/switch inline-flex shrink-0 items-center rounded-full border border-transparent shadow-xs transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-[1.15rem] data-[size=default]:w-8 data-[size=sm]:h-3.5 data-[size=sm]:w-6 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input/80",
+        "peer group/switch inline-flex shrink-0 items-center border border-transparent shadow-xs transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-[1.15rem] data-[size=default]:w-8 data-[size=sm]:h-3.5 data-[size=sm]:w-6 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input/80",
         e
       ),
       ...o,
@@ -5034,7 +5067,7 @@ function cs({
     }
   );
 }
-function us({ className: e, ...t }) {
+function ms({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -5051,7 +5084,7 @@ function us({ className: e, ...t }) {
     }
   );
 }
-function ms({ className: e, ...t }) {
+function fs({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "thead",
     {
@@ -5061,7 +5094,7 @@ function ms({ className: e, ...t }) {
     }
   );
 }
-function fs({ className: e, ...t }) {
+function ps({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "tbody",
     {
@@ -5071,7 +5104,7 @@ function fs({ className: e, ...t }) {
     }
   );
 }
-function ps({ className: e, ...t }) {
+function gs({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "tfoot",
     {
@@ -5084,7 +5117,7 @@ function ps({ className: e, ...t }) {
     }
   );
 }
-function gs({ className: e, ...t }) {
+function bs({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "tr",
     {
@@ -5097,7 +5130,7 @@ function gs({ className: e, ...t }) {
     }
   );
 }
-function bs({ className: e, ...t }) {
+function hs({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "th",
     {
@@ -5123,7 +5156,7 @@ function vs({ className: e, ...t }) {
     }
   );
 }
-function hs({
+function xs({
   className: e,
   ...t
 }) {
@@ -5136,7 +5169,7 @@ function hs({
     }
   );
 }
-function xs({
+function ws({
   className: e,
   orientation: t = "horizontal",
   ...o
@@ -5155,7 +5188,7 @@ function xs({
     }
   );
 }
-const Ca = _(
+const _a = _(
   "group/tabs-list inline-flex w-fit items-center justify-center rounded-lg p-[3px] text-muted-foreground group-data-[orientation=horizontal]/tabs:h-9 group-data-[orientation=vertical]/tabs:h-fit group-data-[orientation=vertical]/tabs:flex-col data-[variant=line]:rounded-none",
   {
     variants: {
@@ -5169,7 +5202,7 @@ const Ca = _(
     }
   }
 );
-function ws({
+function Ns({
   className: e,
   variant: t = "default",
   ...o
@@ -5179,12 +5212,12 @@ function ws({
     {
       "data-slot": "tabs-list",
       "data-variant": t,
-      className: r(Ca({ variant: t }), e),
+      className: r(_a({ variant: t }), e),
       ...o
     }
   );
 }
-function Ns({
+function ys({
   className: e,
   ...t
 }) {
@@ -5203,7 +5236,7 @@ function Ns({
     }
   );
 }
-function ys({
+function zs({
   className: e,
   ...t
 }) {
@@ -5236,7 +5269,7 @@ const Re = _(
     }
   }
 );
-function zs({
+function ks({
   className: e,
   variant: t,
   size: o,
@@ -5256,7 +5289,7 @@ const Pe = u.createContext({
   variant: "default",
   spacing: 0
 });
-function ks({
+function Cs({
   className: e,
   variant: t,
   size: o,
@@ -5281,7 +5314,7 @@ function ks({
     }
   );
 }
-function Cs({
+function _s({
   className: e,
   children: t,
   variant: o,
@@ -5310,7 +5343,7 @@ function Cs({
     }
   );
 }
-function _s({
+function Ss({
   title: e,
   description: t,
   primaryAction: o,
@@ -5322,8 +5355,9 @@ function _s({
     "section",
     {
       "data-slot": "contact-cta",
+      "data-augmented-ui": "tr-clip bl-clip both",
       className: C(
-        "flex w-full flex-col items-center gap-6 rounded-xl border bg-card px-6 py-16 text-center text-card-foreground sm:py-20",
+        "aug-surface aug-surface-card flex w-full flex-col items-center gap-6 rounded-xl bg-card px-6 py-16 text-center text-card-foreground sm:py-20",
         i
       ),
       ...s,
@@ -5338,7 +5372,7 @@ function _s({
     }
   );
 }
-function Ss({
+function Is({
   eyebrow: e,
   title: t,
   description: o,
@@ -5364,7 +5398,7 @@ function Ss({
     }
   );
 }
-function Is({
+function Ts({
   className: e,
   onSubmit: t,
   forgotPasswordHref: o = "#",
@@ -5377,10 +5411,10 @@ function Is({
   }), [m, l] = u.useState({});
   function f(b) {
     b.preventDefault();
-    const v = {};
-    s.email || (v.email = "Email is required."), s.password || (v.password = "Password is required."), l(v), Object.keys(v).length === 0 && t?.(s);
+    const h = {};
+    s.email || (h.email = "Email is required."), s.password || (h.password = "Password is required."), l(h), Object.keys(h).length === 0 && t?.(s);
   }
-  return /* @__PURE__ */ d(ht, { className: C("w-full max-w-sm", e), ...i, children: [
+  return /* @__PURE__ */ d(vt, { className: C("w-full max-w-sm", e), ...i, children: [
     /* @__PURE__ */ d(xt, { children: [
       /* @__PURE__ */ a(wt, { children: "Log in to your account" }),
       /* @__PURE__ */ a(Nt, { children: "Enter your credentials to continue." })
@@ -5397,8 +5431,8 @@ function Is({
             placeholder: "you@example.com",
             "aria-invalid": !!m.email,
             value: s.email,
-            onChange: (b) => c((v) => ({
-              ...v,
+            onChange: (b) => c((h) => ({
+              ...h,
               email: b.target.value
             }))
           }
@@ -5425,8 +5459,8 @@ function Is({
             autoComplete: "current-password",
             "aria-invalid": !!m.password,
             value: s.password,
-            onChange: (b) => c((v) => ({
-              ...v,
+            onChange: (b) => c((h) => ({
+              ...h,
               password: b.target.value
             }))
           }
@@ -5456,7 +5490,7 @@ function Is({
     ] }) })
   ] });
 }
-function Ts({
+function Ms({
   columns: e = [],
   socials: t = [],
   copyright: o,
@@ -5504,7 +5538,7 @@ function Ts({
     }
   );
 }
-function Ms({
+function Ds({
   logo: e,
   links: t = [],
   actions: o,
@@ -5522,7 +5556,7 @@ function Ms({
       ...i,
       children: [
         /* @__PURE__ */ a("div", { className: "flex items-center gap-2", children: e ?? /* @__PURE__ */ a("span", { className: "text-sm font-semibold", children: "LFDS" }) }),
-        t.length > 0 && /* @__PURE__ */ a(Jt, { className: "hidden lg:flex", children: /* @__PURE__ */ a(Qt, { children: t.map((s) => /* @__PURE__ */ a(Zt, { children: s.children?.length ? /* @__PURE__ */ d(he, { children: [
+        t.length > 0 && /* @__PURE__ */ a(Jt, { className: "hidden lg:flex", children: /* @__PURE__ */ a(Qt, { children: t.map((s) => /* @__PURE__ */ a(Zt, { children: s.children?.length ? /* @__PURE__ */ d(ve, { children: [
           /* @__PURE__ */ a(ea, { children: s.label }),
           /* @__PURE__ */ a(ta, { children: /* @__PURE__ */ a("ul", { className: "grid w-64 gap-1 p-2", children: s.children.map((c) => /* @__PURE__ */ a("li", { children: /* @__PURE__ */ d(be, { href: c.href, children: [
             /* @__PURE__ */ a("div", { className: "text-sm font-medium", children: c.label }),
@@ -5542,322 +5576,322 @@ function Ms({
   );
 }
 export {
-  Ua as Accordion,
-  Ja as AccordionContent,
-  Xa as AccordionItem,
-  Ya as AccordionTrigger,
-  Qa as Alert,
-  er as AlertDescription,
-  tr as AlertDialog,
-  lr as AlertDialogAction,
-  cr as AlertDialogCancel,
-  rr as AlertDialogContent,
-  sr as AlertDialogDescription,
-  nr as AlertDialogFooter,
-  or as AlertDialogHeader,
-  dr as AlertDialogMedia,
+  Xa as Accordion,
+  Qa as AccordionContent,
+  Ya as AccordionItem,
+  Ja as AccordionTrigger,
+  Za as Alert,
+  tr as AlertDescription,
+  ar as AlertDialog,
+  cr as AlertDialogAction,
+  ur as AlertDialogCancel,
+  or as AlertDialogContent,
+  dr as AlertDialogDescription,
+  ir as AlertDialogFooter,
+  nr as AlertDialogHeader,
+  lr as AlertDialogMedia,
   pt as AlertDialogOverlay,
   ft as AlertDialogPortal,
-  ir as AlertDialogTitle,
-  ar as AlertDialogTrigger,
-  Za as AlertTitle,
-  ur as AspectRatio,
-  mr as Avatar,
-  gr as AvatarBadge,
-  pr as AvatarFallback,
-  br as AvatarGroup,
+  sr as AlertDialogTitle,
+  rr as AlertDialogTrigger,
+  er as AlertTitle,
+  mr as AspectRatio,
+  fr as Avatar,
+  br as AvatarBadge,
+  gr as AvatarFallback,
+  hr as AvatarGroup,
   vr as AvatarGroupCount,
-  fr as AvatarImage,
-  hr as Badge,
-  xr as Breadcrumb,
-  Cr as BreadcrumbEllipsis,
-  Nr as BreadcrumbItem,
-  yr as BreadcrumbLink,
-  wr as BreadcrumbList,
-  zr as BreadcrumbPage,
-  kr as BreadcrumbSeparator,
+  pr as AvatarImage,
+  xr as Badge,
+  wr as Breadcrumb,
+  _r as BreadcrumbEllipsis,
+  yr as BreadcrumbItem,
+  zr as BreadcrumbLink,
+  Nr as BreadcrumbList,
+  kr as BreadcrumbPage,
+  Cr as BreadcrumbSeparator,
   R as Button,
-  _r as ButtonGroup,
-  Ir as ButtonGroupSeparator,
-  Sr as ButtonGroupText,
-  Tr as Calendar,
-  vt as CalendarDayButton,
-  ht as Card,
-  Mr as CardAction,
+  Sr as ButtonGroup,
+  Tr as ButtonGroupSeparator,
+  Ir as ButtonGroupText,
+  Mr as Calendar,
+  ht as CalendarDayButton,
+  vt as Card,
+  Dr as CardAction,
   yt as CardContent,
   Nt as CardDescription,
   zt as CardFooter,
   xt as CardHeader,
   wt as CardTitle,
-  Dr as Carousel,
-  Rr as CarouselContent,
-  Pr as CarouselItem,
-  Ar as CarouselNext,
-  jr as CarouselPrevious,
-  Gr as ChartContainer,
-  Er as ChartLegend,
-  Fr as ChartLegendContent,
+  Rr as Carousel,
+  Pr as CarouselContent,
+  jr as CarouselItem,
+  Gr as CarouselNext,
+  Ar as CarouselPrevious,
+  Lr as ChartContainer,
+  Fr as ChartLegend,
+  Br as ChartLegendContent,
   _t as ChartStyle,
-  Lr as ChartTooltip,
-  $r as ChartTooltipContent,
-  Br as Checkbox,
-  Or as Collapsible,
-  Hr as CollapsibleContent,
-  Vr as CollapsibleTrigger,
-  Wr as Combobox,
-  no as ComboboxChip,
-  oo as ComboboxChips,
-  io as ComboboxChipsInput,
-  to as ComboboxCollection,
-  Yr as ComboboxContent,
-  ao as ComboboxEmpty,
-  Zr as ComboboxGroup,
-  Xr as ComboboxInput,
-  Qr as ComboboxItem,
-  eo as ComboboxLabel,
-  Jr as ComboboxList,
-  ro as ComboboxSeparator,
+  $r as ChartTooltip,
+  Er as ChartTooltipContent,
+  Or as Checkbox,
+  Vr as Collapsible,
+  Kr as CollapsibleContent,
+  Hr as CollapsibleTrigger,
+  Ur as Combobox,
+  io as ComboboxChip,
+  no as ComboboxChips,
+  so as ComboboxChipsInput,
+  ao as ComboboxCollection,
+  Jr as ComboboxContent,
+  ro as ComboboxEmpty,
+  eo as ComboboxGroup,
+  Yr as ComboboxInput,
+  Zr as ComboboxItem,
+  to as ComboboxLabel,
+  Qr as ComboboxList,
+  oo as ComboboxSeparator,
   Pt as ComboboxTrigger,
-  Ur as ComboboxValue,
+  Xr as ComboboxValue,
   Ot as Command,
-  mo as CommandDialog,
-  go as CommandEmpty,
-  bo as CommandGroup,
-  fo as CommandInput,
-  ho as CommandItem,
-  po as CommandList,
+  fo as CommandDialog,
+  bo as CommandEmpty,
+  ho as CommandGroup,
+  po as CommandInput,
+  xo as CommandItem,
+  go as CommandList,
   vo as CommandSeparator,
-  xo as CommandShortcut,
-  _s as ContactCTA,
-  wo as ContextMenu,
-  Mo as ContextMenuCheckboxItem,
-  Io as ContextMenuContent,
-  yo as ContextMenuGroup,
-  To as ContextMenuItem,
-  Ro as ContextMenuLabel,
-  zo as ContextMenuPortal,
-  Co as ContextMenuRadioGroup,
-  Do as ContextMenuRadioItem,
-  Po as ContextMenuSeparator,
-  jo as ContextMenuShortcut,
-  ko as ContextMenuSub,
-  So as ContextMenuSubContent,
-  _o as ContextMenuSubTrigger,
-  No as ContextMenuTrigger,
+  wo as CommandShortcut,
+  Ss as ContactCTA,
+  No as ContextMenu,
+  Do as ContextMenuCheckboxItem,
+  To as ContextMenuContent,
+  zo as ContextMenuGroup,
+  Mo as ContextMenuItem,
+  Po as ContextMenuLabel,
+  ko as ContextMenuPortal,
+  _o as ContextMenuRadioGroup,
+  Ro as ContextMenuRadioItem,
+  jo as ContextMenuSeparator,
+  Ao as ContextMenuShortcut,
+  Co as ContextMenuSub,
+  Io as ContextMenuSubContent,
+  So as ContextMenuSubTrigger,
+  yo as ContextMenuTrigger,
   At as Dialog,
-  co as DialogClose,
+  uo as DialogClose,
   $t as DialogContent,
   Bt as DialogDescription,
-  uo as DialogFooter,
+  mo as DialogFooter,
   Et as DialogHeader,
   Lt as DialogOverlay,
   Gt as DialogPortal,
   Ft as DialogTitle,
-  lo as DialogTrigger,
-  Ao as Drawer,
-  Lo as DrawerClose,
-  $o as DrawerContent,
-  Oo as DrawerDescription,
-  Fo as DrawerFooter,
-  Eo as DrawerHeader,
+  co as DialogTrigger,
+  Go as Drawer,
+  $o as DrawerClose,
+  Eo as DrawerContent,
+  Vo as DrawerDescription,
+  Bo as DrawerFooter,
+  Fo as DrawerHeader,
   Ht as DrawerOverlay,
   Vt as DrawerPortal,
-  Bo as DrawerTitle,
-  Go as DrawerTrigger,
-  Vo as DropdownMenu,
-  Xo as DropdownMenuCheckboxItem,
-  qo as DropdownMenuContent,
-  Wo as DropdownMenuGroup,
-  Uo as DropdownMenuItem,
-  Qo as DropdownMenuLabel,
-  Ho as DropdownMenuPortal,
-  Yo as DropdownMenuRadioGroup,
-  Jo as DropdownMenuRadioItem,
-  Zo as DropdownMenuSeparator,
-  en as DropdownMenuShortcut,
-  tn as DropdownMenuSub,
-  rn as DropdownMenuSubContent,
-  an as DropdownMenuSubTrigger,
-  Ko as DropdownMenuTrigger,
-  on as Empty,
-  cn as EmptyContent,
-  ln as EmptyDescription,
-  nn as EmptyHeader,
-  sn as EmptyMedia,
-  dn as EmptyTitle,
+  Oo as DrawerTitle,
+  Lo as DrawerTrigger,
+  Ho as DropdownMenu,
+  Yo as DropdownMenuCheckboxItem,
+  Wo as DropdownMenuContent,
+  Uo as DropdownMenuGroup,
+  Xo as DropdownMenuItem,
+  Zo as DropdownMenuLabel,
+  Ko as DropdownMenuPortal,
+  Jo as DropdownMenuRadioGroup,
+  Qo as DropdownMenuRadioItem,
+  en as DropdownMenuSeparator,
+  tn as DropdownMenuShortcut,
+  an as DropdownMenuSub,
+  on as DropdownMenuSubContent,
+  rn as DropdownMenuSubTrigger,
+  qo as DropdownMenuTrigger,
+  nn as Empty,
+  un as EmptyContent,
+  cn as EmptyDescription,
+  sn as EmptyHeader,
+  dn as EmptyMedia,
+  ln as EmptyTitle,
   te as Field,
-  fn as FieldContent,
-  gn as FieldDescription,
+  pn as FieldContent,
+  bn as FieldDescription,
   ge as FieldError,
   qt as FieldGroup,
   pe as FieldLabel,
-  mn as FieldLegend,
-  bn as FieldSeparator,
-  un as FieldSet,
-  pn as FieldTitle,
+  fn as FieldLegend,
+  hn as FieldSeparator,
+  mn as FieldSet,
+  gn as FieldTitle,
   vn as Form,
-  Nn as FormControl,
-  yn as FormDescription,
-  hn as FormField,
-  xn as FormItem,
-  wn as FormLabel,
-  zn as FormMessage,
-  Ss as HeroSection,
-  kn as HoverCard,
-  _n as HoverCardContent,
-  Cn as HoverCardTrigger,
+  yn as FormControl,
+  zn as FormDescription,
+  xn as FormField,
+  wn as FormItem,
+  Nn as FormLabel,
+  kn as FormMessage,
+  Is as HeroSection,
+  Cn as HoverCard,
+  Sn as HoverCardContent,
+  _n as HoverCardTrigger,
   W as Input,
   It as InputGroup,
   Mt as InputGroupAddon,
   Ce as InputGroupButton,
   Rt as InputGroupInput,
-  Kr as InputGroupText,
-  qr as InputGroupTextarea,
-  Sn as InputOTP,
-  In as InputOTPGroup,
-  Mn as InputOTPSeparator,
-  Tn as InputOTPSlot,
-  Pn as Item,
-  $n as ItemActions,
-  An as ItemContent,
-  Ln as ItemDescription,
-  Fn as ItemFooter,
-  Dn as ItemGroup,
-  En as ItemHeader,
-  jn as ItemMedia,
-  Rn as ItemSeparator,
-  Gn as ItemTitle,
-  Bn as Kbd,
-  On as KbdGroup,
+  qr as InputGroupText,
+  Wr as InputGroupTextarea,
+  In as InputOTP,
+  Tn as InputOTPGroup,
+  Dn as InputOTPSeparator,
+  Mn as InputOTPSlot,
+  jn as Item,
+  En as ItemActions,
+  Gn as ItemContent,
+  $n as ItemDescription,
+  Bn as ItemFooter,
+  Rn as ItemGroup,
+  Fn as ItemHeader,
+  An as ItemMedia,
+  Pn as ItemSeparator,
+  Ln as ItemTitle,
+  On as Kbd,
+  Vn as KbdGroup,
   _e as Label,
-  Is as LoginForm,
-  Vn as Menubar,
-  Yn as MenubarCheckboxItem,
-  Un as MenubarContent,
-  Kn as MenubarGroup,
-  Xn as MenubarItem,
-  Qn as MenubarLabel,
-  Hn as MenubarMenu,
+  Ts as LoginForm,
+  Hn as Menubar,
+  Jn as MenubarCheckboxItem,
+  Xn as MenubarContent,
+  qn as MenubarGroup,
+  Yn as MenubarItem,
+  Zn as MenubarLabel,
+  Kn as MenubarMenu,
   Yt as MenubarPortal,
-  qn as MenubarRadioGroup,
-  Jn as MenubarRadioItem,
-  Zn as MenubarSeparator,
-  ei as MenubarShortcut,
-  ti as MenubarSub,
-  ri as MenubarSubContent,
-  ai as MenubarSubTrigger,
-  Wn as MenubarTrigger,
-  oi as NativeSelect,
-  ii as NativeSelectOptGroup,
-  ni as NativeSelectOption,
+  Wn as MenubarRadioGroup,
+  Qn as MenubarRadioItem,
+  ei as MenubarSeparator,
+  ti as MenubarShortcut,
+  ai as MenubarSub,
+  oi as MenubarSubContent,
+  ri as MenubarSubTrigger,
+  Un as MenubarTrigger,
+  ni as NativeSelect,
+  si as NativeSelectOptGroup,
+  ii as NativeSelectOption,
   Jt as NavigationMenu,
   ta as NavigationMenuContent,
-  si as NavigationMenuIndicator,
+  di as NavigationMenuIndicator,
   Zt as NavigationMenuItem,
   be as NavigationMenuLink,
   Qt as NavigationMenuList,
   ea as NavigationMenuTrigger,
   aa as NavigationMenuViewport,
-  di as Pagination,
-  li as PaginationContent,
-  fi as PaginationEllipsis,
-  ci as PaginationItem,
+  li as Pagination,
+  ci as PaginationContent,
+  pi as PaginationEllipsis,
+  ui as PaginationItem,
   Me as PaginationLink,
-  mi as PaginationNext,
-  ui as PaginationPrevious,
-  pi as Popover,
+  fi as PaginationNext,
+  mi as PaginationPrevious,
+  gi as Popover,
   vi as PopoverAnchor,
-  bi as PopoverContent,
-  wi as PopoverDescription,
-  hi as PopoverHeader,
-  xi as PopoverTitle,
-  gi as PopoverTrigger,
-  Ni as Progress,
-  yi as RadioGroup,
-  zi as RadioGroupItem,
-  _i as ResizableHandle,
-  Ci as ResizablePanel,
-  ki as ResizablePanelGroup,
-  Si as ScrollArea,
+  hi as PopoverContent,
+  Ni as PopoverDescription,
+  xi as PopoverHeader,
+  wi as PopoverTitle,
+  bi as PopoverTrigger,
+  yi as Progress,
+  zi as RadioGroup,
+  ki as RadioGroupItem,
+  Si as ResizableHandle,
+  _i as ResizablePanel,
+  Ci as ResizablePanelGroup,
+  Ii as ScrollArea,
   ra as ScrollBar,
-  Ii as Select,
-  Ri as SelectContent,
-  Ti as SelectGroup,
-  ji as SelectItem,
-  Pi as SelectLabel,
+  Ti as Select,
+  Pi as SelectContent,
+  Mi as SelectGroup,
+  Ai as SelectItem,
+  ji as SelectLabel,
   na as SelectScrollDownButton,
   oa as SelectScrollUpButton,
-  Ai as SelectSeparator,
-  Di as SelectTrigger,
-  Mi as SelectValue,
+  Gi as SelectSeparator,
+  Ri as SelectTrigger,
+  Di as SelectValue,
   J as Separator,
   ia as Sheet,
-  Li as SheetClose,
-  la as SheetContent,
-  ma as SheetDescription,
-  $i as SheetFooter,
-  ca as SheetHeader,
-  ua as SheetTitle,
-  Gi as SheetTrigger,
-  Fi as Sidebar,
-  Ui as SidebarContent,
-  qi as SidebarFooter,
-  Xi as SidebarGroup,
-  Ji as SidebarGroupAction,
-  Qi as SidebarGroupContent,
-  Yi as SidebarGroupLabel,
-  Ki as SidebarHeader,
-  Hi as SidebarInput,
-  Vi as SidebarInset,
-  Zi as SidebarMenu,
-  as as SidebarMenuAction,
-  rs as SidebarMenuBadge,
-  ts as SidebarMenuButton,
-  es as SidebarMenuItem,
-  os as SidebarMenuSkeleton,
-  ns as SidebarMenuSub,
-  ss as SidebarMenuSubButton,
-  is as SidebarMenuSubItem,
-  Ei as SidebarProvider,
-  Oi as SidebarRail,
-  Wi as SidebarSeparator,
-  Bi as SidebarTrigger,
-  Ts as SiteFooter,
-  Ms as SiteHeader,
-  ve as Skeleton,
-  ds as Slider,
-  ls as Spinner,
-  cs as Switch,
-  us as Table,
-  fs as TableBody,
-  hs as TableCaption,
+  $i as SheetClose,
+  ca as SheetContent,
+  fa as SheetDescription,
+  Ei as SheetFooter,
+  ua as SheetHeader,
+  ma as SheetTitle,
+  Li as SheetTrigger,
+  Bi as Sidebar,
+  Xi as SidebarContent,
+  Wi as SidebarFooter,
+  Yi as SidebarGroup,
+  Qi as SidebarGroupAction,
+  Zi as SidebarGroupContent,
+  Ji as SidebarGroupLabel,
+  qi as SidebarHeader,
+  Ki as SidebarInput,
+  Hi as SidebarInset,
+  es as SidebarMenu,
+  rs as SidebarMenuAction,
+  os as SidebarMenuBadge,
+  as as SidebarMenuButton,
+  ts as SidebarMenuItem,
+  ns as SidebarMenuSkeleton,
+  is as SidebarMenuSub,
+  ds as SidebarMenuSubButton,
+  ss as SidebarMenuSubItem,
+  Fi as SidebarProvider,
+  Vi as SidebarRail,
+  Ui as SidebarSeparator,
+  Oi as SidebarTrigger,
+  Ms as SiteFooter,
+  Ds as SiteHeader,
+  he as Skeleton,
+  ls as Slider,
+  cs as Spinner,
+  us as Switch,
+  ms as Table,
+  ps as TableBody,
+  xs as TableCaption,
   vs as TableCell,
-  ps as TableFooter,
-  bs as TableHead,
-  ms as TableHeader,
-  gs as TableRow,
-  xs as Tabs,
-  ys as TabsContent,
-  ws as TabsList,
-  Ns as TabsTrigger,
+  gs as TableFooter,
+  hs as TableHead,
+  fs as TableHeader,
+  bs as TableRow,
+  ws as Tabs,
+  zs as TabsContent,
+  Ns as TabsList,
+  ys as TabsTrigger,
   St as Textarea,
-  Wa as Toaster,
-  zs as Toggle,
-  ks as ToggleGroup,
-  Cs as ToggleGroupItem,
-  ga as Tooltip,
+  Ua as Toaster,
+  ks as Toggle,
+  Cs as ToggleGroup,
+  _s as ToggleGroupItem,
+  ba as Tooltip,
   va as TooltipContent,
-  pa as TooltipProvider,
-  ba as TooltipTrigger,
+  ga as TooltipProvider,
+  ha as TooltipTrigger,
   gt as badgeVariants,
   bt as buttonGroupVariants,
   q as buttonVariants,
   C as cn,
   Te as navigationMenuTriggerStyle,
-  Ca as tabsListVariants,
+  _a as tabsListVariants,
   Re as toggleVariants,
-  so as useComboboxAnchor,
+  lo as useComboboxAnchor,
   Z as useFormField,
-  fa as useIsMobile,
+  pa as useIsMobile,
   ee as useSidebar
 };

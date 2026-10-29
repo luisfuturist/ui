@@ -53,6 +53,25 @@ This package is designed for **Vite-based projects** (e.g. Astro) using **Tailwi
 
 4. **Tailwind v4 + React 19 required.**
 
+## Augmented corners
+
+LFDS surfaces are squared by default. Panel/floating components (cards,
+dialogs, sheets, drawers, popovers, menus, tooltips, the command palette…) also
+carry `data-augmented-ui` attributes — for the clipped "augmented" corner look,
+consumers install and import `augmented-ui` once:
+
+```sh
+pnpm add augmented-ui
+```
+
+```ts
+import 'augmented-ui' // e.g. in your app entry or global styles import
+```
+
+Without that import the attributes are inert and everything renders plain
+square — no breakage either way. `augmented-ui` is intentionally **not** a
+dependency of this package.
+
 ## Usage
 
 ```tsx
