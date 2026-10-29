@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+@import '../styles/lfds.css';
+
+body {
+  @apply bg-background text-foreground;
+}
+
+#storybook-root,
+#root--inner {
+  padding: 1rem;
+}
