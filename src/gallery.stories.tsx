@@ -7,6 +7,7 @@ import MaterialFormatUnderlined from '~icons/material-symbols/format-underlined'
 import MaterialHome from '~icons/material-symbols/home'
 import MaterialSearch from '~icons/material-symbols/search'
 import MaterialSettings from '~icons/material-symbols/settings'
+import { createPortal } from 'react-dom'
 import { useForm } from 'react-hook-form'
 import { Bar, BarChart } from 'recharts'
 import { toast } from 'sonner'
@@ -270,8 +271,9 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-function Cell({ label, wide, children }: {
+function Cell({ label, description, wide, children }: {
   label: string
+  description?: string
   wide?: boolean
   children: ReactNode
 }) {
@@ -280,9 +282,16 @@ function Cell({ label, wide, children }: {
       <div className="flex min-h-28 w-full items-center justify-center border border-foreground bg-background p-3">
         {children}
       </div>
-      <span className="font-mono text-xs text-muted-foreground">
-        {label}
-      </span>
+      <div className="flex flex-col gap-0.5">
+        <span className="font-mono text-xs text-muted-foreground">
+          {label}
+        </span>
+        {description && (
+          <span className="text-xs text-muted-foreground opacity-60">
+            {description}
+          </span>
+        )}
+      </div>
     </div>
   )
 }
@@ -296,7 +305,7 @@ function Section({ title, children }: {
       <h2 className="border-b border-foreground/30 pb-2 font-mono text-sm font-semibold tracking-wide uppercase">
         {title}
       </h2>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         {children}
       </div>
     </section>
@@ -341,7 +350,12 @@ const comboboxItems = ['Next.js', 'Astro', 'SvelteKit']
 export const Catalog: Story = {
   render: () => (
     <div className="bg-background text-foreground">
-      <Toaster />
+      {/* sonner renders position:fixed in place (no portal). On the docs
+          page the story block gets `transform: translateZ(0)`, which
+          re-anchors fixed elements to the story container — the toast
+          ends up at the very bottom of the page, offscreen. Portaling
+          to <body> anchors it to the real viewport in both views. */}
+      {createPortal(<Toaster />, document.body)}
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-12 px-6 py-10">
         <header className="flex flex-col gap-2">
           <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
@@ -358,7 +372,7 @@ export const Catalog: Story = {
         </header>
 
         <Section title="Inputs">
-          <Cell label="Button">
+          <Cell label="Button" description="cva variants + radix Slot">
             <div className="flex flex-wrap items-center justify-center gap-2">
               <Button size="sm">Default</Button>
               <Button size="sm" variant="outline">Outline</Button>
@@ -366,7 +380,7 @@ export const Catalog: Story = {
             </div>
           </Cell>
 
-          <Cell label="ButtonGroup">
+          <Cell label="ButtonGroup" description="joined controls via radix Slot">
             <ButtonGroup>
               <Button variant="outline" size="sm">Left</Button>
               <ButtonGroupSeparator />
@@ -374,14 +388,14 @@ export const Catalog: Story = {
             </ButtonGroup>
           </Cell>
 
-          <Cell label="Checkbox">
+          <Cell label="Checkbox" description="radix checkbox">
             <div className="flex items-center gap-2">
               <Checkbox id="g-check" defaultChecked />
               <Label htmlFor="g-check">Checked</Label>
             </div>
           </Cell>
 
-          <Cell label="RadioGroup">
+          <Cell label="RadioGroup" description="radix radio-group">
             <RadioGroup defaultValue="a" className="flex gap-4">
               <div className="flex items-center gap-2">
                 <RadioGroupItem id="g-ra" value="a" />
@@ -394,30 +408,30 @@ export const Catalog: Story = {
             </RadioGroup>
           </Cell>
 
-          <Cell label="Switch">
+          <Cell label="Switch" description="radix switch">
             <Switch defaultChecked aria-label="toggle" />
           </Cell>
 
-          <Cell label="Slider">
+          <Cell label="Slider" description="radix slider">
             <Slider defaultValue={[40]} className="w-40" aria-label="value" />
           </Cell>
 
-          <Cell label="Input">
+          <Cell label="Input" description="native input">
             <Input placeholder="Placeholder" className="w-full" />
           </Cell>
 
-          <Cell label="Textarea">
+          <Cell label="Textarea" description="native textarea">
             <Textarea placeholder="Write something…" className="w-full" />
           </Cell>
 
-          <Cell label="Label">
+          <Cell label="Label" description="radix label">
             <div className="flex items-center gap-2">
               <Label htmlFor="g-label">Handle</Label>
               <Input id="g-label" placeholder="lf" className="w-28" />
             </div>
           </Cell>
 
-          <Cell label="InputGroup">
+          <Cell label="InputGroup" description="input + addon composite">
             <InputGroup>
               <InputGroupInput placeholder="Search…" />
               <InputGroupAddon>
@@ -426,7 +440,7 @@ export const Catalog: Story = {
             </InputGroup>
           </Cell>
 
-          <Cell label="InputOTP">
+          <Cell label="InputOTP" description="input-otp · one-time code">
             <InputOTP maxLength={4}>
               <InputOTPGroup>
                 <InputOTPSlot index={0} />
@@ -437,7 +451,7 @@ export const Catalog: Story = {
             </InputOTP>
           </Cell>
 
-          <Cell label="Field">
+          <Cell label="Field" description="label + control wrapper">
             <FieldGroup className="w-full">
               <Field>
                 <FieldLabel htmlFor="g-field">Full name</FieldLabel>
@@ -446,11 +460,11 @@ export const Catalog: Story = {
             </FieldGroup>
           </Cell>
 
-          <Cell label="Form (react-hook-form)">
+          <Cell label="Form (react-hook-form)" description="react-hook-form + radix label">
             <FormDemo />
           </Cell>
 
-          <Cell label="Select">
+          <Cell label="Select" description="radix select">
             <Select>
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Pick one" />
@@ -462,14 +476,14 @@ export const Catalog: Story = {
             </Select>
           </Cell>
 
-          <Cell label="NativeSelect">
+          <Cell label="NativeSelect" description="native select">
             <NativeSelect>
               <NativeSelectOption>Alpha</NativeSelectOption>
               <NativeSelectOption>Beta</NativeSelectOption>
             </NativeSelect>
           </Cell>
 
-          <Cell label="Combobox">
+          <Cell label="Combobox" description="base-ui combobox">
             <Combobox items={comboboxItems}>
               <ComboboxInput placeholder="Framework" className="w-full" />
               <ComboboxContent>
@@ -485,13 +499,13 @@ export const Catalog: Story = {
             </Combobox>
           </Cell>
 
-          <Cell label="Toggle">
+          <Cell label="Toggle" description="radix toggle">
             <Toggle aria-label="bold">
               <MaterialFormatBold />
             </Toggle>
           </Cell>
 
-          <Cell label="ToggleGroup">
+          <Cell label="ToggleGroup" description="radix toggle-group">
             <ToggleGroup type="single" defaultValue="b">
               <ToggleGroupItem value="b" aria-label="bold">
                 <MaterialFormatBold />
@@ -505,26 +519,26 @@ export const Catalog: Story = {
             </ToggleGroup>
           </Cell>
 
-          <Cell label="Calendar" wide>
+          <Cell label="Calendar" description="react-day-picker" wide>
             <Calendar mode="single" className="rounded-md border" />
           </Cell>
         </Section>
 
         <Section title="Display">
-          <Cell label="Alert">
+          <Cell label="Alert" description="status callout container">
             <Alert className="w-full">
               <AlertTitle>Heads up</AlertTitle>
               <AlertDescription>Systems nominal.</AlertDescription>
             </Alert>
           </Cell>
 
-          <Cell label="Avatar">
+          <Cell label="Avatar" description="radix avatar">
             <Avatar>
               <AvatarFallback>LF</AvatarFallback>
             </Avatar>
           </Cell>
 
-          <Cell label="Badge">
+          <Cell label="Badge" description="cva variants + radix Slot">
             <div className="flex flex-wrap items-center justify-center gap-2">
               <Badge>Beta</Badge>
               <Badge variant="secondary">v4</Badge>
@@ -532,7 +546,7 @@ export const Catalog: Story = {
             </div>
           </Cell>
 
-          <Cell label="Card" wide>
+          <Cell label="Card" description="sectioned container" wide>
             <Card className="w-full py-4">
               <CardHeader>
                 <CardTitle>Card title</CardTitle>
@@ -544,7 +558,7 @@ export const Catalog: Story = {
             </Card>
           </Cell>
 
-          <Cell label="AspectRatio">
+          <Cell label="AspectRatio" description="radix aspect-ratio">
             <AspectRatio ratio={16 / 9} className="w-full">
               <div className="flex size-full items-center justify-center bg-card text-xs text-muted-foreground">
                 16:9
@@ -552,7 +566,7 @@ export const Catalog: Story = {
             </AspectRatio>
           </Cell>
 
-          <Cell label="Carousel">
+          <Cell label="Carousel" description="embla-carousel">
             <Carousel className="w-full max-w-44">
               <CarouselContent>
                 {['One', 'Two', 'Three'].map(n => (
@@ -566,7 +580,7 @@ export const Catalog: Story = {
             </Carousel>
           </Cell>
 
-          <Cell label="Chart" wide>
+          <Cell label="Chart" description="recharts + ChartConfig context" wide>
             <ChartContainer config={chartConfig} className="h-36 w-full">
               <BarChart data={chartData}>
                 <Bar dataKey="views" fill="var(--color-views)" radius={2} />
@@ -575,7 +589,7 @@ export const Catalog: Story = {
             </ChartContainer>
           </Cell>
 
-          <Cell label="Empty">
+          <Cell label="Empty" description="empty-state layout">
             <Empty className="w-full border p-4">
               <EmptyHeader>
                 <EmptyMedia variant="icon">
@@ -587,7 +601,7 @@ export const Catalog: Story = {
             </Empty>
           </Cell>
 
-          <Cell label="Item">
+          <Cell label="Item" description="media + content row via radix Slot">
             <Item variant="outline" size="sm" className="w-full">
               <ItemMedia variant="icon">
                 <MaterialSearch />
@@ -599,18 +613,18 @@ export const Catalog: Story = {
             </Item>
           </Cell>
 
-          <Cell label="Kbd">
+          <Cell label="Kbd" description="native kbd">
             <KbdGroup>
               <Kbd>⌘</Kbd>
               <Kbd>K</Kbd>
             </KbdGroup>
           </Cell>
 
-          <Cell label="Progress">
+          <Cell label="Progress" description="radix progress">
             <Progress value={60} className="w-full" />
           </Cell>
 
-          <Cell label="Separator">
+          <Cell label="Separator" description="radix separator">
             <div className="flex w-full flex-col gap-3 text-xs">
               <span>Above</span>
               <Separator />
@@ -618,18 +632,18 @@ export const Catalog: Story = {
             </div>
           </Cell>
 
-          <Cell label="Skeleton">
+          <Cell label="Skeleton" description="loading placeholder div">
             <div className="flex w-full flex-col gap-2">
               <Skeleton className="h-4 w-3/4" />
               <Skeleton className="h-4 w-1/2" />
             </div>
           </Cell>
 
-          <Cell label="Spinner">
+          <Cell label="Spinner" description="icon spinner">
             <Spinner />
           </Cell>
 
-          <Cell label="Accordion">
+          <Cell label="Accordion" description="radix accordion">
             <Accordion type="single" defaultValue="a" className="w-full">
               <AccordionItem value="a">
                 <AccordionTrigger>Open item</AccordionTrigger>
@@ -638,7 +652,7 @@ export const Catalog: Story = {
             </Accordion>
           </Cell>
 
-          <Cell label="Collapsible">
+          <Cell label="Collapsible" description="radix collapsible">
             <Collapsible defaultOpen className="w-full">
               <CollapsibleTrigger className="text-sm underline underline-offset-4">
                 Section
@@ -649,7 +663,7 @@ export const Catalog: Story = {
             </Collapsible>
           </Cell>
 
-          <Cell label="Tabs">
+          <Cell label="Tabs" description="radix tabs">
             <Tabs defaultValue="a" className="w-full">
               <TabsList>
                 <TabsTrigger value="a">One</TabsTrigger>
@@ -664,7 +678,7 @@ export const Catalog: Story = {
             </Tabs>
           </Cell>
 
-          <Cell label="Table" wide>
+          <Cell label="Table" description="native table + scroll-area wrapper" wide>
             <Table>
               <TableHeader>
                 <TableRow>
@@ -685,7 +699,7 @@ export const Catalog: Story = {
             </Table>
           </Cell>
 
-          <Cell label="ScrollArea">
+          <Cell label="ScrollArea" description="radix scroll-area">
             <ScrollArea className="h-20 w-full rounded-md border p-2 text-xs">
               {Array.from({ length: 8 }, (_, i) => (
                 <p key={i}>
@@ -697,7 +711,7 @@ export const Catalog: Story = {
             </ScrollArea>
           </Cell>
 
-          <Cell label="Resizable">
+          <Cell label="Resizable" description="react-resizable-panels">
             <ResizablePanelGroup
               orientation="horizontal"
               className="h-20 w-full rounded-md border"
@@ -712,7 +726,7 @@ export const Catalog: Story = {
             </ResizablePanelGroup>
           </Cell>
 
-          <Cell label="Sonner (toast)">
+          <Cell label="Sonner (toast)" description="sonner · portaled to body">
             <Button
               variant="outline"
               size="sm"
@@ -724,7 +738,7 @@ export const Catalog: Story = {
         </Section>
 
         <Section title="Overlays">
-          <Cell label="Command">
+          <Cell label="Command" description="cmdk palette">
             <Command className="w-full rounded-md border">
               <CommandInput placeholder="Search…" />
               <CommandList>
@@ -736,7 +750,7 @@ export const Catalog: Story = {
             </Command>
           </Cell>
 
-          <Cell label="Dialog">
+          <Cell label="Dialog" description="radix dialog">
             <Dialog>
               <DialogTrigger asChild>
                 <Button variant="outline" size="sm">Open dialog</Button>
@@ -750,7 +764,7 @@ export const Catalog: Story = {
             </Dialog>
           </Cell>
 
-          <Cell label="AlertDialog">
+          <Cell label="AlertDialog" description="radix alert-dialog">
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button variant="outline" size="sm">Delete</Button>
@@ -770,7 +784,7 @@ export const Catalog: Story = {
             </AlertDialog>
           </Cell>
 
-          <Cell label="Sheet">
+          <Cell label="Sheet" description="radix dialog · side panel">
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="outline" size="sm">Open sheet</Button>
@@ -783,7 +797,7 @@ export const Catalog: Story = {
             </Sheet>
           </Cell>
 
-          <Cell label="Drawer">
+          <Cell label="Drawer" description="vaul drawer">
             <Drawer>
               <DrawerTrigger asChild>
                 <Button variant="outline" size="sm">Open drawer</Button>
@@ -796,7 +810,7 @@ export const Catalog: Story = {
             </Drawer>
           </Cell>
 
-          <Cell label="Popover">
+          <Cell label="Popover" description="radix popover">
             <Popover>
               <PopoverTrigger asChild>
                 <Button variant="outline" size="sm">Open popover</Button>
@@ -807,7 +821,7 @@ export const Catalog: Story = {
             </Popover>
           </Cell>
 
-          <Cell label="Tooltip">
+          <Cell label="Tooltip" description="radix tooltip">
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -820,7 +834,7 @@ export const Catalog: Story = {
             </TooltipProvider>
           </Cell>
 
-          <Cell label="HoverCard">
+          <Cell label="HoverCard" description="radix hover-card">
             <HoverCard>
               <HoverCardTrigger asChild>
                 <Button variant="link" size="sm">@luisfuturist</Button>
@@ -831,7 +845,7 @@ export const Catalog: Story = {
             </HoverCard>
           </Cell>
 
-          <Cell label="DropdownMenu">
+          <Cell label="DropdownMenu" description="radix dropdown-menu">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" size="sm">Menu</Button>
@@ -843,7 +857,7 @@ export const Catalog: Story = {
             </DropdownMenu>
           </Cell>
 
-          <Cell label="ContextMenu">
+          <Cell label="ContextMenu" description="radix context-menu">
             <ContextMenu>
               <ContextMenuTrigger className="flex h-16 w-full items-center justify-center rounded-md border border-dashed border-foreground/50 text-xs text-muted-foreground">
                 Right-click me
@@ -856,7 +870,7 @@ export const Catalog: Story = {
         </Section>
 
         <Section title="Navigation">
-          <Cell label="Breadcrumb">
+          <Cell label="Breadcrumb" description="nav + radix Slot">
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
@@ -870,7 +884,7 @@ export const Catalog: Story = {
             </Breadcrumb>
           </Cell>
 
-          <Cell label="Menubar">
+          <Cell label="Menubar" description="radix menubar">
             <Menubar>
               <MenubarMenu>
                 <MenubarTrigger>File</MenubarTrigger>
@@ -887,7 +901,7 @@ export const Catalog: Story = {
             </Menubar>
           </Cell>
 
-          <Cell label="NavigationMenu">
+          <Cell label="NavigationMenu" description="radix navigation-menu">
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
@@ -900,7 +914,7 @@ export const Catalog: Story = {
             </NavigationMenu>
           </Cell>
 
-          <Cell label="Pagination">
+          <Cell label="Pagination" description="nav links + buttonVariants">
             <Pagination>
               <PaginationContent>
                 <PaginationItem>
@@ -916,7 +930,7 @@ export const Catalog: Story = {
             </Pagination>
           </Cell>
 
-          <Cell label="Sidebar" wide>
+          <Cell label="Sidebar" description="composite sidebar + provider context" wide>
             <SidebarProvider className="h-48 min-h-0 w-full overflow-hidden rounded-md border">
               <Sidebar collapsible="none">
                 <SidebarContent>
@@ -991,12 +1005,8 @@ export const Catalog: Story = {
 
             <div className="flex flex-col gap-2">
               <ContactCTA
-                title="Ready to build?"
-                primaryAction={<Button>Contact</Button>}
-                secondaryAction={(
-                  <Button variant="outline">Docs</Button>
-                )}
-                className="border border-foreground/30 py-10 sm:py-10"
+                title="Connect with me now—Let's UDP or TCP."
+                className="mb-0 border border-foreground/30"
               />
               <span className="font-mono text-xs text-muted-foreground">
                 ContactCTA

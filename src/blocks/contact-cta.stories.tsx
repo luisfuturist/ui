@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { Button } from '../components/ui/button'
 import { ContactCTA } from './contact-cta'
 
 const meta = {
@@ -11,70 +10,36 @@ const meta = {
     docs: {
       description: {
         component:
-          'A centered call-to-action panel — `title`, muted '
-          + '`description` and a button row fed by the `primaryAction` / '
-          + '`secondaryAction` slots. Pass `Button`s (or anything else) '
-          + 'through the slots to keep full control over styling.',
+          'Full-bleed inverted CTA section — an exact port of the '
+          + 'website\'s `ContactCTA.astro`. Renders an `<a>` wrapping '
+          + 'an inverted `bg-foreground` surface with `bl-rect br-clip-y` '
+          + 'augmented corners, a `font-display` headline, and a nested '
+          + '`aug-button`/`aug-button-div` action chip. Props: `href`, '
+          + '`title`, `actionLabel`, `icon`.',
       },
     },
   },
+  // Full-bleed `layout: 'fullscreen'` so the block spans the canvas, but
+  // wrapped in a padded frame so it doesn't hug the canvas edges while
+  // being reviewed.
+  decorators: [
+    Story => (
+      <div className="bg-background p-8 sm:p-12">
+        <Story />
+      </div>
+    ),
+  ],
   argTypes: {
     title: { control: 'text' },
-    description: { control: 'text' },
-    primaryAction: { control: false },
-    secondaryAction: { control: false },
+    actionLabel: { control: 'text' },
+    icon: { control: false },
+  },
+  args: {
+    href: '#footer',
   },
 } satisfies Meta<typeof ContactCTA>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
-  render: args => (
-    <div className="p-6 sm:p-12">
-      <ContactCTA {...args} />
-    </div>
-  ),
-  args: {
-    title: 'Connect with me now—Let\'s UDP or TCP.',
-    description:
-      'You\'ll find me on Discord or any social network mentioned '
-      + 'here; I\'ll welcome your message with open code.',
-    primaryAction: (
-      <Button>
-        Contact me
-      </Button>
-    ),
-    secondaryAction: (
-      <Button variant="outline">
-        See projects
-      </Button>
-    ),
-  },
-}
-
-export const SingleAction: Story = {
-  render: args => (
-    <div className="p-6 sm:p-12">
-      <ContactCTA {...args} />
-    </div>
-  ),
-  args: {
-    title: 'Ready when you are.',
-    description: 'One button, one destination.',
-    primaryAction: (
-      <Button>
-        Get in touch
-      </Button>
-    ),
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          '`secondaryAction` is optional — omitting it leaves a single '
-          + 'centered primary action.',
-      },
-    },
-  },
-}
+export const Default: Story = {}

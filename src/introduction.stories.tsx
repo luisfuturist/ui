@@ -217,8 +217,8 @@ export const DesignLanguage: Story = {
               title="Augmented corners"
               motif={(
                 <div
-                  data-augmented-ui="tl-clip tr-clip bl-clip br-clip"
-                  className="aug-surface size-14"
+                  data-augmented-ui="tr-clip bl-clip both"
+                  className="aug-surface size-14 bg-card"
                 />
               )}
             >

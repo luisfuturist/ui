@@ -123,7 +123,7 @@
   --destructive: var(--red);
 
   /* Shadcn utilities colors */
-  --ring: var(--blue);
+  --ring: var(--accent);
   --border: var(--white);
 
   /* Shadcn component colors */
@@ -189,7 +189,7 @@
   --destructive: var(--red);
 
   /* Shadcn utilities colors */
-  --ring: var(--blue);
+  --ring: var(--accent);
   --border: var(--black);
 
   /* Shadcn component colors */
@@ -427,4 +427,31 @@
       transform: translateX(100%) scaleX(0.5);
     }
   }
+}
+
+/* ContactCTA full-bleed section chrome (matches website's .aug-contact-cta). */
+.aug-contact-cta {
+  --aug-tr: var(--aug-size) !important;
+  --aug-bl: var(--aug-size) !important;
+  --aug-tl: var(--aug-size) !important;
+  --aug-br: var(--aug-size) !important;
+  --aug-border-all: 1px !important;
+  --aug-border-bg: var(--background) !important;
+  --aug-inlay-all: 0px !important;
+  --aug-inlay-bg: var(--foreground) !important;
+}
+
+.aug-contact-cta:focus {
+  --aug-border-bg: var(--accent) !important;
+  --aug-border-all: 1px !important;
+}
+
+/* Inner icon chip of the CTA button. */
+.aug-button-div {
+  --aug-tr: 12px !important;
+  --aug-bl: 12px !important;
+  --aug-border-all: 1px !important;
+  --aug-border-bg: var(--background) !important;
+  --aug-inlay-all: 0px !important;
+  --aug-inlay-bg: var(--foreground) !important;
 }

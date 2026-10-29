@@ -13,7 +13,7 @@ export const buttonVariants = cva(
         // LFDS --border matches the background; use a solid foreground
         // border so the outline reads in both themes.
         outline:
-          'border border-foreground bg-transparent hover:bg-accent hover:text-accent-foreground',
+          'border border-foreground bg-transparent hover:bg-primary hover:text-primary-foreground',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         // Accent (orange) hover matches the menu convention —
         // `focus:bg-accent` in dropdown-menu, menubar, navigation-menu.

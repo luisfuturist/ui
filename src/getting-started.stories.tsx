@@ -297,7 +297,7 @@ export default defineConfig({
 export function App() {
   return (
     <>
-      <Button data-augmented-ui="tr-clip bl-clip" className="aug-button">
+      <Button data-augmented-ui="tr-clip bl-clip both" className="aug-button">
         Click me
       </Button>
       <Toaster />
