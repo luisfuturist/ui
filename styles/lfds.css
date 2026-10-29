@@ -1,5 +1,7 @@
 @custom-variant dark (&:is(.dark *));
 
+@import 'tw-animate-css';
+
 @theme inline {
   /* Normal colors */
   --color-black: var(--black);
@@ -403,15 +405,6 @@
   --aug-br1: 0px !important;
 }
 
-/* NavigationMenuContent is a floating panel only when the menu has no Viewport
- * (data-viewport=false). With a viewport it lives inside the (already
- * augmented) viewport panel, so disable its aug border/inlay layers — an empty
- * custom-property value is augmented-ui's "off" space-toggle. */
-[data-slot='navigation-menu'][data-viewport='true']
-  [data-slot='navigation-menu-content'] {
-  --aug-border: ;
-  --aug-inlay: ;
-}
 
 @theme inline {
   --animate-progress: progress 1s infinite ease-in-out;

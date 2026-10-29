@@ -271,21 +271,44 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-function Cell({ label, description, wide, children }: {
-  label: string
-  description?: string
-  wide?: boolean
+const labelLinkClass
+  = 'font-mono text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline'
+
+function LabelLink({ story, children }: {
+  story: string
   children: ReactNode
 }) {
   return (
+    <a
+      href={`?path=/docs/${story}`}
+      className={cn('w-fit', labelLinkClass)}
+    >
+      {children}
+    </a>
+  )
+}
+
+function Cell({ label, description, wide, story, children }: {
+  label: string
+  description?: string
+  wide?: boolean
+  story?: string
+  children: ReactNode
+}) {
+  // Storybook docs ids are `components-<name-lowercased>--docs`; labels
+  // like "Form (react-hook-form)" resolve via their first token.
+  const docsId = story
+    ?? `components-${label.split(/[\s(]/)[0].toLowerCase()}--docs`
+
+  return (
     <div className={cn('flex flex-col gap-2', wide && 'sm:col-span-2')}>
-      <div className="flex min-h-28 w-full items-center justify-center border border-foreground bg-background p-3">
+      <div className="flex min-h-28 w-full flex-1 items-center justify-center border border-foreground bg-background p-3">
         {children}
       </div>
       <div className="flex flex-col gap-0.5">
-        <span className="font-mono text-xs text-muted-foreground">
+        <LabelLink story={docsId}>
           {label}
-        </span>
+        </LabelLink>
         {description && (
           <span className="text-xs text-muted-foreground opacity-60">
             {description}
@@ -726,7 +749,7 @@ export const Catalog: Story = {
             </ResizablePanelGroup>
           </Cell>
 
-          <Cell label="Sonner (toast)" description="sonner · portaled to body">
+          <Cell label="Sonner (toast)" description="sonner · portaled to body" story="components-toaster--docs">
             <Button
               variant="outline"
               size="sm"
@@ -974,9 +997,9 @@ export const Catalog: Story = {
                   actions={<Button size="sm">Start</Button>}
                 />
               </div>
-              <span className="font-mono text-xs text-muted-foreground">
+              <LabelLink story="blocks-siteheader--docs">
                 SiteHeader
-              </span>
+              </LabelLink>
             </div>
 
             <div className="flex flex-col gap-2">
@@ -989,18 +1012,18 @@ export const Catalog: Story = {
                   className="py-12 sm:py-12"
                 />
               </div>
-              <span className="font-mono text-xs text-muted-foreground">
+              <LabelLink story="blocks-herosection--docs">
                 HeroSection
-              </span>
+              </LabelLink>
             </div>
 
             <div className="flex flex-col gap-2">
               <div className="flex justify-center border border-foreground bg-background p-6">
                 <LoginForm className="w-full max-w-sm" />
               </div>
-              <span className="font-mono text-xs text-muted-foreground">
+              <LabelLink story="blocks-loginform--docs">
                 LoginForm
-              </span>
+              </LabelLink>
             </div>
 
             <div className="flex flex-col gap-2">
@@ -1008,9 +1031,9 @@ export const Catalog: Story = {
                 title="Connect with me now—Let's UDP or TCP."
                 className="mb-0 border border-foreground/30"
               />
-              <span className="font-mono text-xs text-muted-foreground">
+              <LabelLink story="blocks-contactcta--docs">
                 ContactCTA
-              </span>
+              </LabelLink>
             </div>
 
             <div className="flex flex-col gap-2">
@@ -1028,9 +1051,9 @@ export const Catalog: Story = {
                   copyright="© LFDS"
                 />
               </div>
-              <span className="font-mono text-xs text-muted-foreground">
+              <LabelLink story="blocks-sitefooter--docs">
                 SiteFooter
-              </span>
+              </LabelLink>
             </div>
           </div>
         </section>
