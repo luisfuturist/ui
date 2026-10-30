@@ -14,7 +14,7 @@ export const THEME_COOKIE = 'theme'
 export const THEME_INIT_SCRIPT
   = '(function(){var t=null;try{var m=document.cookie.match(/(?:^|;)\\s*'
     + `${THEME_COOKIE}=([^;]*)/);t=m?m[1]:null;if(!t)t=localStorage.getItem('`
-    + `'${THEME_STORAGE_KEY}')}catch(e){}if(t!=='light'&&t!=='dark'`
+    + `${THEME_STORAGE_KEY}')}catch(e){}if(t!=='light'&&t!=='dark'`
     + `&&t!=='system')t='system';var d=t==='dark'||(t==='system'`
     + `&&matchMedia('(prefers-color-scheme: dark)').matches);`
     + `document.documentElement.classList.toggle('dark',d)})()`

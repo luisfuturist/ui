@@ -5414,7 +5414,7 @@ function $l({
     }
   );
 }
-const ke = "theme", ze = "theme", Ll = `(function(){var t=null;try{var m=document.cookie.match(/(?:^|;)\\s*${ze}=([^;]*)/);t=m?m[1]:null;if(!t)t=localStorage.getItem(''${ke}')}catch(e){}if(t!=='light'&&t!=='dark'&&t!=='system')t='system';var d=t==='dark'||(t==='system'&&matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d)})()`;
+const ke = "theme", ze = "theme", Ll = `(function(){var t=null;try{var m=document.cookie.match(/(?:^|;)\\s*${ze}=([^;]*)/);t=m?m[1]:null;if(!t)t=localStorage.getItem('${ke}')}catch(e){}if(t!=='light'&&t!=='dark'&&t!=='system')t='system';var d=t==='dark'||(t==='system'&&matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d)})()`;
 function vt(e) {
   return e === "light" || e === "dark" || e === "system";
 }
