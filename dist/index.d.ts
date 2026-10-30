@@ -60,3 +60,4 @@ export * from './blocks/hero-section';
 export * from './blocks/login-form';
 export * from './blocks/site-footer';
 export * from './blocks/site-header';
+export { ErrorPage } from './blocks/error-page';
