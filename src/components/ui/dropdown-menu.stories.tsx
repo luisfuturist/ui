@@ -404,7 +404,7 @@ export const RealWorldExample: Story = {
   render: () => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="augmented" size={null} className="p-4">
+        <Button variant="augmented" size="icon-xl">
           <MaterialSettings className="size-6" />
         </Button>
       </DropdownMenuTrigger>
@@ -428,9 +428,9 @@ export const RealWorldExample: Story = {
       description: {
         story:
           'Recreation of the website\'s `NavbarMenu` + `SettingsMenu` + '
-          + '`ThemeToggleMenuItems`: an augmented-UI trigger (`size={null}` '
-          + '+ `p-4` reproduces the site\'s 56px square — the published '
-          + 'package\'s button sizes are empty), square menu content, '
+          + '`ThemeToggleMenuItems`: an augmented-UI trigger '
+          + '(`variant="augmented" size="icon-xl"` reproduces the '
+          + 'site\'s 56px square), square menu content, '
           + 'navigation links, and a theme `RadioGroup`. (The site\'s '
           + '`menu-sharp`/`settings-sharp` icons don\'t exist in this '
           + 'repo\'s iconify version, so `settings` is used for the '

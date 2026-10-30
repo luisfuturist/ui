@@ -1028,10 +1028,12 @@ export const Catalog: Story = {
             </div>
 
             <div className="flex flex-col gap-2">
-              <ContactCTA
-                title="Connect with me now—Let's UDP or TCP."
-                className="mb-0 border border-foreground/30"
-              />
+              <div className="overflow-hidden border border-foreground/30 p-6">
+                <ContactCTA
+                  title="Connect with me now—Let's UDP or TCP."
+                  className="mb-0"
+                />
+              </div>
               <LabelLink story="blocks-contactcta--docs">
                 ContactCTA
               </LabelLink>
