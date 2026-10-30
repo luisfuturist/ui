@@ -55,6 +55,7 @@ export * from './components/ui/toggle'
 export * from './components/ui/toggle-group'
 export * from './components/ui/tooltip'
 export * from './hooks/use-mobile'
+export * from './hooks/use-theme'
 export { cn } from './lib/utils'
 
 // Composite blocks — page-level compositions of the primitives above.
@@ -75,3 +76,4 @@ export * from './blocks/search-bar'
 export * from './blocks/skills-list'
 export * from './blocks/stats-section'
 export * from './blocks/testimonial'
+export * from './blocks/theme-toggle'
