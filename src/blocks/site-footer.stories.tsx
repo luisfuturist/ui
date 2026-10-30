@@ -3,6 +3,7 @@ import MaterialAlternateEmail from '~icons/material-symbols/alternate-email'
 import MaterialLanguage from '~icons/material-symbols/language'
 import MaterialMail from '~icons/material-symbols/mail'
 
+import { ContactCTA } from './contact-cta'
 import { SiteFooter } from './site-footer'
 
 const meta = {
@@ -80,6 +81,84 @@ export const Minimal: Story = {
         story:
           'Without `columns` or `socials` the footer collapses to a '
           + 'single bordered bar with the `copyright` line.',
+      },
+    },
+  },
+}
+
+export const ColumnsOnly: Story = {
+  args: {
+    columns,
+    socials: [],
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Link columns with no `socials` — the bottom bar keeps the '
+          + 'default copyright line but drops the icon row.',
+      },
+    },
+  },
+}
+
+export const ManyColumns: Story = {
+  args: {
+    columns: [
+      ...columns,
+      {
+        title: 'Company',
+        links: [
+          { label: 'About', href: '#' },
+          { label: 'Careers', href: '#' },
+          { label: 'Press kit', href: '#' },
+        ],
+      },
+      {
+        title: 'Legal',
+        links: [
+          { label: 'Privacy', href: '#' },
+          { label: 'Terms', href: '#' },
+        ],
+      },
+    ],
+    socials,
+    copyright: '© 2026 Luis Emidio — built with LFDS.',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Edge case — five `columns`. The grid is `grid-cols-2 '
+          + 'sm:grid-cols-3 md:grid-cols-4`, so extras wrap to a '
+          + 'second row on desktop.',
+      },
+    },
+  },
+}
+
+export const PageEnding: Story = {
+  render: () => (
+    <div className="flex flex-col">
+      <ContactCTA
+        href="#footer"
+        className="mb-0 min-h-0 lg:p-16"
+      />
+      <SiteFooter
+        columns={columns}
+        socials={socials}
+        copyright="© 2026 Luis Emidio — built with LFDS."
+      />
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Composed page bottom — the inverted `ContactCTA` '
+          + '(compacted with `className`) handing straight into the '
+          + 'bordered-top footer, the site\'s actual closing '
+          + 'sequence.',
       },
     },
   },

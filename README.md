@@ -4,8 +4,11 @@ LFDS — luisfuturist's React component library (shadcn-style).
 
 Ships the full shadcn component catalog under `src/components/ui/`, plus
 composite page-level blocks (`LoginForm`, `SiteHeader`, `SiteFooter`,
-`ContactCTA`, `HeroSection`) under `src/blocks/` — all re-exported from the
-package root.
+`ContactCTA`, `HeroSection`, `ErrorPage`, `CommandPalette`, `SearchBar`,
+`ContactForm`, `NewsletterSignup`, `StatsSection`, `FeatureGrid`,
+`Testimonial`, `ProjectCard`, `SkillsList`, `EmptyState` and
+`ErrorPage404`/`500`/`Maintenance` presets) under `src/blocks/` — all
+re-exported from the package root.
 
 ## Install
 
@@ -83,9 +86,7 @@ import { Button, Toaster } from '@luisfuturist/ui'
 export function App() {
   return (
     <>
-      <Button data-augmented-ui="tr-clip bl-clip both" className="aug-button">
-        Click me
-      </Button>
+      <Button variant="augmented">Click me</Button>
       <Toaster />
     </>
   )

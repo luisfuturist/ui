@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import type { ReactNode } from 'react'
+import { useState } from 'react'
 import MaterialDocumentSearch from '~icons/material-symbols/document-search'
 import MaterialFormatBold from '~icons/material-symbols/format-bold'
 import MaterialFormatItalic from '~icons/material-symbols/format-italic'
@@ -12,11 +13,29 @@ import { useForm } from 'react-hook-form'
 import { Bar, BarChart } from 'recharts'
 import { toast } from 'sonner'
 
+import {
+  CommandPalette,
+  type CommandPaletteGroup,
+} from './blocks/command-palette'
 import { ContactCTA } from './blocks/contact-cta'
+import { ContactForm } from './blocks/contact-form'
+import { EmptyData, EmptyError, EmptySearch } from './blocks/empty-state'
+import {
+  ErrorPage404,
+  ErrorPage500,
+  ErrorPageMaintenance,
+} from './blocks/error-page-presets'
+import { FeatureGrid } from './blocks/feature-grid'
 import { HeroSection } from './blocks/hero-section'
 import { LoginForm } from './blocks/login-form'
+import { NewsletterSignup } from './blocks/newsletter-signup'
+import { ProjectCard, ProjectGrid } from './blocks/project-card'
+import { SearchBar } from './blocks/search-bar'
 import { SiteFooter } from './blocks/site-footer'
 import { SiteHeader } from './blocks/site-header'
+import { SkillsList } from './blocks/skills-list'
+import { StatsSection } from './blocks/stats-section'
+import { TestimonialCard } from './blocks/testimonial'
 import {
   Accordion,
   AccordionContent,
@@ -371,6 +390,35 @@ const chartData = [
 
 const comboboxItems = ['Next.js', 'Astro', 'SvelteKit']
 
+const paletteGroups: CommandPaletteGroup[] = [
+  {
+    label: 'Pages',
+    items: [
+      { label: 'Home', icon: <MaterialHome /> },
+      { label: 'Docs', icon: <MaterialDocumentSearch /> },
+      { label: 'Settings', icon: <MaterialSettings /> },
+    ],
+  },
+]
+
+// Small controlled wrapper so the CommandPalette / SearchBar cells can
+// open the real palette from their trigger element.
+function PaletteDemo({ trigger }: {
+  trigger: (open: () => void) => ReactNode
+}) {
+  const [open, setOpen] = useState(false)
+  return (
+    <>
+      {trigger(() => setOpen(true))}
+      <CommandPalette
+        open={open}
+        onOpenChange={setOpen}
+        groups={paletteGroups}
+      />
+    </>
+  )
+}
+
 export const Catalog: Story = {
   render: () => (
     <div className="bg-background text-foreground">
@@ -396,11 +444,21 @@ export const Catalog: Story = {
         </header>
 
         <Section title="Inputs">
-          <Cell label="Button" description="cva variants + radix Slot">
+          <Cell label="Button" description="cva variants + radix Slot" wide>
             <div className="flex flex-wrap items-center justify-center gap-2">
               <Button size="sm">Default</Button>
-              <Button size="sm" variant="outline">Outline</Button>
               <Button size="sm" variant="secondary">Secondary</Button>
+              <Button size="sm" variant="outline">Outline</Button>
+              <Button size="sm" variant="destructive">Destructive</Button>
+              <Button size="sm" variant="ghost">Ghost</Button>
+              <Button size="sm" variant="link">Link</Button>
+              <Button size="sm" variant="augmented">Augmented</Button>
+              <Button size="sm" variant="augmented-outline">Aug. outline</Button>
+              <Button size="sm" variant="augmented-inverted">Aug. inverted</Button>
+              <Button size="sm" disabled>Disabled</Button>
+              <Button size="icon-sm" aria-label="settings">
+                <MaterialSettings />
+              </Button>
             </div>
           </Cell>
 
@@ -413,9 +471,19 @@ export const Catalog: Story = {
           </Cell>
 
           <Cell label="Checkbox" description="radix checkbox">
-            <div className="flex items-center gap-2">
-              <Checkbox id="g-check" defaultChecked />
-              <Label htmlFor="g-check">Checked</Label>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <div className="flex items-center gap-2">
+                <Checkbox id="g-check" defaultChecked />
+                <Label htmlFor="g-check">Checked</Label>
+              </div>
+              <div className="flex items-center gap-2">
+                <Checkbox id="g-check-off" />
+                <Label htmlFor="g-check-off">Off</Label>
+              </div>
+              <div className="flex items-center gap-2">
+                <Checkbox id="g-check-dis" disabled />
+                <Label htmlFor="g-check-dis">Disabled</Label>
+              </div>
             </div>
           </Cell>
 
@@ -433,19 +501,33 @@ export const Catalog: Story = {
           </Cell>
 
           <Cell label="Switch" description="radix switch">
-            <Switch defaultChecked aria-label="toggle" />
+            <div className="flex items-center gap-4">
+              <Switch defaultChecked aria-label="on" />
+              <Switch aria-label="off" />
+              <Switch disabled aria-label="disabled" />
+            </div>
           </Cell>
 
           <Cell label="Slider" description="radix slider">
             <Slider defaultValue={[40]} className="w-40" aria-label="value" />
           </Cell>
 
-          <Cell label="Input" description="native input">
-            <Input placeholder="Placeholder" className="w-full" />
+          <Cell label="Input" description="native input" wide>
+            <div className="grid w-full grid-cols-2 gap-2">
+              <Input placeholder="Placeholder" />
+              <Input defaultValue="Filled value" />
+              <Input defaultValue="Invalid value" aria-invalid />
+              <Input placeholder="Disabled" disabled />
+            </div>
           </Cell>
 
-          <Cell label="Textarea" description="native textarea">
-            <Textarea placeholder="Write something…" className="w-full" />
+          <Cell label="Textarea" description="native textarea" wide>
+            <div className="grid w-full grid-cols-2 gap-2">
+              <Textarea placeholder="Default" />
+              <Textarea defaultValue={'Filled\nwith two lines'} />
+              <Textarea defaultValue="Invalid entry" aria-invalid />
+              <Textarea placeholder="Disabled" disabled />
+            </div>
           </Cell>
 
           <Cell label="Label" description="radix label">
@@ -489,15 +571,22 @@ export const Catalog: Story = {
           </Cell>
 
           <Cell label="Select" description="radix select">
-            <Select>
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Pick one" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="a">Alpha</SelectItem>
-                <SelectItem value="b">Beta</SelectItem>
-              </SelectContent>
-            </Select>
+            <div className="flex w-full flex-col gap-2">
+              <Select>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Pick one" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="a">Alpha</SelectItem>
+                  <SelectItem value="b">Beta</SelectItem>
+                </SelectContent>
+              </Select>
+              <Select disabled>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Disabled" />
+                </SelectTrigger>
+              </Select>
+            </div>
           </Cell>
 
           <Cell label="NativeSelect" description="native select">
@@ -1015,6 +1104,210 @@ export const Catalog: Story = {
               </div>
               <LabelLink story="blocks-herosection--docs">
                 HeroSection
+              </LabelLink>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <div className="border border-foreground/30">
+                <StatsSection
+                  className="py-8 sm:py-8"
+                  stats={[
+                    { value: '128+', label: 'Components' },
+                    { value: '99.9%', label: 'Uptime' },
+                    { value: '42ms', label: 'Avg. response' },
+                    { value: '7y', label: 'In production' },
+                  ]}
+                />
+              </div>
+              <LabelLink story="blocks-statssection--docs">
+                StatsSection
+              </LabelLink>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <div className="border border-foreground/30">
+                <FeatureGrid
+                  title="Built for the terminal"
+                  className="py-8 sm:py-8"
+                  columns={3}
+                  features={[
+                    {
+                      title: 'Composable',
+                      description: 'Blocks assemble from the same primitives the components use.',
+                    },
+                    {
+                      title: 'Theme-aware',
+                      description: 'Tokens flip between light and dark with one `.dark` class.',
+                    },
+                    {
+                      title: 'augmented-ui ready',
+                      description: 'Tagged surfaces gain clipped corners once the stylesheet loads.',
+                    },
+                  ]}
+                />
+              </div>
+              <LabelLink story="blocks-featuregrid--docs">
+                FeatureGrid
+              </LabelLink>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <div className="border border-foreground/30 p-6">
+                <SkillsList
+                  title="Stack"
+                  groups={[
+                    {
+                      title: 'Languages',
+                      items: ['TypeScript', 'Rust', 'Python', 'Go'],
+                    },
+                    {
+                      title: 'Frontend',
+                      items: ['React', 'Astro', 'Tailwind CSS'],
+                    },
+                  ]}
+                />
+              </div>
+              <LabelLink story="blocks-skillslist--docs">
+                SkillsList
+              </LabelLink>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <div className="border border-foreground/30 p-6">
+                <ProjectGrid className="md:grid-cols-3">
+                  <ProjectCard
+                    index={1}
+                    title="Gaia"
+                    description="AI-native conversational platform."
+                    tags={['TypeScript', 'React']}
+                    href="https://9aia.com"
+                  />
+                  <ProjectCard
+                    index={2}
+                    title="Handl"
+                    description="Handle-semantics language."
+                    tags={['Rust', 'CLI']}
+                    links={[{ label: 'GitHub', href: '#' }]}
+                  />
+                  <ProjectCard
+                    index={3}
+                    title="m7tlab"
+                    description="Experimental web lab."
+                    tags={['Astro', 'Three.js']}
+                    links={[{ label: 'GitHub', href: '#' }]}
+                  />
+                </ProjectGrid>
+              </div>
+              <LabelLink story="blocks-projectcard--docs">
+                ProjectCard / ProjectGrid
+              </LabelLink>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <div className="flex justify-center border border-foreground bg-background p-6">
+                <TestimonialCard
+                  className="max-w-md"
+                  quote="LFDS is the rare design system that commits to its bit — square corners, mono accents, orange on demand."
+                  author="Ada Nakamura"
+                  role="Design Engineer"
+                  company="Hexlab"
+                />
+              </div>
+              <LabelLink story="blocks-testimonial--docs">
+                TestimonialCard
+              </LabelLink>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <div className="flex flex-col items-center gap-3 border border-foreground bg-background p-6">
+                <PaletteDemo
+                  trigger={open => (
+                    <SearchBar
+                      className="w-full max-w-md"
+                      placeholder="Search pages…"
+                      onOpen={open}
+                    />
+                  )}
+                />
+                <SearchBar
+                  className="w-full max-w-md"
+                  shortcut={null}
+                  placeholder="Input mode…"
+                  defaultValue="filter query"
+                />
+              </div>
+              <LabelLink story="blocks-searchbar--docs">
+                SearchBar
+              </LabelLink>
+              <span className="text-xs text-muted-foreground opacity-60">
+                trigger mode opens a CommandPalette · input mode is a real field
+              </span>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <div className="flex justify-center border border-foreground bg-background p-6">
+                <PaletteDemo
+                  trigger={open => (
+                    <Button variant="outline" size="sm" onClick={open}>
+                      Open command palette
+                    </Button>
+                  )}
+                />
+              </div>
+              <LabelLink story="blocks-commandpalette--docs">
+                CommandPalette
+              </LabelLink>
+              <span className="text-xs text-muted-foreground opacity-60">
+                dialog-based ⌘K palette — the button opens it
+              </span>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <div className="grid divide-y divide-foreground/30 border border-foreground/30 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+                <EmptySearch />
+                <EmptyData />
+                <EmptyError />
+              </div>
+              <LabelLink story="blocks-emptystate--docs">
+                EmptyState presets
+              </LabelLink>
+              <span className="text-xs text-muted-foreground opacity-60">
+                EmptySearch · EmptyData · EmptyError
+              </span>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <div className="grid divide-y divide-foreground/30 border border-foreground/30 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+                <ErrorPage404 className="min-h-0 gap-4 py-8 [&>div]:m-0 [&_h1]:text-5xl [&_h1_span]:text-base [&_p]:text-sm" />
+                <ErrorPage500 className="min-h-0 gap-4 py-8 [&>div]:m-0 [&_h1]:text-5xl [&_h1_span]:text-base [&_p]:text-sm" />
+                <ErrorPageMaintenance className="min-h-0 gap-4 py-8 [&>div]:m-0 [&_h1]:text-5xl [&_h1_span]:text-base [&_p]:text-sm" />
+              </div>
+              <LabelLink story="blocks-errorpagepresets--docs">
+                ErrorPage presets
+              </LabelLink>
+              <span className="text-xs text-muted-foreground opacity-60">
+                ErrorPage404 · ErrorPage500 · ErrorPageMaintenance (shrunk for the cell)
+              </span>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <div className="flex justify-center border border-foreground bg-background p-6">
+                <ContactForm className="w-full max-w-md" />
+              </div>
+              <LabelLink story="blocks-contactform--docs">
+                ContactForm
+              </LabelLink>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <div className="border border-foreground/30 bg-background p-6">
+                <NewsletterSignup
+                  title="Intercept the signal"
+                  description="One dispatch per cycle — components, blocks and design-token drops."
+                />
+              </div>
+              <LabelLink story="blocks-newslettersignup--docs">
+                NewsletterSignup
               </LabelLink>
             </div>
 
