@@ -4,12 +4,55 @@ export type Theme = 'light' | 'dark' | 'system'
 export type ResolvedTheme = 'light' | 'dark'
 
 export const THEME_STORAGE_KEY = 'theme'
+export const THEME_COOKIE = 'theme'
+
+/**
+ * Canonical anti-FOUC snippet — reads the cookie first (shared across
+ * subdomains), then `localStorage`, and applies `.dark` before paint.
+ * Render it inside an inline `<script>` in `<head>`.
+ */
+export const THEME_INIT_SCRIPT
+  = '(function(){var t=null;try{var m=document.cookie.match(/(?:^|;)\\s*'
+    + `${THEME_COOKIE}=([^;]*)/);t=m?m[1]:null;if(!t)t=localStorage.getItem('`
+    + `'${THEME_STORAGE_KEY}')}catch(e){}if(t!=='light'&&t!=='dark'`
+    + `&&t!=='system')t='system';var d=t==='dark'||(t==='system'`
+    + `&&matchMedia('(prefers-color-scheme: dark)').matches);`
+    + `document.documentElement.classList.toggle('dark',d)})()`
 
 function isTheme(value: unknown): value is Theme {
   return value === 'light' || value === 'dark' || value === 'system'
 }
 
+/** Parent-domain scope for the shared cookie (e.g. `.luisfuturist.com`). */
+function getCookieDomain(): string | null {
+  if (typeof location === 'undefined')
+    return null
+  const h = location.hostname
+  if (h === 'localhost' || /^\d{1,3}(\.\d{1,3}){3}$/.test(h) || !h.includes('.'))
+    return null
+  return `.${h.split('.').slice(-2).join('.')}`
+}
+
+function readCookieTheme(): Theme | null {
+  if (typeof document === 'undefined')
+    return null
+  const m = document.cookie.match(new RegExp(`(?:^|;)\\s*${THEME_COOKIE}=([^;]*)`))
+  return m && isTheme(m[1]) ? m[1] : null
+}
+
+function writeCookieTheme(theme: Theme) {
+  const domain = getCookieDomain()
+  if (!domain || typeof document === 'undefined')
+    return
+  document.cookie = `${THEME_COOKIE}=${theme}; domain=${domain}; path=/; max-age=31536000; samesite=lax`
+}
+
 export function getStoredTheme(): Theme {
+  // The cookie is the cross-subdomain source of truth; localStorage is the
+  // fallback (and the only option on single-label hosts like localhost).
+  const cookie = readCookieTheme()
+  if (cookie)
+    return cookie
   if (typeof localStorage === 'undefined')
     return 'system'
   const stored = localStorage.getItem(THEME_STORAGE_KEY)
@@ -42,18 +85,12 @@ export interface UseThemeReturn {
 
 /**
  * Class-based theme state — toggles `.dark` on `<html>` and persists the
- * preference (including `system`) to `localStorage['theme']`. Provider-free,
- * so it works inside isolated React islands (Astro, etc.).
+ * preference to `localStorage` plus a parent-domain cookie so the choice is
+ * shared across subdomains (e.g. `luisfuturist.com` ↔ `blog.luisfuturist.com`).
+ * Provider-free, so it works inside isolated React islands (Astro, etc.).
  *
- * Pair it with an inline script in `<head>` to set the class before paint:
- *
- * ```html
- * <script is:inline>
- *   ;(function(){var t='system';try{t=localStorage.getItem('theme')||'system'}catch(e){}
- *   var d=t==='dark'||(t==='system'&&matchMedia('(prefers-color-scheme: dark)').matches);
- *   document.documentElement.classList.toggle('dark',d)})()
- * </script>
- * ```
+ * Pair with `THEME_INIT_SCRIPT` rendered inside an inline `<script>` in
+ * `<head>` to set the class before paint.
  */
 export function useTheme(): UseThemeReturn {
   const [theme, setThemeState] = useState<Theme>('system')
@@ -89,6 +126,7 @@ export function useTheme(): UseThemeReturn {
       localStorage.setItem(THEME_STORAGE_KEY, next)
     }
     catch {}
+    writeCookieTheme(next)
   }, [])
 
   const cycleTheme = useCallback(

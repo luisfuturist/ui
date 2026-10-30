@@ -74,3 +74,4 @@ export * from './blocks/skills-list';
 export * from './blocks/stats-section';
 export * from './blocks/testimonial';
 export * from './blocks/theme-toggle';
+export * from './blocks/settings-menu';
