@@ -78,6 +78,28 @@ Without that import the attributes are inert and everything renders plain
 square — no breakage either way. `augmented-ui` is intentionally **not** a
 dependency of this package.
 
+### Augmented color rules
+
+`augmented-ui` is just a mechanism — **not every combination of border and
+surface colors is valid in LFDS.** The border must always read as a *cut*
+into the page, never as an outline:
+
+- `--aug-border-bg` is **always `var(--background)`** — the "border" is
+  painted in the page background color, so the clipped corner appears as a
+  notch revealing the page beneath. Never use `--foreground`, `--primary`,
+  accent, or any visible color for the aug border.
+- Valid surface patterns:
+  - **Surface frame**: border `var(--background)` + inlay
+    `var(--background-secondary)` — gray card with notched corners (nav
+    frames, post cards, panels).
+  - **Inverted frame**: border `var(--background)` + inlay
+    `var(--foreground)` — filled emphasis block (the Contact CTA pattern).
+  - **Interactive accent**: swap inlay to `var(--link-primary-hover)` on
+    hover/focus only — accent is for interaction states, not decoration.
+- Invalid: colored aug border + gray surface, colored aug border + any
+  surface, tinted backgrounds. Emphasis is expressed by *inverting*
+  (foreground fill) or *interacting* (accent fill), never by tinting.
+
 ## Usage
 
 ```tsx
