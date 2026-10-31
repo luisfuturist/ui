@@ -3,20 +3,17 @@ import { useCallback, useEffect, useState } from 'react'
 export type Theme = 'light' | 'dark' | 'system'
 export type ResolvedTheme = 'light' | 'dark'
 
-export const THEME_STORAGE_KEY = 'theme'
 export const THEME_COOKIE = 'theme'
 
 /**
- * Canonical anti-FOUC snippet — reads the cookie first (shared across
- * subdomains), then `localStorage`, and applies `.dark` before paint.
- * Render it inside an inline `<script>` in `<head>`.
+ * Canonical anti-FOUC snippet — reads the `theme` cookie and applies
+ * `.dark` before paint. Render it inside an inline `<script>` in `<head>`.
  */
 export const THEME_INIT_SCRIPT
   = '(function(){var t=null;try{var m=document.cookie.match(/(?:^|;)\\s*'
-    + `${THEME_COOKIE}=([^;]*)/);t=m?m[1]:null;if(!t)t=localStorage.getItem('`
-    + `${THEME_STORAGE_KEY}')}catch(e){}if(t!=='light'&&t!=='dark'`
-    + `&&t!=='system')t='system';var d=t==='dark'||(t==='system'`
-    + `&&matchMedia('(prefers-color-scheme: dark)').matches);`
+    + `${THEME_COOKIE}=([^;]*)/);t=m?m[1]:null}catch(e){}if(t!=='light'`
+    + `&&t!=='dark'&&t!=='system')t='system';var d=t==='dark'`
+    + `||(t==='system'&&matchMedia('(prefers-color-scheme: dark)').matches);`
     + `document.documentElement.classList.toggle('dark',d)})()`
 
 function isTheme(value: unknown): value is Theme {
@@ -40,23 +37,23 @@ function readCookieTheme(): Theme | null {
   return m && isTheme(m[1]) ? m[1] : null
 }
 
+/**
+ * Write the `theme` cookie. Scoped to the parent domain when the host has
+ * one (`.luisfuturist.com` covers every subdomain); otherwise a host-only
+ * cookie — which is enough for `localhost` and single-label hosts.
+ */
 function writeCookieTheme(theme: Theme) {
-  const domain = getCookieDomain()
-  if (!domain || typeof document === 'undefined')
+  if (typeof document === 'undefined')
     return
-  document.cookie = `${THEME_COOKIE}=${theme}; domain=${domain}; path=/; max-age=31536000; samesite=lax`
+  const domain = getCookieDomain()
+  const scope = domain ? ` domain=${domain};` : ''
+  document.cookie = `${THEME_COOKIE}=${theme};${scope} path=/; max-age=31536000; samesite=lax`
 }
 
 export function getStoredTheme(): Theme {
-  // The cookie is the cross-subdomain source of truth; localStorage is the
-  // fallback (and the only option on single-label hosts like localhost).
-  const cookie = readCookieTheme()
-  if (cookie)
-    return cookie
-  if (typeof localStorage === 'undefined')
-    return 'system'
-  const stored = localStorage.getItem(THEME_STORAGE_KEY)
-  return isTheme(stored) ? stored : 'system'
+  // The cookie is the single source of truth — shared across subdomains on
+  // real domains, host-only on localhost.
+  return readCookieTheme() ?? 'system'
 }
 
 export function resolveTheme(theme: Theme): ResolvedTheme {
@@ -85,7 +82,7 @@ export interface UseThemeReturn {
 
 /**
  * Class-based theme state — toggles `.dark` on `<html>` and persists the
- * preference to `localStorage` plus a parent-domain cookie so the choice is
+ * preference in a cookie scoped to the parent domain so the choice is
  * shared across subdomains (e.g. `luisfuturist.com` ↔ `blog.luisfuturist.com`).
  * Provider-free, so it works inside isolated React islands (Astro, etc.).
  *
@@ -122,10 +119,6 @@ export function useTheme(): UseThemeReturn {
 
   const setTheme = useCallback((next: Theme) => {
     setThemeState(next)
-    try {
-      localStorage.setItem(THEME_STORAGE_KEY, next)
-    }
-    catch {}
     writeCookieTheme(next)
   }, [])
 

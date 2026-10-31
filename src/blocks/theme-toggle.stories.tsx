@@ -17,7 +17,7 @@ const meta = {
       description: {
         component:
           'Class-based theme switching (`.dark` on `<html>`, persisted '
-          + 'to `localStorage["theme"]`) built on `useTheme` — '
+          + 'to a `theme` cookie shared across subdomains) built on `useTheme` — '
           + 'provider-free, so it works inside isolated React islands. '
           + '`ThemeToggle` is a single button cycling light → dark → '
           + 'system; `ThemeToggleMenuItems` is the same picker as a '
