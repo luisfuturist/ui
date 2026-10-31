@@ -2,6 +2,8 @@
 
 @import 'tw-animate-css';
 
+@plugin '@tailwindcss/typography';
+
 @theme inline {
   /* Normal colors */
   --color-black: var(--black);
@@ -429,4 +431,136 @@
   --aug-border-bg: var(--background) !important;
   --aug-inlay-all: 0px !important;
   --aug-inlay-bg: var(--foreground) !important;
+}
+
+/* ----- Typography (@tailwindcss/typography) ----- */
+/* LFDS prose preset: wraps .prose in terminal chrome — phosphor colors,
+ * display-font headings with '//' markers, dashed links, boxed code,
+ * bordered tables. Consuming apps get it via class="prose".
+ *
+ * Colors are wired through the plugin's --tw-prose-* custom properties so
+ * every prose-* element utility keeps working. The --tw-prose-invert-*
+ * set points at the same LFDS tokens: they already rebind under .dark, so
+ * prose-invert works automatically without a second palette.
+ *
+ * NOTE — the overrides live in @layer utilities, not components: in
+ * Tailwind v4 the plugin's `addComponents` output is emitted as
+ * utilities, so a components-layer block would lose to the plugin's
+ * slate defaults regardless of source order.
+ */
+@layer utilities {
+  .prose {
+    --tw-prose-body: color-mix(in oklab, var(--foreground) 90%, transparent);
+    --tw-prose-headings: var(--foreground);
+    --tw-prose-lead: var(--foreground);
+    --tw-prose-links: var(--link-primary);
+    --tw-prose-bold: var(--foreground);
+    --tw-prose-counters: var(--muted-foreground);
+    --tw-prose-bullets: var(--muted-foreground);
+    --tw-prose-hr: var(--border);
+    --tw-prose-quotes: var(--muted-foreground);
+    --tw-prose-quote-borders: color-mix(in oklab, var(--foreground) 40%, transparent);
+    --tw-prose-captions: var(--muted-foreground);
+    --tw-prose-kbd: var(--foreground);
+    --tw-prose-kbd-shadows: color-mix(in oklab, var(--foreground) 10%, transparent);
+    --tw-prose-code: var(--foreground);
+    --tw-prose-pre-code: var(--foreground);
+    --tw-prose-pre-bg: var(--background-secondary);
+    --tw-prose-th-borders: var(--border);
+    --tw-prose-td-borders: var(--border);
+
+    --tw-prose-invert-body: var(--tw-prose-body);
+    --tw-prose-invert-headings: var(--tw-prose-headings);
+    --tw-prose-invert-lead: var(--tw-prose-lead);
+    --tw-prose-invert-links: var(--tw-prose-links);
+    --tw-prose-invert-bold: var(--tw-prose-bold);
+    --tw-prose-invert-counters: var(--tw-prose-counters);
+    --tw-prose-invert-bullets: var(--tw-prose-bullets);
+    --tw-prose-invert-hr: var(--tw-prose-hr);
+    --tw-prose-invert-quotes: var(--tw-prose-quotes);
+    --tw-prose-invert-quote-borders: var(--tw-prose-quote-borders);
+    --tw-prose-invert-captions: var(--tw-prose-captions);
+    --tw-prose-invert-kbd: var(--tw-prose-kbd);
+    --tw-prose-invert-kbd-shadows: var(--tw-prose-kbd-shadows);
+    --tw-prose-invert-code: var(--tw-prose-code);
+    --tw-prose-invert-pre-code: var(--tw-prose-pre-code);
+    --tw-prose-invert-pre-bg: var(--tw-prose-pre-bg);
+    --tw-prose-invert-th-borders: var(--tw-prose-th-borders);
+    --tw-prose-invert-td-borders: var(--tw-prose-td-borders);
+
+    @apply text-base leading-7;
+  }
+
+  .prose h2 {
+    @apply font-display mt-12 mb-4 pb-2 text-2xl font-semibold border-b border-border;
+  }
+  .prose h2::before {
+    content: '//';
+    @apply mr-3 font-mono text-base font-normal text-muted-foreground;
+  }
+  .prose h3 {
+    @apply font-display mt-8 mb-3 text-xl font-semibold;
+  }
+  .prose h4 {
+    @apply font-display mt-6 mb-2 text-lg font-semibold;
+  }
+  .prose p {
+    @apply my-4;
+  }
+  .prose a {
+    /* `font-weight: inherit` undoes the plugin's 500 on links. */
+    font-weight: inherit;
+    @apply text-link-primary underline underline-offset-4 decoration-dashed hover:text-link-primary-hover;
+  }
+  .prose ul {
+    @apply my-4 list-disc pl-6 space-y-1;
+  }
+  .prose ol {
+    @apply my-4 list-decimal pl-6 space-y-1;
+  }
+  .prose li {
+    /* Plugin li margins fight space-y-1 — zero them so item gaps are uniform. */
+    @apply my-0;
+  }
+  .prose blockquote {
+    @apply my-6 border-l-2 border-foreground/40 pl-4 italic font-normal text-muted-foreground;
+  }
+  /* The plugin adds typographic quote marks via pseudo-elements. */
+  .prose blockquote p:first-of-type::before,
+  .prose blockquote p:last-of-type::after {
+    content: none;
+  }
+  .prose code {
+    /* `font-weight: inherit` undoes the plugin's 600 on code. */
+    font-weight: inherit;
+    @apply font-mono text-sm border border-border px-1.5 py-0.5 rounded-none;
+  }
+  /* The plugin wraps inline code in backtick pseudo-elements. */
+  .prose code::before,
+  .prose code::after {
+    content: none;
+  }
+  .prose pre {
+    @apply my-6 overflow-x-auto border border-border bg-background-secondary p-4 text-sm rounded-none;
+  }
+  .prose pre code {
+    @apply border-0 bg-transparent p-0;
+  }
+  .prose hr {
+    @apply my-10 border-border;
+  }
+  .prose table {
+    @apply my-6 w-full border-collapse text-sm;
+  }
+  /* `:is()` raises specificity to match the plugin's `thead th`/`tbody td`
+   * padding rules so the uniform LFDS cell padding wins. */
+  .prose :is(th, td) {
+    @apply border border-border px-3 py-2 text-left;
+  }
+  .prose th {
+    @apply bg-background-secondary font-mono text-xs uppercase tracking-wider;
+  }
+  .prose img {
+    @apply my-6 border border-border;
+  }
 }
